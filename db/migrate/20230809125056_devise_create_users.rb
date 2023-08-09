@@ -15,14 +15,14 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
       t.datetime :remember_created_at
 
       ## add_column
-      t.string :name,             null: false, default: ""      ## 名前
-      t.string :name_kana,        null: false, default: ""      ## 名前（カナ）
-      t.string :nickname,         null: false, default: ""      ## ニックネーム
-      t.string :postal_code,      null: false, default: ""      ## 郵便番号
-      t.string :address,          null: false, default: ""      ## 住所
-      t.integer :sex,                          default: 0       ## 性別
-      t.string :telephone_number, null: false, default: ""      ## 電話番号
-      t.boolean :is_deleted,                   default: false   ## 退会フラグ
+      t.string :name,             null: false, default: ""     ## 名前
+      t.string :name_kana,        null: false, default: ""     ## 名前（カナ）
+      t.string :nickname,         null: false, default: ""     ## ニックネーム
+      t.string :postal_code,      null: false, default: ""     ## 郵便番号
+      t.string :address,          null: false, default: ""     ## 住所
+      t.integer :sex,                          default: 0      ## 性別
+      t.string :telephone_number, null: false, default: ""     ## 電話番号
+      t.boolean :is_deleted,                   default: false  ## 退会フラグ
 
       ## Trackable
       # t.integer  :sign_in_count, default: 0, null: false

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_08_09_125120) do
+ActiveRecord::Schema.define(version: 2023_08_09_141133) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -22,6 +22,63 @@ ActiveRecord::Schema.define(version: 2023_08_09_125120) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "menus", force: :cascade do |t|
+    t.integer "store_id", null: false
+    t.string "name", default: "", null: false
+    t.integer "price", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "opening_hours", force: :cascade do |t|
+    t.integer "store_id", null: false
+    t.time "opening_time", null: false
+    t.time "closing_time", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "regular_holidays", force: :cascade do |t|
+    t.integer "store_id", null: false
+    t.string "day_of_week", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "store_genres", force: :cascade do |t|
+    t.integer "store_id", null: false
+    t.string "name", default: "", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "stores", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "name", default: "", null: false
+    t.string "name_kana", default: "", null: false
+    t.string "postal_code", default: "", null: false
+    t.integer "prefecture", null: false
+    t.string "address", default: "", null: false
+    t.string "building_and_apartment", default: "", null: false
+    t.string "telephone_number", default: "", null: false
+    t.string "fax_number", default: ""
+    t.integer "lowest_price_range", null: false
+    t.integer "highest_price_range", null: false
+    t.string "closest_station", default: "", null: false
+    t.string "representative", default: "", null: false
+    t.string "representative_kana", default: "", null: false
+    t.string "representative_email", default: "", null: false
+    t.text "note", default: ""
+    t.string "staff", default: "", null: false
+    t.string "staff_telephone_number", default: "", null: false
+    t.string "staff_email", default: "", null: false
+    t.float "latitude", null: false
+    t.float "longitude", null: false
+    t.boolean "is_closed", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|
