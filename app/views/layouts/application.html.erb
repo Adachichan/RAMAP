@@ -19,7 +19,22 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <ul class="flex">
+        <% if admin_signed_in? %>
+          <li><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %></li>
+        <% elsif user_signed_in? %>
+
+        <% else %>
+          <li><%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post %></li>
+        <% end %>
+      </ul>
+    </header>
+
+
+    <main>
+      <%= yield %>
+    </main>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
