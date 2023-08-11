@@ -92,9 +92,9 @@ ActiveRecord::Schema.define(version: 2023_08_09_141133) do
     t.string "nickname", default: "", null: false
     t.string "postal_code", default: "", null: false
     t.string "address", default: "", null: false
-    t.integer "sex"
+    t.integer "sex", null: false
     t.string "telephone_number", default: "", null: false
-    t.boolean "is_deleted", default: false
+    t.boolean "is_deleted", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_users_on_email", unique: true

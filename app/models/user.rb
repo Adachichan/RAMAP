@@ -10,6 +10,13 @@ class User < ApplicationRecord
     end
   end
 
+  validates :name, presence: true
+  validates :name_kana, presence: true
+  validates :nickname, presence: true
+  validates :postal_code, presence: true
+  validates :address, presence: true
+  validates :telephone_number, presence: true
+
   enum sex: { man: 0, woman: 1 }
 
 end
