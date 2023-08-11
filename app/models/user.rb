@@ -10,4 +10,6 @@ class User < ApplicationRecord
     end
   end
 
+  enum sex: { man: 0, woman: 1 }
+
 end

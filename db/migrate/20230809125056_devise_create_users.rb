@@ -20,7 +20,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
       t.string :nickname,         null: false, default: ""     ## ニックネーム
       t.string :postal_code,      null: false, default: ""     ## 郵便番号
       t.string :address,          null: false, default: ""     ## 住所
-      t.integer :sex,                          default: 0      ## 性別
+      t.integer :sex                                           ## 性別
       t.string :telephone_number, null: false, default: ""     ## 電話番号
       t.boolean :is_deleted,                   default: false  ## 退会フラグ
 

@@ -92,7 +92,7 @@ ActiveRecord::Schema.define(version: 2023_08_09_141133) do
     t.string "nickname", default: "", null: false
     t.string "postal_code", default: "", null: false
     t.string "address", default: "", null: false
-    t.integer "sex", default: 0
+    t.integer "sex"
     t.string "telephone_number", default: "", null: false
     t.boolean "is_deleted", default: false
     t.datetime "created_at", precision: 6, null: false
