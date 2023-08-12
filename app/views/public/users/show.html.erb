@@ -1,2 +1,51 @@
-<h1>Public::Users#show</h1>
-<p>Find me in app/views/public/users/show.html.erb</p>
+<h1>Mypage</h1>
+
+<div>
+  <h3>登録情報</h3>
+  <%= link_to '編集する', edit_information_path %>
+</div>
+
+<div>
+  <p>名前</p>
+  <p><%= @user.name %></p>
+</div>
+
+<div>
+  <p>名前（カナ）</p>
+  <p><%= @user.name_kana %></p>
+</div>
+
+<div>
+  <p>ニックネーム</p>
+  <p><%= @user.nickname %></p>
+</div>
+
+<div>
+  <p>郵便番号</p>
+  <p><%= @user.postal_code %></p>
+</div>
+
+<div>
+  <p>住所</p>
+  <p><%= @user.address %></p>
+</div>
+
+<div>
+  <p>性別</p>
+  <p><%= @user.sex_i18n %></p>
+</div>
+
+<div>
+  <p>電話番号</p>
+  <p><%= @user.telephone_number %></p>
+</div>
+
+<div>
+  <p>メールアドレス</p>
+  <p><%= @user.email %></p>
+</div>
+
+<div>
+  <h3>店舗情報</h3>
+  <%= link_to '一覧を見る', mystores_path %>
+</div>

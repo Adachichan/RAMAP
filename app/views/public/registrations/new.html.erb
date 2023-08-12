@@ -29,11 +29,9 @@
   </div>
 
   <div>
-    <%= f.radio_button :sex, User.sexes.key(0) %>
-    <%= f.label :sex_man, User.sexes_i18n[:man] %>
-
-    <%= f.radio_button :sex, User.sexes.key(1) %>
-    <%= f.label :sex_woman, User.sexes_i18n[:woman] %>
+    <%= f.collection_radio_buttons :sex, User.sexes_i18n, :first, :last do |b| %>
+      <%= b.label(class: "mr-2") { b.radio_button(class: "mr-2") + b.text } %>
+    <% end %>
   </div>
 
   <div class="field">

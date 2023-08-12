@@ -2,7 +2,6 @@
 
 class Public::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, if: :devise_controller?
-  before_action :check_guest, only: :destroy
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
@@ -60,11 +59,5 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
-
-  def check_guest
-    if resource.email == 'guest@example.com'
-      redirect_to root_path, alert: 'ゲストユーザーは削除できません。'
-    end
-  end
 
 end

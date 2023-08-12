@@ -10,3 +10,6 @@ Admin.create!(
   email: "test@email.com", ## admin_address
   password: "test50854" ## admin_password
 )
+
+days = %w(月 火 水 木 金 土 日)
+days.each{ |day| Day.create!(name: day) }
