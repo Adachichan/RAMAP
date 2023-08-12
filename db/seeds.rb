@@ -11,5 +11,5 @@ Admin.create!(
   password: "test50854" ## admin_password
 )
 
-days = %w(月 火 水 木 金 土 日)
+days = %w(月 火 水 木 金 土 日 祝日)
 days.each{ |day| Day.create!(name: day) }
