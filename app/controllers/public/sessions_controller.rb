@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Public::SessionsController < Devise::SessionsController
+  before_action :user_state, only: [:create]
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
@@ -25,6 +26,8 @@ class Public::SessionsController < Devise::SessionsController
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
 
+  protected
+
   # User_sign_in
   def after_sign_in_path_for(resource)
     root_path
@@ -36,11 +39,22 @@ class Public::SessionsController < Devise::SessionsController
   end
 
   def guest_sign_in
-
     user = User.guest
     sign_in user
     redirect_to root_path, notice: 'ゲストユーザーとしてログインしました。'
+  end
 
+  # 退会しているかを判断するメソッド
+  def user_state
+    # 入力されたemailの存在判定
+    @user = User.find_by(email: params[:user][:email])
+    if @user
+      # 取得したアカウントのパスワードと入力されたパスワードが一致しているか判別
+      # 退会フラグがtrueの場合、サインアップ画面に遷移する
+      if @user.valid_password?(params[:user][:password]) && @user.is_deleted == true
+        redirect_to new_user_session_path
+      end
+    end
   end
 
 end

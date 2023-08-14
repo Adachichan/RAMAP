@@ -21,6 +21,12 @@ class Public::UsersController < ApplicationController
   def unsubscribe
   end
 
+  def withdraw
+    @user.update(is_deleted: true) # 退会フラグを「退会する」に更新（ログインユーザー）
+    reset_session # 全てのsession（ログインユーザーの情報）を破棄する
+    redirect_to root_path
+  end
+
   private
 
   def set_current_user
