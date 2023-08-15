@@ -1,2 +1,106 @@
-<h1>Public::Mystores#new</h1>
-<p>Find me in app/views/public/mystores/new.html.erb</p>
+<h4>店舗情報（新規登録）</h4>
+
+<%= form_with model: @mystore, url: mystores_path do |f| %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :name_kana %><br />
+    <%= f.text_field :name_kana %>
+  </div>
+
+  <div class="field">
+    <%= f.label :postal_code %><br />
+    <%= f.text_field :postal_code %>
+  </div>
+
+  <div>
+    <%= f.label :prefecture %><br />
+    <%= f.select :prefecture, Store.prefectures.keys.map {|k| [I18n.t("enums.store.prefecture.#{k}"), k]}, options = { include_blank: false } %>
+  </div>
+
+  <div class="field">
+    <%= f.label :postal_code %><br />
+    <%= f.text_field :postal_code %>
+  </div>
+
+
+
+  <div class="field">
+    <%= f.label :address %><br />
+    <%= f.text_field :address %>
+  </div>
+
+  <div class="field">
+    <%= f.label :building_and_apartment %><br />
+    <%= f.text_field :address %>
+  </div>
+
+  <div class="field">
+    <%= f.label :telephone_number %><br />
+    <%= f.text_field :telephone_number %>
+  </div>
+
+  <div class="field">
+    <%= f.label :fax_number %><br />
+    <%= f.text_field :fax_number %>
+  </div>
+
+  <div class="field">
+    <%= f.label :lowest_price_range %><br />
+    <%= f.text_field :lowest_price_range %>
+  </div>
+
+  <div class="field">
+    <%= f.label :highest_price_range %><br />
+    <%= f.text_field :highest_price_range %>
+  </div>
+
+  <div class="field">
+    <%= f.label :closest_station %><br />
+    <%= f.text_field :closest_station %>
+  </div>
+
+  <div class="field">
+    <%= f.label :representative %><br />
+    <%= f.text_field :representative %>
+  </div>
+
+  <div class="field">
+    <%= f.label :representative_kana %><br />
+    <%= f.text_field :representative_kana %>
+  </div>
+
+  <div class="field">
+    <%= f.label :representative_email %><br />
+    <%= f.text_field :representative_email %>
+  </div>
+
+  <div class="field">
+    <%= f.label :note %><br />
+    <%= f.text_area :note %>
+  </div>
+
+  <div class="field">
+    <%= f.label :staff %><br />
+    <%= f.text_field :staff %>
+  </div>
+
+  <div class="field">
+    <%= f.label :staff_telephone_number %><br />
+    <%= f.text_field :staff_telephone_number %>
+  </div>
+
+  <div class="field">
+    <%= f.label :staff_email %><br />
+    <%= f.text_field :staff_email %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "新規登録" %>
+  </div>
+
+<% end %>

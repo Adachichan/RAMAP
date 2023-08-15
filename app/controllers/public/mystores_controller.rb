@@ -1,8 +1,12 @@
 class Public::MystoresController < ApplicationController
-  def index
-  end
+
+  before_action :authenticate_user!
 
   def new
+    @mystore = Store.new
+  end
+
+  def index
   end
 
   def show

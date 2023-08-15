@@ -6,14 +6,14 @@ class CreateStores < ActiveRecord::Migration[6.1]
       t.string :name,                   null: false, default: ""     ## 店舗名
       t.string :name_kana,              null: false, default: ""     ## 店舗名（カナ）
       t.string :postal_code,            null: false, default: ""     ## 郵便番号
-      t.integer :prefecture,            null: false                  ## 都道府県
+      t.integer :prefecture,            null: false, default: 0      ## 都道府県
       t.string :address,                null: false, default: ""     ## 住所
-      t.string :building_and_apartment, null: false, default: ""     ## ビル・マンション名
+      t.string :building_and_apartment,              default: ""     ## ビル・マンション名
       t.string :telephone_number,       null: false, default: ""     ## 電話番号
       t.string :fax_number,                          default: ""     ## FAX番号
       t.integer :lowest_price_range,    null: false                  ## 最低金額（価格帯）※税抜
       t.integer :highest_price_range,   null: false                  ## 最高金額（価格帯）※税抜
-      t.string :closest_station,        null: false, default: ""     ## 最寄り駅
+      t.string :closest_station,                     default: ""     ## 最寄り駅
       t.string :representative,         null: false, default: ""     ## 代表者名
       t.string :representative_kana,    null: false, default: ""     ## 代表者名（カナ）
       t.string :representative_email,   null: false, default: ""     ## 代表者メールアドレス
