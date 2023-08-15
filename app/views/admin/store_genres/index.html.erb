@@ -1,0 +1,19 @@
+<h4>ジャンル一覧/登録</h4>
+
+<%= form_with model: @store_genre, url: admin_store_genres_path do |f| %>
+
+  <div class="field">
+    <h5>ジャンル名</h5></br>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "新規登録" %>
+  </div>
+
+<% end %>
+
+<% @store_genres.each do |store_genre| %>
+  <%= store_genre.name %>
+  <%= link_to '編集する', edit_admin_store_genre_path(store_genre.id) %></br>
+<% end %>

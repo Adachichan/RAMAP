@@ -54,7 +54,6 @@ ActiveRecord::Schema.define(version: 2023_08_12_133911) do
   end
 
   create_table "store_genres", force: :cascade do |t|
-    t.integer "store_id", null: false
     t.string "name", default: "", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -62,6 +61,7 @@ ActiveRecord::Schema.define(version: 2023_08_12_133911) do
 
   create_table "stores", force: :cascade do |t|
     t.integer "user_id", null: false
+    t.integer "store_genre_id", null: false
     t.string "name", default: "", null: false
     t.string "name_kana", default: "", null: false
     t.string "postal_code", default: "", null: false

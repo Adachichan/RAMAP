@@ -1,0 +1,14 @@
+<h4>ジャンル編集</h4>
+
+<%= form_with model: @store_genre, url: admin_store_genre_path(@store_genre.id) do |f| %>
+
+  <div class="field">
+    <h5>ジャンル名</h5></br>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "変更を保存" %>
+  </div>
+
+<% end %>

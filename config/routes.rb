@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+    get 'store_genres/index'
+    get 'store_genres/edit'
+  end
   #---------------------------------------------------------------------------------------
   # public routes
 
@@ -54,7 +58,7 @@ Rails.application.routes.draw do
 
     resources :users, only: %i(index show edit update)
 
-    resources :genres, only: %i(index create edit update)
+    resources :store_genres, only: %i(index create edit update)
 
   end
 

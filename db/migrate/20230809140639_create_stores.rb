@@ -1,8 +1,8 @@
 class CreateStores < ActiveRecord::Migration[6.1]
   def change
     create_table :stores do |t|
-
       t.integer :user_id,               null: false                  ## 会員ID
+      t.integer :store_genre_id,        null: false                  ## 店舗ジャンルID
       t.string :name,                   null: false, default: ""     ## 店舗名
       t.string :name_kana,              null: false, default: ""     ## 店舗名（カナ）
       t.string :postal_code,            null: false, default: ""     ## 郵便番号
@@ -24,7 +24,6 @@ class CreateStores < ActiveRecord::Migration[6.1]
       t.float :latitude,                null: false                  ## 緯度
       t.float :longitude,               null: false                  ## 経度
       t.boolean :is_closed,                          default: false  ## 閉店フラグ
-
       t.timestamps
     end
   end
