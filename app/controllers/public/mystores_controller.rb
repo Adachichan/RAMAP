@@ -4,6 +4,7 @@ class Public::MystoresController < ApplicationController
 
   def new
     @mystore = Store.new
+    @mystore.opening_hours.build
   end
 
   def index

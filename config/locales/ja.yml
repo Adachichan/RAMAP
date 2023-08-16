@@ -6,7 +6,7 @@ ja:
         woman: "女性"
     store:
       prefecture:
-        none_prefecture: "---"
+        none_prefecture: "------"
         hokkaido: "北海道"
         aomori: "青森県"
         iwate: "岩手県"

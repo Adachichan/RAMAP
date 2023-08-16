@@ -1,106 +1,129 @@
 <h4>店舗情報（新規登録）</h4>
 
-<%= form_with model: @mystore, url: mystores_path do |f| %>
+<%= form_with model: @mystore, url: mystores_path do |mystore| %>
 
   <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
+    <%= mystore.label :name %><br />
+    <%= mystore.text_field :name %>
   </div>
 
   <div class="field">
-    <%= f.label :name_kana %><br />
-    <%= f.text_field :name_kana %>
+    <%= mystore.label :name_kana %><br />
+    <%= mystore.text_field :name_kana %>
   </div>
 
   <div class="field">
-    <%= f.label :postal_code %><br />
-    <%= f.text_field :postal_code %>
+    <%= mystore.label :postal_code %><br />
+    <%= mystore.text_field :postal_code %>
+  </div>
+
+  <div class="field">
+    <%= mystore.label :postal_code %><br />
+    <%= mystore.text_field :postal_code %>
   </div>
 
   <div>
-    <%= f.label :prefecture %><br />
-    <%= f.select :prefecture, Store.prefectures.keys.map {|k| [I18n.t("enums.store.prefecture.#{k}"), k]}, options = { include_blank: false } %>
+    <%= mystore.label :prefecture %><br />
+    <%= mystore.select :prefecture, Store.prefectures.keys.map {|k| [I18n.t("enums.store.prefecture.#{k}"), k]}, options = { include_blank: false } %>
   </div>
 
   <div class="field">
-    <%= f.label :postal_code %><br />
-    <%= f.text_field :postal_code %>
-  </div>
-
-
-
-  <div class="field">
-    <%= f.label :address %><br />
-    <%= f.text_field :address %>
+    <%= mystore.label :address %><br />
+    <%= mystore.text_field :address %>
   </div>
 
   <div class="field">
-    <%= f.label :building_and_apartment %><br />
-    <%= f.text_field :address %>
+    <%= mystore.label :building_and_apartment %><br />
+    <%= mystore.text_field :address %>
   </div>
 
   <div class="field">
-    <%= f.label :telephone_number %><br />
-    <%= f.text_field :telephone_number %>
+    <%= mystore.label :telephone_number %><br />
+    <%= mystore.text_field :telephone_number %>
   </div>
 
   <div class="field">
-    <%= f.label :fax_number %><br />
-    <%= f.text_field :fax_number %>
+    <%= mystore.label :fax_number %><br />
+    <%= mystore.text_field :fax_number %>
+  </div>
+
+  <%# cocoonを用いたformのテンプレート %>
+  <%= render 'form', mystore: mystore %>
+
+  <div>
+    <%= mystore.label :day_ids %><br />
+    <%= mystore.collection_check_boxes(:day_ids, Day.all, :id, :name) do |tag| %>
+      <div class="form-check">
+        <%= tag.label class: 'form-check-label' do %>
+          <%= tag.check_box class: 'form-check-input' %>
+          <%= tag.text %>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 
   <div class="field">
-    <%= f.label :lowest_price_range %><br />
-    <%= f.text_field :lowest_price_range %>
+    <%= mystore.label :store_image %><br />
+    <%= mystore.file_field :store_image, accept: "image/*" %>
   </div>
 
   <div class="field">
-    <%= f.label :highest_price_range %><br />
-    <%= f.text_field :highest_price_range %>
+    <%= mystore.label :store_genre_id %><br />
+    <%= mystore.collection_select :store_genre_id, StoreGenre.all, :id, :name, prompt: "------"  %>
   </div>
 
   <div class="field">
-    <%= f.label :closest_station %><br />
-    <%= f.text_field :closest_station %>
+    <%= mystore.label :lowest_price_range %><br />
+    <%= mystore.text_field :lowest_price_range %>
   </div>
 
   <div class="field">
-    <%= f.label :representative %><br />
-    <%= f.text_field :representative %>
+    <%= mystore.label :highest_price_range %><br />
+    <%= mystore.text_field :highest_price_range %>
   </div>
 
   <div class="field">
-    <%= f.label :representative_kana %><br />
-    <%= f.text_field :representative_kana %>
+    <%= mystore.label :closest_station %><br />
+    <%= mystore.text_field :closest_station %>
   </div>
 
   <div class="field">
-    <%= f.label :representative_email %><br />
-    <%= f.text_field :representative_email %>
+    <%= mystore.label :representative %><br />
+    <%= mystore.text_field :representative %>
   </div>
 
   <div class="field">
-    <%= f.label :note %><br />
-    <%= f.text_area :note %>
+    <%= mystore.label :representative_kana %><br />
+    <%= mystore.text_field :representative_kana %>
   </div>
 
   <div class="field">
-    <%= f.label :staff %><br />
-    <%= f.text_field :staff %>
+    <%= mystore.label :representative_email %><br />
+    <%= mystore.text_field :representative_email %>
   </div>
 
   <div class="field">
-    <%= f.label :staff_telephone_number %><br />
-    <%= f.text_field :staff_telephone_number %>
+    <%= mystore.label :note %><br />
+    <%= mystore.text_area :note %>
   </div>
 
   <div class="field">
-    <%= f.label :staff_email %><br />
-    <%= f.text_field :staff_email %>
+    <%= mystore.label :staff %><br />
+    <%= mystore.text_field :staff %>
+  </div>
+
+  <div class="field">
+    <%= mystore.label :staff_telephone_number %><br />
+    <%= mystore.text_field :staff_telephone_number %>
+  </div>
+
+  <div class="field">
+    <%= mystore.label :staff_email %><br />
+    <%= mystore.text_field :staff_email %>
   </div>
 
   <div class="actions">
-    <%= f.submit "新規登録" %>
+    <%= mystore.submit "新規登録" %>
   </div>
 
 <% end %>

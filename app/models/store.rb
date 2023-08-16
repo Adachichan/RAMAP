@@ -5,6 +5,9 @@ class Store < ApplicationRecord
   has_many :regular_holidays, dependent: :destroy
   has_many :days, through: :regular_holidays
   belongs_to :store_genre
+  has_one_attached :store_image
+
+  accepts_nested_attributes_for :opening_hours, reject_if: :all_blank, allow_destroy: true
 
   validates :name, presence: true
   validates :name_kana, presence: true
