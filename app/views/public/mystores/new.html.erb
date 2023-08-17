@@ -17,11 +17,6 @@
     <%= mystore.text_field :postal_code %>
   </div>
 
-  <div class="field">
-    <%= mystore.label :postal_code %><br />
-    <%= mystore.text_field :postal_code %>
-  </div>
-
   <div>
     <%= mystore.label :prefecture %><br />
     <%= mystore.select :prefecture, Store.prefectures.keys.map {|k| [I18n.t("enums.store.prefecture.#{k}"), k]}, options = { include_blank: false } %>
@@ -34,7 +29,7 @@
 
   <div class="field">
     <%= mystore.label :building_and_apartment %><br />
-    <%= mystore.text_field :address %>
+    <%= mystore.text_field :building_and_apartment %>
   </div>
 
   <div class="field">
@@ -99,7 +94,7 @@
 
   <div class="field">
     <%= mystore.label :representative_email %><br />
-    <%= mystore.text_field :representative_email %>
+    <%= mystore.email_field :representative_email %>
   </div>
 
   <div class="field">
@@ -119,7 +114,7 @@
 
   <div class="field">
     <%= mystore.label :staff_email %><br />
-    <%= mystore.text_field :staff_email %>
+    <%= mystore.email_field :staff_email %>
   </div>
 
   <div class="actions">

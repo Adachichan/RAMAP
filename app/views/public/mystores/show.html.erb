@@ -1,2 +1,132 @@
-<h1>Public::Mystores#show</h1>
-<p>Find me in app/views/public/mystores/show.html.erb</p>
+<h4><%= @mystore.name %>の店舗情報</h4>
+
+<div>
+  <p>店舗名</p>
+  <p><%= @mystore.name %></p>
+</div>
+
+<div>
+  <p>店舗名（カナ）</p>
+  <p><%= @mystore.name_kana %></p>
+</div>
+
+<h5>店舗情報</h5>
+
+<div>
+  <p>郵便番号</p>
+  <p>〒<%= @mystore.postal_code %></p>
+</div>
+
+<div>
+  <p>都道府県</p>
+  <p><%= @mystore.prefecture_i18n %></p>
+</div>
+
+<div>
+  <p>住所</p>
+  <p><%= @mystore.address %></p>
+</div>
+
+<div>
+  <p>ビル・マンション名</p>
+  <p><%= @mystore.building_and_apartment %></p>
+</div>
+
+<div>
+  <p>TEL</p>
+  <p><%= @mystore.telephone_number %></p>
+</div>
+
+<div>
+  <p>FAX</p>
+  <p><%= @mystore.fax_number %></p>
+</div>
+
+
+<%# cocoom箇所 %>
+<%# 営業時間の存在確認 %>
+<% if @mystore.opening_hours.count == 0 %>
+  <%# 営業時間なしの場合の表示 %>
+  <p>
+    営業時間情報なし
+  </p>
+<% else %>
+  <%# 営業時間がある場合の表示 %>
+  <ul>
+    <% @mystore.opening_hours.each do |opening_hour| %>
+      <li>
+        <%= opening_hour.opening_time.strftime("%-H:%M") %> ～ <%= opening_hour.closing_time.strftime("%-H:%M") %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%# 定休日：一旦飛ばす %>
+
+
+<div>
+  <p>ジャンル</p>
+  <p><%= @mystore.store_genre.name %></p>
+</div>
+
+<div>
+  <p>価格帯</p>
+  <p><%= @mystore.lowest_price_range %>円 ～ <%= @mystore.highest_price_range %>円</p>
+</div>
+
+<div>
+  <p>最寄り駅</p>
+  <p><%= @mystore.closest_station %></p>
+</div>
+
+<div>
+  <p>代表者名</p>
+  <p><%= @mystore.representative %></p>
+</div>
+
+<div>
+  <p>代表者（カナ）</p>
+  <p><%= @mystore.representative_kana %></p>
+</div>
+
+<div>
+  <p>代表者メールアドレス</p>
+  <p><%= @mystore.representative_email %></p>
+</div>
+
+<div>
+  <p>開店ステータス</p>
+  <% if @mystore.is_closed == true %>
+    <p>閉店</p>
+  <% else %>
+    <p>開店</p>
+  <% end %>
+</div>
+
+<div>
+  <p>備考</p>
+  <p><%= @mystore.note %></p>
+</div>
+
+<h5>担当者情報</h5>
+
+<div>
+  <p>担当者名</p>
+  <p><%= @mystore.staff %></p>
+</div>
+
+<div>
+  <p>担当者TEL</p>
+  <p><%= @mystore.staff_telephone_number %></p>
+</div>
+
+<div>
+  <p>担当者メールアドレス</p>
+  <p><%= @mystore.staff_email %></p>
+</div>
+
+<%# 8/18はここから %>
+<div>
+  <p>店舗画像</p>
+  <p><%= @mystore.staff_email %></p>
+</div>
