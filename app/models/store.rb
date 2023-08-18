@@ -33,4 +33,20 @@ class Store < ApplicationRecord
   tokushima: 36, kagawa: 37, ehime: 38, kochi: 39, #/
   fukuoka: 40, saga: 41, nagasaki: 42, kumamoto: 43, oita: 44, miyazaki: 45, kagoshima: 46, okinawa: 47}
 
+  # 店舗画像に関する実装
+  # 画像の中身が空であるか判別
+  def get_store_image(size)
+    unless store_image.attached?
+      file_path = Rails.root.join('app/assets/images/no_image.jpg')
+      store_image.attach(io: File.open(file_path), filename: 'no_image.jpg', content_type: 'image/jpeg')
+    end
+
+    # 画像のサイズ調整
+    if !size.empty?
+      store_image.variant(resize: size).processed
+    else
+      store_image
+    end
+  end
+
 end

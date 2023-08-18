@@ -42,27 +42,33 @@
   <p><%= @mystore.fax_number %></p>
 </div>
 
+<div>
+  <p>営業時間</p>
+  <%# cocoom箇所 %>
+  <%# 営業時間の存在確認 %>
+  <% if @mystore.opening_hours.count == 0 %>
+    <%# 営業時間なしの場合の表示 %>
+    <p>
+      営業時間情報なし
+    </p>
+  <% else %>
+    <%# 営業時間がある場合の表示 %>
+    <ul>
+      <% @mystore.opening_hours.each do |opening_hour| %>
+        <li>
+          <%= opening_hour.opening_time.strftime("%-H:%M") %> ～ <%= opening_hour.closing_time.strftime("%-H:%M") %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>
 
-<%# cocoom箇所 %>
-<%# 営業時間の存在確認 %>
-<% if @mystore.opening_hours.count == 0 %>
-  <%# 営業時間なしの場合の表示 %>
-  <p>
-    営業時間情報なし
-  </p>
-<% else %>
-  <%# 営業時間がある場合の表示 %>
-  <ul>
-    <% @mystore.opening_hours.each do |opening_hour| %>
-      <li>
-        <%= opening_hour.opening_time.strftime("%-H:%M") %> ～ <%= opening_hour.closing_time.strftime("%-H:%M") %>
-      </li>
-    <% end %>
-  </ul>
-<% end %>
-
-<%# 定休日：一旦飛ばす %>
-
+<div>
+  <p>定休日</p>
+  <% @mystore.days.each do |day| %>
+    <%= day.name %>
+  <% end %>
+</div>
 
 <div>
   <p>ジャンル</p>
@@ -125,8 +131,19 @@
   <p><%= @mystore.staff_email %></p>
 </div>
 
-<%# 8/18はここから %>
 <div>
   <p>店舗画像</p>
-  <p><%= @mystore.staff_email %></p>
+  <p><%= image_tag @mystore.get_store_image("300x300!") %></p>
+</div>
+
+<div>
+  <%= link_to '編集する', edit_mystore_path(@mystore.id) %>
+</div>
+
+<div>
+  <%= link_to 'メニュー情報管理', mystore_mymenus_path(@mystore.id) %>
+</div>
+
+<div>
+  <%= link_to '閉店する', closing_confirm_path(@mystore.id) %>
 </div>
