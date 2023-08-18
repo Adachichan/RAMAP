@@ -35,6 +35,7 @@ class Public::MystoresController < ApplicationController
   end
 
   def edit
+    
   end
 
   def closing_confirm
