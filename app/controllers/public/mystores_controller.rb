@@ -26,6 +26,9 @@ class Public::MystoresController < ApplicationController
   end
 
   def index
+    @mystores = current_user.stores
+    # Noの初期値
+    @number = 1
   end
 
   def show

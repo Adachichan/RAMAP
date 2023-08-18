@@ -1,2 +1,37 @@
-<h1>Public::Mystores#index</h1>
-<p>Find me in app/views/public/mystores/index.html.erb</p>
+<h4>店舗情報（一覧）</h4>
+
+<%= link_to '店舗新規登録', new_mystore_path %>
+
+<table class = "table">
+  <thead>
+    <tr>
+      <th>No</th>
+      <th>店舗名</th>
+      <th>開店ステータス</th>
+      <th>店舗詳細</th>
+      <th>メニュー</th>
+    </tr>
+  </thead>
+
+  <% @mystores.each do |mystore| %>
+    <tbody>
+      <tr>
+        <td><%= @number %></td>
+        <td><%= mystore.name %></td>
+        <td>
+          <% if mystore.is_closed == true %>
+            <p>閉店</p>
+          <% else %>
+            <p>開店</p>
+          <% end %>
+        </td>
+        <td><%= link_to '表示する', mystore_path(mystore.id) %></td>
+        <td><%= link_to 'メニュー情報管理', mystore_mymenus_path(mystore.id) %></td>
+      </tr>
+    </tbody>
+    <% @number += 1 %>
+  <% end %>
+
+</table>
+
+
