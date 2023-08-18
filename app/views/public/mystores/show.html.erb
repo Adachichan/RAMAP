@@ -65,7 +65,7 @@
 
 <div>
   <p>定休日</p>
-  <% @mystore.days.each do |day| %>
+  <% @mystore.days.order("id").each do |day| %>
     <%= day.name %>
   <% end %>
 </div>

@@ -1,7 +1,7 @@
 class Public::MystoresController < ApplicationController
 
   before_action :authenticate_user!
-  before_action :identify_store, only: [:show, :edit, :update]
+  before_action :identify_mystore, only: [:show, :edit, :update]
 
 
   def new
@@ -10,7 +10,7 @@ class Public::MystoresController < ApplicationController
   end
 
   def create
-    @mystore = Store.new(store_params)
+    @mystore = Store.new(mystore_params)
     @mystore.user_id = current_user.id
     # 緯度経度情報の保存は一旦保留。(仮の値”0”を代入)
     # geocoderを使う場合 → createアクション、Google APIを使う場合 → newアクション
@@ -35,7 +35,15 @@ class Public::MystoresController < ApplicationController
   end
 
   def edit
-    
+  end
+
+  def update
+    # 店舗情報の更新可否
+    if @mystore.update(mystore_params)
+      redirect_to mystore_path(@mystore.id)
+    else
+      render :edit
+    end
   end
 
   def closing_confirm
@@ -43,7 +51,7 @@ class Public::MystoresController < ApplicationController
 
   private
 
-  def store_params
+  def mystore_params
     # opening_hours_attributesが子のモデルに保存する要素
     # :id、:_destroyをつけることで、編集および削除が可能になる
     params.require(:store).permit(
@@ -55,7 +63,7 @@ class Public::MystoresController < ApplicationController
       opening_hours_attributes: [:id, :opening_time, :closing_time, :_destroy])
   end
 
-  def identify_store
+  def identify_mystore
     @mystore = Store.find(params[:id])
   end
 
