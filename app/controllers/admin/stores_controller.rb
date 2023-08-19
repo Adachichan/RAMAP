@@ -1,7 +1,7 @@
 class Admin::StoresController < ApplicationController
 
   before_action :authenticate_admin!
-  before_action :identify_store, only: [:show]
+  before_action :identify_store, only: [:show, :edit]
 
   def show
   end

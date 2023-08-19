@@ -5,11 +5,11 @@
 
   <%= link_to_add_association '営業時間の追加',
                               # form_withのformタグ変数
-                              mystore,
+                              store,
                               # フォームのデータを追加するモデル名
                               :opening_hours,
                               # 追加するフォームの部分テンプレート
-                              partial: "mystore_opening_hour_fields",
+                              partial: "store_opening_hour_fields",
                               # オプション
                               data: {
                                 # フォームを追加する場所の指定
@@ -32,12 +32,12 @@
   <%# フォームを追加する場所。%>
   <%# link_to_add_associationのassociation_insertion_nodeで指定 %>
   <div id="opening-hour-forms">
-    <%= mystore.fields_for :opening_hours do |opening_hour| %>
-      <%= render 'mystore_opening_hour_fields', opening_hour: opening_hour %>
+    <%= store.fields_for :opening_hours do |opening_hour| %>
+      <%= render 'store_opening_hour_fields', opening_hour: opening_hour %>
     <% end %>
   </div>
 
 </div>
 <div class="field">
-  <%= mystore.submit %>
+  <%= store.submit %>
 </div>
