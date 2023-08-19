@@ -1,2 +1,156 @@
-<h1>Admin::Stores#show</h1>
-<p>Find me in app/views/admin/stores/show.html.erb</p>
+<h4><%= @store.name %>の店舗情報</h4>
+
+<div>
+  <p>店舗ID</p>
+  <p><%= @store.id %></p>
+</div>
+
+<div>
+  <p>登録日時</p>
+  <p><%= @store.created_at.strftime("%Y/%-m/%-d %H:%M:%S") %></p>
+</div>
+
+<div>
+  <p>登録者名</p>
+  <p><%= @store.user.name %></p>
+</div>
+
+<div>
+  <p>店舗名</p>
+  <p><%= @store.name %></p>
+</div>
+
+<div>
+  <p>店舗名（カナ）</p>
+  <p><%= @store.name_kana %></p>
+</div>
+
+<h5>店舗情報</h5>
+
+<div>
+  <p>郵便番号</p>
+  <p>〒<%= @store.postal_code %></p>
+</div>
+
+<div>
+  <p>都道府県</p>
+  <p><%= @store.prefecture_i18n %></p>
+</div>
+
+<div>
+  <p>住所</p>
+  <p><%= @store.address %></p>
+</div>
+
+<div>
+  <p>ビル・マンション名</p>
+  <p><%= @store.building_and_apartment %></p>
+</div>
+
+<div>
+  <p>TEL</p>
+  <p><%= @store.telephone_number %></p>
+</div>
+
+<div>
+  <p>FAX</p>
+  <p><%= @store.fax_number %></p>
+</div>
+
+<div>
+  <p>営業時間</p>
+  <%# cocoom箇所 %>
+  <%# 営業時間の存在確認 %>
+  <% if @store.opening_hours.count == 0 %>
+    <%# 営業時間なしの場合の表示 %>
+    <p>
+      営業時間情報なし
+    </p>
+  <% else %>
+    <%# 営業時間がある場合の表示 %>
+    <ul>
+      <% @store.opening_hours.each do |opening_hour| %>
+        <li>
+          <%= opening_hour.opening_time.strftime("%-H:%M") %> ～ <%= opening_hour.closing_time.strftime("%-H:%M") %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>
+
+<div>
+  <p>定休日</p>
+  <% @store.days.order("id").each do |day| %>
+    <%= day.name %>
+  <% end %>
+</div>
+
+<div>
+  <p>ジャンル</p>
+  <p><%= @store.store_genre.name %></p>
+</div>
+
+<div>
+  <p>価格帯</p>
+  <p><%= @store.lowest_price_range %>円 ～ <%= @store.highest_price_range %>円</p>
+</div>
+
+<div>
+  <p>最寄り駅</p>
+  <p><%= @store.closest_station %></p>
+</div>
+
+<div>
+  <p>代表者名</p>
+  <p><%= @store.representative %></p>
+</div>
+
+<div>
+  <p>代表者（カナ）</p>
+  <p><%= @store.representative_kana %></p>
+</div>
+
+<div>
+  <p>代表者メールアドレス</p>
+  <p><%= @store.representative_email %></p>
+</div>
+
+<div>
+  <p>開店ステータス</p>
+  <% if @store.is_closed == true %>
+    <p>閉店</p>
+  <% else %>
+    <p>開店</p>
+  <% end %>
+</div>
+
+<div>
+  <p>備考</p>
+  <p><%= @store.note %></p>
+</div>
+
+<h5>担当者情報</h5>
+
+<div>
+  <p>担当者名</p>
+  <p><%= @store.staff %></p>
+</div>
+
+<div>
+  <p>担当者TEL</p>
+  <p><%= @store.staff_telephone_number %></p>
+</div>
+
+<div>
+  <p>担当者メールアドレス</p>
+  <p><%= @store.staff_email %></p>
+</div>
+
+<div>
+  <p>店舗画像</p>
+  <p><%= image_tag @store.get_store_image("300x300!") %></p>
+</div>
+
+<div>
+  <%= link_to '編集する', edit_admin_store_path(@store.id) %>
+</div>

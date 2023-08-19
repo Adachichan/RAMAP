@@ -4,6 +4,7 @@ class Store < ApplicationRecord
   has_many :opening_hours, dependent: :destroy
   has_many :regular_holidays, dependent: :destroy
   has_many :days, through: :regular_holidays
+  belongs_to :user
   belongs_to :store_genre
   has_one_attached :store_image
 
