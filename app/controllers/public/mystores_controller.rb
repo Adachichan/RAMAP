@@ -1,7 +1,7 @@
 class Public::MystoresController < ApplicationController
 
   before_action :authenticate_user!
-  before_action :identify_mystore, only: [:show, :edit, :update]
+  before_action :identify_mystore, only: [:show, :edit, :update, :closing_confirm, :close]
 
 
   def new
@@ -47,6 +47,11 @@ class Public::MystoresController < ApplicationController
   end
 
   def closing_confirm
+  end
+
+  def close
+    @mystore.update(is_closed: true) # 閉店フラグを「退会する」に更新
+    redirect_to mystores_path
   end
 
   private

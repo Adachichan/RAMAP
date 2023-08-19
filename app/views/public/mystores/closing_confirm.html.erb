@@ -1,2 +1,10 @@
-<h1>Public::Mystores#closing_confirm</h1>
-<p>Find me in app/views/public/mystores/closing_confirm.html.erb</p>
+<h3>本当に閉店しますか？</h3>
+<p>
+  閉店すると、店舗情報の内容がサイト上に一切表示されなくなります。</br>
+  また、店舗情報の編集も出来なくなります。</br>
+  万が一、開店状態に戻す必要が出てきた場合は、管理者まで問い合わせください。
+</p>
+
+<%= link_to '閉店しない', mystore_path(@mystore.id) %>
+
+<%= link_to '閉店する', close_path(@mystore.id), method: :patch %>
