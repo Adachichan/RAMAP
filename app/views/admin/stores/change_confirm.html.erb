@@ -1,2 +1,13 @@
-<h1>Admin::Stores#change_confirm</h1>
-<p>Find me in app/views/admin/stores/change_confirm.html.erb</p>
+<h3>本当に変更しますか？</h3>
+
+<%= form_with model: @store, url: admin_store_path(@store.id), method: :patch do |store| %>
+
+  <%= link_to '変更しない', admin_store_path(@store.id) %>
+
+  <%= store.submit '変更する' %>
+  
+  <%  %>
+	  <% store.hidden_field :opening_time, value: @store.opening_hours_attributes %>
+	
+	
+<% end %>

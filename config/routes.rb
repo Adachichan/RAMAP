@@ -52,7 +52,6 @@ Rails.application.routes.draw do
   namespace :admin do
 
     root to: 'homes#top'
-    post 'stores/:id/change_confirm', to: 'stores#change_confirm', as: 'change_confirm'
 
     resources :stores, only: %i(show edit update)
 

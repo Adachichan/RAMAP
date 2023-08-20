@@ -1,6 +1,6 @@
 <h4>店舗情報（編集）</h4>
 
-<%= form_with model: @store, url: admin_change_confirm_path, method: :post do |store| %>
+<%= form_with model: @store, url: admin_store_path(@store.id), method: :patch do |store| %>
 
   <div class="field">
     <%= store.label :name %><br />
