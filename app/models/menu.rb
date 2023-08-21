@@ -2,7 +2,10 @@ class Menu < ApplicationRecord
 
   belongs_to :store
   has_one_attached :menu_image
-  
+
+  validates :name, presence: true
+  validates :price, presence: true
+
   # メニュー画像に関する実装
   # 画像の中身が空であるか判別
   def get_menu_image(size)

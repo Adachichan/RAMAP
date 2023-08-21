@@ -17,9 +17,10 @@ class Public::MymenusController < ApplicationController
     @mymenu.store_id = params[:mystore_id]
     # 店舗ジャンルの保存可否
     if @mymenu.save
-      redirect_to mystore_mymenus_path(@mystore.id)
+      redirect_to mystore_mymenus_path(@mymenu.store_id)
     else
-      @mymenus = Menu.where(store_id:params[:mystore_id])
+      @mymenus = @mystore.menus.all
+      @number = 1
       render :index
     end
   end
@@ -30,7 +31,7 @@ class Public::MymenusController < ApplicationController
   def update
     # メニュー情報の更新可否
     if @mymenu.update(mymenu_params)
-      redirect_to mystore_mymenus_path(@mystore.id)
+      redirect_to mystore_mymenus_path(@mymenu.store_id)
     else
       render :edit
     end
@@ -40,7 +41,7 @@ class Public::MymenusController < ApplicationController
     if @mymenu
       @mymenu.destroy
     end
-    redirect_to mystore_mymenus_path(@mystore.id)
+    redirect_to mystore_mymenus_path(@mymenu.store_id)
   end
 
   def destroy_all
@@ -56,7 +57,6 @@ class Public::MymenusController < ApplicationController
   end
 
   def identify_mymenu
-    @mystore = Store.find(params[:mystore_id])
     @mymenu = Menu.find(params[:id])
   end
 

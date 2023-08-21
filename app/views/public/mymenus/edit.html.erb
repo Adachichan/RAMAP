@@ -1,6 +1,6 @@
 <h4>メニュー編集</h4>
 
-<%= form_with model: [@mystore, @mymenu], url: "/mystores/#{@mystore.id}/mymenus/#{@mymenu.id}" do |mymenu| %>
+<%= form_with model: @mymenu, url: "/mystores/#{@mymenu.store_id}/mymenus/#{@mymenu.id}" do |mymenu| %>
 
   <div class="field">
     <%= mymenu.label :menu_image %><br />
