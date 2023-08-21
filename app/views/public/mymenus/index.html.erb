@@ -1,2 +1,57 @@
-<h1>Public::Mymenus#index</h1>
-<p>Find me in app/views/public/mymenus/index.html.erb</p>
+<h4>メニュー登録/一覧</h4>
+
+<%= form_with model: [@mystore, @mymenu], url: mystore_mymenus_path(@mystore.id) do |mymenu| %>
+
+  <div class="field">
+    <%= mymenu.label :menu_image %><br />
+    <%= mymenu.file_field :menu_image, accept: "image/*" %>
+  </div>
+
+  <div class="field">
+    <%= mymenu.label :name %><br />
+    <%= mymenu.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= mymenu.label :price %><br />
+    <%= mymenu.text_field :price %>
+  </div>
+
+  <div class="actions">
+    <%= mymenu.submit "新規登録" %>
+  </div>
+
+<% end %>
+
+
+
+<%= link_to 'メニュー全削除', destroy_all_mymenus_path(@mystore.id), method: :delete %>
+
+<table class = "table">
+  <thead>
+    <tr>
+      <th>No</th>
+      <th>商品画像</th>
+      <th>メニュー名</th>
+      <th>価格（税抜）</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <% @mymenus.each do |mymenu| %>
+    <tbody>
+      <tr>
+        <td><%= @number %></td>
+        <td><%= image_tag mymenu.get_menu_image("150x150!") %></td>
+        <td><%= mymenu.name %></td>
+        <td><%= mymenu.price %></td>
+        <td>
+          <%= link_to '編集する', edit_mystore_mymenu_path(@mystore.id, mymenu.id) %>
+          <%= link_to '削除する', mystore_mymenu_path(@mystore.id, mymenu.id), method: :delete %>
+        </td>
+      </tr>
+    </tbody>
+    <% @number += 1 %>
+  <% end %>
+
+</table>

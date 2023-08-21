@@ -1,2 +1,24 @@
-<h1>Public::Mymenus#edit</h1>
-<p>Find me in app/views/public/mymenus/edit.html.erb</p>
+<h4>メニュー編集</h4>
+
+<%= form_with model: [@mystore, @mymenu], url: "/mystores/#{@mystore.id}/mymenus/#{@mymenu.id}" do |mymenu| %>
+
+  <div class="field">
+    <%= mymenu.label :menu_image %><br />
+    <%= mymenu.file_field :menu_image, accept: "image/*" %>
+  </div>
+
+  <div class="field">
+    <%= mymenu.label :name %><br />
+    <%= mymenu.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= mymenu.label :price %><br />
+    <%= mymenu.text_field :price %>
+  </div>
+
+  <div class="actions">
+    <%= mymenu.submit "変更内容を保存" %>
+  </div>
+
+<% end %>
