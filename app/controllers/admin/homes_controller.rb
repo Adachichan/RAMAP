@@ -15,7 +15,7 @@ class Admin::HomesController < ApplicationController
       @top_screen_flag = 0
     end
 
-    @stores = all_store
+    @stores = all_store.page(params[:page])
   end
 
 end
