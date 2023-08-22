@@ -12,13 +12,13 @@ class Public::MymenusController < ApplicationController
   end
 
   def create
-    @mystore = Store.find(params[:mystore_id])
     @mymenu = Menu.new(mymenu_params)
     @mymenu.store_id = params[:mystore_id]
     # 店舗ジャンルの保存可否
     if @mymenu.save
       redirect_to mystore_mymenus_path(@mymenu.store_id)
     else
+      @mystore = Store.find(params[:mystore_id])
       @mymenus = @mystore.menus.all
       @number = 1
       render :index

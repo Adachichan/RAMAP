@@ -22,6 +22,9 @@
     <header>
       <ul class="flex">
         <% if admin_signed_in? %>
+          <li><%= link_to '会員一覧', admin_users_path %></li>
+          <li><%= link_to 'ジャンル一覧', admin_store_genres_path %></li>
+          <li><%= link_to 'TOPページ', admin_root_path %></li>
           <li><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %></li>
         <% elsif user_signed_in? %>
           <li><%= link_to 'TOPページ', root_path %></li>
