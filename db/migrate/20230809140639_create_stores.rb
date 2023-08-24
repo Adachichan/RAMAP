@@ -21,8 +21,8 @@ class CreateStores < ActiveRecord::Migration[6.1]
       t.string :staff,                  null: false, default: ""     ## 担当者名
       t.string :staff_telephone_number, null: false, default: ""     ## 担当者の電話番号
       t.string :staff_email,            null: false, default: ""     ## 担当者メールアドレス
-      t.float :latitude,                null: false                  ## 緯度
-      t.float :longitude,               null: false                  ## 経度
+      t.float :latitude                                              ## 緯度
+      t.float :longitude                                             ## 経度
       t.boolean :is_closed,                          default: false  ## 閉店フラグ
       t.timestamps
     end

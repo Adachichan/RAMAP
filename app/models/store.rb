@@ -25,6 +25,15 @@ class Store < ApplicationRecord
   validates :staff_telephone_number, presence: true
   validates :staff_email, presence: true
 
+  # full_addressが更新されたときにgeocoding
+  geocoded_by :full_address
+  after_validation :geocode
+
+  # prefecture、address、building_and_apartmentを結合
+  def full_address
+    [self.prefecture_i18n, self.address, self.building_and_apartment].compact.join()
+  end
+
   enum prefecture: { none_prefecture: 0, hokkaido: 1, aomori: 2, iwate: 3, miyagi: 4, akita: 5, yamagata: 6, fukushima: 7,
   ibaraki: 8, tochigi: 9, gunma: 10, saitama: 11, chiba: 12, tokyo: 13, kanagawa: 14, #/
   niigata: 15, toyama: 16, ishikawa: 17, fukui: 18, yamanashi: 19, nagano: 20, #/

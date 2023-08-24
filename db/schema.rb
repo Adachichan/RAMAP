@@ -67,11 +67,12 @@ ActiveRecord::Schema.define(version: 2023_08_16_075139) do
   end
 
   create_table "opening_hours", force: :cascade do |t|
-    t.integer "store_id", null: false
+    t.integer "store_id"
     t.time "opening_time", null: false
     t.time "closing_time", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["store_id"], name: "index_opening_hours_on_store_id"
   end
 
   create_table "regular_holidays", force: :cascade do |t|
@@ -93,14 +94,14 @@ ActiveRecord::Schema.define(version: 2023_08_16_075139) do
     t.string "name", default: "", null: false
     t.string "name_kana", default: "", null: false
     t.string "postal_code", default: "", null: false
-    t.integer "prefecture", null: false
+    t.integer "prefecture", default: 0, null: false
     t.string "address", default: "", null: false
-    t.string "building_and_apartment", default: "", null: false
+    t.string "building_and_apartment", default: ""
     t.string "telephone_number", default: "", null: false
     t.string "fax_number", default: ""
     t.integer "lowest_price_range", null: false
     t.integer "highest_price_range", null: false
-    t.string "closest_station", default: "", null: false
+    t.string "closest_station", default: ""
     t.string "representative", default: "", null: false
     t.string "representative_kana", default: "", null: false
     t.string "representative_email", default: "", null: false
@@ -108,8 +109,8 @@ ActiveRecord::Schema.define(version: 2023_08_16_075139) do
     t.string "staff", default: "", null: false
     t.string "staff_telephone_number", default: "", null: false
     t.string "staff_email", default: "", null: false
-    t.float "latitude", null: false
-    t.float "longitude", null: false
+    t.float "latitude"
+    t.float "longitude"
     t.boolean "is_closed", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -137,4 +138,5 @@ ActiveRecord::Schema.define(version: 2023_08_16_075139) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "opening_hours", "stores"
 end

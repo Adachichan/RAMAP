@@ -64,3 +64,7 @@ gem 'enum_help'
 gem 'pry-rails'
 
 gem 'cocoon'
+
+gem 'geocoder'
+
+gem 'dotenv-rails'

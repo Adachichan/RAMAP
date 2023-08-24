@@ -3,7 +3,6 @@ class Public::MystoresController < ApplicationController
   before_action :authenticate_user!
   before_action :identify_mystore, only: [:show, :edit, :update, :closing_confirm, :close]
 
-
   def new
     @mystore = Store.new
     @mystore.opening_hours.build
@@ -12,10 +11,7 @@ class Public::MystoresController < ApplicationController
   def create
     @mystore = Store.new(mystore_params)
     @mystore.user_id = current_user.id
-    # 緯度経度情報の保存は一旦保留。(仮の値”0”を代入)
-    # geocoderを使う場合 → createアクション、Google APIを使う場合 → newアクション
-    @mystore.latitude = 0
-    @mystore.longitude = 0
+
     # 店舗情報の保存可否
     if @mystore.save
       redirect_to mystore_path(@mystore.id)
@@ -63,7 +59,7 @@ class Public::MystoresController < ApplicationController
       :name, :name_kana, :postal_code, :prefecture, :address, :building_and_apartment,
       :telephone_number, :fax_number, :store_image, :store_genre_id, :lowest_price_range,
       :highest_price_range, :closest_station,:representative, :representative_kana,
-      :representative_email, :note, :staff, :staff_telephone_number, :staff_email,
+      :representative_email, :note, :staff, :staff_telephone_number, :staff_email, :latitude, :longitude,
       day_ids: [],
       opening_hours_attributes: [:id, :opening_time, :closing_time, :_destroy])
   end
