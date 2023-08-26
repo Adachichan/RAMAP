@@ -10,20 +10,47 @@
 
 <script>
 
-// 変数の使用宣言　※let → 重複した変数の使用不可
+// 変数の使用宣言
 let map;
+let markers = []
+let infoWindows = []
+// 定数の使用宣言＆controllerからインスタンス変数を受け取る
+const stores = JSON.parse('<%== @stores_json || [] %>')
 
 function initMap() {
 
+  // 地図表示
   map = new google.maps.Map(document.getElementById('map'), {
+    // 中心位置の設定（lat → 緯度、lng → 経度）
     center: { lat: 34.6937, lng: 135.5021 },
+    // 地図の拡大縮小設定
     zoom: 8,
   });
 
-  marker = new google.maps.Marker({
-    position: { lat: <%= @store.latitude %>, lng: <%= @store.longitude %> },
-    map: map
-  });
+  // 受け取った店舗数分、処理を繰り返す
+  for (let i = 0; i < stores.length; i++) {
+
+    // 店舗情報を配列に格納する（1データ）
+    const store = stores[i]
+
+    // マーカーを表示する
+    markers[i] = new google.maps.Marker({
+      position: { lat: store.lat, lng: store.lng },
+      map: map
+    });
+
+    // マーカーをクリックした時に出る情報をセットする
+    infoWindows[i] = new google.maps.InfoWindow({
+      content: `
+        <a href="stores/${store.id}">${store.name}</a>
+      `
+    })
+
+    // マーカーをクリックした時の挙動を設定する
+    markers[i].addListener('click', () => {
+      infoWindows[i].open(map, markers[i])
+    })
+  }
 }
 
 </script>

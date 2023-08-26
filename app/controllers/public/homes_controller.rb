@@ -1,7 +1,8 @@
 class Public::HomesController < ApplicationController
 
   def top
-    @store = Store.find(1)
+    @stores = Store.all
+    @stores_json = @stores.map{|o| { id: o.id, lat: o.latitude, lng: o.longitude, name: o.name } }.to_json
   end
 
   def search
