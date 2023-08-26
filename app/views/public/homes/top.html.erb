@@ -1,2 +1,30 @@
-<h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
+
+<div id = 'map'></div>
+
+<style>
+#map {
+  height: 600px;
+  width: 600px;
+}
+</style>
+
+<script>
+
+// 変数の使用宣言　※let → 重複した変数の使用不可
+let map;
+
+function initMap() {
+
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: { lat: 34.6937, lng: 135.5021 },
+    zoom: 8,
+  });
+
+  marker = new google.maps.Marker({
+    position: { lat: <%= @store.latitude %>, lng: <%= @store.longitude %> },
+    map: map
+  });
+}
+
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['MAPS_JAVASCRIPT_API_KEY'] %>&callback=initMap" async defer></script>
