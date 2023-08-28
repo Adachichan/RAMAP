@@ -59,4 +59,25 @@ class Store < ApplicationRecord
     end
   end
 
+  # パラメータを指定して検索を実行する
+  def self.search_for(search_store_params)
+
+    # 閉店した店舗は取り出し対象外
+    search_stores = self.where(is_closed: false)
+
+    # 都道府県の完全一致
+    unless search_store_params[:prefecture].to_i == 'none_prefecture'
+      search_stores = search_stores.where(prefecture: search_store_params[:prefecture])
+    end
+
+    # 予算が価格帯の中に入っているか確認
+    if search_store_params[:budget].to_i != nil
+      search_stores = search_stores.where(lowest_price_range: ..search_store_params[:budget].to_i)
+      search_stores = search_stores.where(highest_price_range: search_store_params[:budget].to_i..)
+    end
+
+    search_stores
+
+  end
+
 end

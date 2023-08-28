@@ -1,2 +1,58 @@
-<h1>Public::Homes#search</h1>
-<p>Find me in app/views/public/homes/search.html.erb</p>
+<h4>検索結果</h4>
+
+<div id = 'map'></div>
+
+<style>
+#map {
+  height: 600px;
+  width: 600px;
+}
+</style>
+
+<script>
+
+function initMap() {
+
+  // 変数の使用宣言
+  let map;
+  let markers = []
+  let infoWindows = []
+  // 定数の使用宣言＆controllerからインスタンス変数を受け取る
+  const search_stores = JSON.parse('<%== @search_stores_json || [] %>')
+
+  // 地図表示
+  map = new google.maps.Map(document.getElementById('map'), {
+    // 中心位置の設定（lat → 緯度、lng → 経度）
+    center: { lat: 34.6937, lng: 135.5021 },
+    // 地図の拡大縮小設定
+    zoom: 8,
+  });
+
+  // 受け取った店舗数分、処理を繰り返す
+  for (let i = 0; i < search_stores.length; i++) {
+
+    // 店舗情報を配列に格納する（1データ）
+    const search_store = search_stores[i]
+
+    // マーカーを表示する
+    markers[i] = new google.maps.Marker({
+      position: { lat: search_store.lat, lng: search_store.lng },
+      map: map
+    });
+
+    // マーカーをクリックした時に出る情報をセットする
+    infoWindows[i] = new google.maps.InfoWindow({
+      content: `
+        <a href="stores/${search_store.id}">${search_store.name}</a>
+      `
+    })
+
+    // マーカーをクリックした時の挙動を設定する
+    markers[i].addListener('click', () => {
+      infoWindows[i].open(map, markers[i])
+    })
+  }
+}
+
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['MAPS_JAVASCRIPT_API_KEY'] %>&callback=initMap" async defer></script>

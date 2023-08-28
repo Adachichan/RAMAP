@@ -1,4 +1,29 @@
 
+<%= form_with(scope: :search, url: search_path, method: :get, local: true) do |f| %>
+
+  <div>
+    <%= f.label :prefecture %>
+    <%= f.select :prefecture, Store.prefectures.keys.map {|k| [I18n.t("enums.store.prefecture.#{k}"), k]}, options = { include_blank: false } %>
+  </div>
+
+  <div>
+    <%= f.label :budget %>
+    <%= f.number_field :budget %>
+  </div>
+
+  <div>
+    <%= f.label :visit_time %>
+    <%= f.time_field :visit_time %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "検索" %>
+  </div>
+
+<% end %>
+
+
+
 <div id = 'map'></div>
 
 <style>
@@ -10,14 +35,14 @@
 
 <script>
 
-// 変数の使用宣言
-let map;
-let markers = []
-let infoWindows = []
-// 定数の使用宣言＆controllerからインスタンス変数を受け取る
-const stores = JSON.parse('<%== @stores_json || [] %>')
-
 function initMap() {
+
+  // 変数の使用宣言
+  let map;
+  let markers = []
+  let infoWindows = []
+  // 定数の使用宣言＆controllerからインスタンス変数を受け取る
+  const stores = JSON.parse('<%== @stores_json || [] %>')
 
   // 地図表示
   map = new google.maps.Map(document.getElementById('map'), {
