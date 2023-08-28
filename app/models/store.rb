@@ -72,9 +72,11 @@ class Store < ApplicationRecord
 
     # 予算が価格帯の中に入っているか確認
     if search_store_params[:budget].to_i != nil
-      search_stores = search_stores.where(lowest_price_range: ..search_store_params[:budget].to_i)
-      search_stores = search_stores.where(highest_price_range: search_store_params[:budget].to_i..)
+      search_stores = search_stores.where(lowest_price_range: ..search_store_params[:budget].to_i, highest_price_range: search_store_params[:budget].to_i..)
     end
+
+    # 選択した曜日が定休日でないか確認
+
 
     search_stores
 

@@ -12,8 +12,8 @@
   </div>
 
   <div>
-    <%= f.label :visit_time %>
-    <%= f.time_field :visit_time %>
+    <%= f.label :visit_day_id %>
+    <%= f.collection_select :visit_day_id, Day.all, :id, :name  %>
   </div>
 
   <div class="actions">
@@ -22,9 +22,32 @@
 
 <% end %>
 
-
-
+<h4>現在地周辺のラーメン店</h4>
 <div id = 'map'></div>
+
+<h5>新着店舗</h5>
+
+<div class = "container">
+  <div class = "row">
+    <% @new_stores.each do |new_store| %>
+      <div class = "col-3">
+        <div>店名：<%= new_store.name %></div>
+        <div>ジャンル：<%= new_store.store_genre.name %></div>
+        <div><%= image_tag new_store.get_store_image("200x200!") %></div>
+        <div>都道府県：<%= new_store.prefecture_i18n %></div>
+        <div>価格帯：<%= new_store.lowest_price_range %>円 ～ <%= new_store.highest_price_range %>円</div>
+        <div>定休日：
+          <% new_store.days.order("id").each do |day| %>
+            <%= day.name %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+<!-- ↓ 地図表示用のコード ↓ -->
 
 <style>
 #map {
