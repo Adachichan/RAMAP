@@ -66,17 +66,21 @@ class Store < ApplicationRecord
     search_stores = self.where(is_closed: false)
 
     # 都道府県の完全一致
-    unless search_store_params[:prefecture].to_i == 'none_prefecture'
+    unless search_store_params[:prefecture] == 'none_prefecture'
       search_stores = search_stores.where(prefecture: search_store_params[:prefecture])
     end
 
     # 予算が価格帯の中に入っているか確認
-    if search_store_params[:budget].to_i != nil
+    if search_store_params[:budget].present?
       search_stores = search_stores.where(lowest_price_range: ..search_store_params[:budget].to_i, highest_price_range: search_store_params[:budget].to_i..)
     end
 
-    # 選択した曜日が定休日でないか確認
-
+    # 選択した曜日が定休日である店舗を削除
+    if search_store_params[:visit_day_id].present?
+      holiday_store_ids = RegularHoliday.where(day_id: search_store_params[:visit_day_id].to_i).pluck(:store_id)
+      search_store_ids = search_stores.pluck(:id)
+      search_stores = Store.where(id: (search_store_ids - holiday_store_ids))
+    end
 
     search_stores
 

@@ -31,9 +31,9 @@ Rails.application.routes.draw do
     patch 'mystores/:id/close', to: 'mystores#close', as: 'close'
     delete 'mystores/:mystore_id/mymenus/destroy_all', to: 'mymenus#destroy_all', as: 'destroy_all_mymenus'
 
-    resources :stores, only: %i(show)
-
-    resources :menus, only: %i(index)
+    resources :stores, only: %i(show) do
+      resources :menus, only: %i(index)
+    end
 
     resources :mystores, only: %i(index new create show edit update) do
       resources :mymenus, only: %i(index create edit update destroy)

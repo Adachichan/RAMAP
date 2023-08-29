@@ -1,2 +1,101 @@
-<h1>Public::Stores#show</h1>
-<p>Find me in app/views/public/stores/show.html.erb</p>
+<h4><%= @store.name %></h4>
+
+<div><%= @store.store_genre.name %> / <%= @store.closest_station %></div>
+
+<div><%= @store.lowest_price_range %>円 ～ <%= @store.highest_price_range %>円</div>
+
+<div>
+  <% @store.days.order("id").each do |day| %>
+    <%= day.name %>
+  <% end %>
+</div>
+
+<div><%= image_tag @store.get_store_image("350x350!") %></div>
+
+
+<h4>店舗詳細</h4>
+
+<div>
+  <p>店名</p>
+  <p><%= @store.name %></p>
+</div>
+
+<div>
+  <p>ジャンル</p>
+  <p><%= @store.store_genre.name %></p>
+</div>
+
+<div>
+  <p>電話番号</p>
+  <p><%= @store.telephone_number %></p>
+</div>
+
+<div>
+  <p>郵便番号</p>
+  <p><%= @store.postal_code %></p>
+</div>
+
+<div>
+  <p>住所</p>
+  <p><%= @store.prefecture_i18n %><%= @store.address %><%= @store.building_and_apartment %></p>
+</div>
+
+<div>
+  <p>最寄り駅</p>
+  <p><%= @store.closest_station %></p>
+</div>
+
+<div>
+  <p>営業時間</p>
+  <%# cocoom箇所 %>
+  <%# 営業時間の存在確認 %>
+  <% if @store.opening_hours.count == 0 %>
+    <%# 営業時間なしの場合の表示 %>
+    <p>
+      営業時間情報なし
+    </p>
+  <% else %>
+    <%# 営業時間がある場合の表示 %>
+    <ul>
+      <% @store.opening_hours.each do |opening_hour| %>
+        <li>
+          <%= opening_hour.opening_time.strftime("%-H:%M") %> ～ <%= opening_hour.closing_time.strftime("%-H:%M") %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>
+
+<div>
+  <p>定休日</p>
+  <p>
+    <% @store.days.order("id").each do |day| %>
+      <%= day.name %>
+    <% end %>
+  </p>
+</div>
+
+<div>
+  <p>備考</p>
+  <p><%= @store.note %></p>
+</div>
+
+
+<h5>主なメニュー</h5>
+
+<div class = "container">
+  <div class = "row">
+    <% @menus.each do |menu| %>
+      <div class = "col-4">
+        <div><%= image_tag menu.get_menu_image("150x150!") %></div>
+        <div><%= menu.name %></div>
+        <div><%= menu.price %></div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div>
+  <%= link_to '全てのメニューを見る　＞', store_menus_path(@store.id) %>
+</div>
+
