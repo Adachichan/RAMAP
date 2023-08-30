@@ -92,6 +92,41 @@ class Store < ApplicationRecord
       search_stores = search_stores.where(lowest_price_range: ..search_store_params[:budget].to_i, highest_price_range: search_store_params[:budget].to_i..)
     end
 
+    # 時間検索
+    if search_store_params[:visit_time].present?
+
+      # 時間変換（0:00を基準とした分）
+      visit_time_min = Time.parse(search_store_params[:visit_time]).strftime("%H").to_i * 60 + Time.parse(search_store_params[:visit_time]).strftime("%M").to_i
+
+      # 空配列の作成（開店店舗のid保存用）
+      opening_store_ids = []
+
+      # 店舗ごとの時間比較（0:00を基準とした分）
+      search_stores.each do |search_store|
+
+        search_store.opening_hours.each do |opening_hour|
+          opening_time_min = opening_hour.opening_time.strftime("%H").to_i * 60 + opening_hour.opening_time.strftime("%M").to_i
+          closing_time_min = opening_hour.closing_time.strftime("%H").to_i * 60 + opening_hour.closing_time.strftime("%M").to_i
+
+          # 開店時間の時刻が閉店時間の時刻より早い場合（日を跨いでいない場合）
+          if opening_time_min <= closing_time_min
+            if (opening_time_min <= visit_time_min) && (visit_time_min <= closing_time_min)
+              opening_store_ids.push(search_store.id)
+            end
+          # 閉店時間の時刻が開店時間の時刻より早い場合（日を跨いでいる場合）
+          else
+            if ((opening_time_min <= visit_time_min) && (visit_time_min <= 1439)) ||((0 <= visit_time_min) && (visit_time_min <= closing_time_min))
+              opening_store_ids.push(search_store.id)
+            end
+          end
+
+        end
+      end
+      # 営業時間を考慮した店舗の絞り込み
+      search_stores = search_stores.where(id: opening_store_ids)
+
+    end
+
     # 選択した曜日が定休日である店舗を削除
     if search_store_params[:visit_day_id].present?
       holiday_store_ids = RegularHoliday.where(day_id: search_store_params[:visit_day_id].to_i).pluck(:store_id)
