@@ -65,8 +65,25 @@ class Store < ApplicationRecord
     # 閉店した店舗は取り出し対象外
     search_stores = self.where(is_closed: false)
 
+    # 店舗名の検索（検索方法の分岐）
+    if search_store_params[:store_name].present?
+      # 完全一致
+      if search_store_params[:search_method] == "perfect_match"
+        search_stores = search_stores.where("name LIKE ?", "#{search_store_params[:store_name]}")
+      # 前方一致
+      elsif search_store_params[:search_method] == "forward_match"
+        search_stores = search_stores.where("name LIKE ?", "#{search_store_params[:store_name]}%")
+      # 後方一致
+      elsif search_store_params[:search_method] == "backward_match"
+        search_stores = search_stores.where("name LIKE ?", "%#{search_store_params[:store_name]}")
+      # 部分一致
+      else
+        search_stores = search_stores.where("name LIKE ?", "%#{search_store_params[:store_name]}%")
+      end
+    end
+
     # 都道府県の完全一致
-    unless search_store_params[:prefecture] == 'none_prefecture'
+    unless search_store_params[:prefecture] == "none_prefecture"
       search_stores = search_stores.where(prefecture: search_store_params[:prefecture])
     end
 

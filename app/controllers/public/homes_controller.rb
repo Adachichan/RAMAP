@@ -16,7 +16,7 @@ class Public::HomesController < ApplicationController
   private
 
   def search_store_params
-    params.require(:search).permit(:prefecture, :budget, :visit_day_id)
+    params.require(:search).permit(:store_name, :search_method, :prefecture, :budget, :visit_day_id)
   end
 
 end
