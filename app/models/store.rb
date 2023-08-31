@@ -115,7 +115,7 @@ class Store < ApplicationRecord
             end
           # 閉店時間の時刻が開店時間の時刻より早い場合（日を跨いでいる場合）
           else
-            if ((opening_time_min <= visit_time_min) && (visit_time_min <= 1439)) ||((0 <= visit_time_min) && (visit_time_min <= closing_time_min))
+            if ((opening_time_min <= visit_time_min) && (visit_time_min <= 1439)) || ((0 <= visit_time_min) && (visit_time_min <= closing_time_min))
               opening_store_ids.push(search_store.id)
             end
           end
