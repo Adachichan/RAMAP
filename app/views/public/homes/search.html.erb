@@ -1,3 +1,38 @@
+
+<%= form_with(scope: :search, url: search_path, method: :get, local: true) do |f| %>
+
+  <div>
+    <%= f.label :visit_time %>
+    <%= f.time_field :visit_time %>
+  </div>
+
+  <div>
+    <%= f.label :store_name %>
+    <%= f.text_field :store_name %>
+    <%= f.select :search_method, options_for_select([["完全一致","perfect_match"], ["前方一致","forward_match"],  ["後方一致","backward_match"], ["部分一致","partial_match"]]) %>
+  </div>
+
+  <div>
+    <%= f.label :prefecture %>
+    <%= f.select :prefecture, Store.prefectures.keys.map {|k| [I18n.t("enums.store.prefecture.#{k}"), k]}, options = { include_blank: false } %>
+  </div>
+
+  <div>
+    <%= f.label :budget %>
+    <%= f.number_field :budget %>
+  </div>
+
+  <div>
+    <%= f.label :visit_day_id %>
+    <%= f.collection_select :visit_day_id, Day.all, :id, :name  %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "再検索" %>
+  </div>
+
+<% end %>
+
 <h4>検索結果</h4>
 
 <div id = 'map'></div>
@@ -9,6 +44,27 @@
     <h4><%= search_store.name %></h4>
     <div><%= search_store.store_genre.name %> / <%= search_store.closest_station %></div>
     <div><%= search_store.lowest_price_range %>円 ～ <%= search_store.highest_price_range %>円</div>
+    <div>
+      <p>営業時間</p>
+      <%# cocoom箇所 %>
+      <%# 営業時間の存在確認 %>
+      <% if search_store.opening_hours.count == 0 %>
+        <%# 営業時間なしの場合の表示 %>
+        <p>
+          営業時間情報なし
+        </p>
+      <% else %>
+        <%# 営業時間がある場合の表示 %>
+        <ul>
+          <% search_store.opening_hours.each do |opening_hour| %>
+            <li>
+              <%= opening_hour.opening_time.strftime("%-H:%M") %> ～ <%= opening_hour.closing_time.strftime("%-H:%M") %>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
+
     <div>
       <% search_store.days.order("id").each do |day| %>
         <%= day.name %>
