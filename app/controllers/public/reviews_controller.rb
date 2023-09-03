@@ -30,6 +30,8 @@ class Public::ReviewsController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
+    @comments = @review.comments
   end
 
   def history

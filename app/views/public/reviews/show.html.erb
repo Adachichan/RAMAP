@@ -40,3 +40,31 @@
 <div>
   <%= link_to '口コミ一覧に戻る', store_reviews_path(@review.store_id) %>
 </div>
+
+
+<!-- ログインしていない場合はコメント投稿不可 -->
+<% if user_signed_in? %>
+
+  <div>
+    <%= form_with model: [@review, @comment], url: review_comments_path(@review.id) do |f| %>
+
+      <%= f.label :content %>
+      <%= f.text_area :content %>
+
+      <%= f.submit "送信する" %>
+    <% end %>
+  </div>
+
+<% end %>
+
+
+<div>
+
+  <% @comments.each do |comment| %>
+
+    <div><%= comment.poster %></div>
+    <div><%= comment.content %></div>
+
+  <% end %>
+
+</div>

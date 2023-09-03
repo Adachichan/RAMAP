@@ -1,12 +1,19 @@
 <h4><%= @store.name %>の口コミ一覧（全<%= @reviews.count %>件）</h4>
 
+
+<!-- ログインしていない場合は口コミ投稿不可 -->
+<% if user_signed_in? %>
+  <div><%= link_to '口コミ投稿', new_store_review_path(@store.id) %></div>
+<% end %>
+
+
 <% @reviews.each do |review| %>
   <div>
     <div><%= "ニックネーム" %></div>
     <div><%= review.nickname %></div>
     <div><%= review.visit_date.strftime("%Y/%-m/%-d") %></div>
     <div><%= review.nickname %></div>
-    <div><%= review.title %></div>
+    <div><%= link_to review.title, store_review_path(@store.id, review.id) %></div>
     <div><%= review.content %></div>
     <div><%= image_tag review.get_review_image("200x200!") %></div>
   </div>
