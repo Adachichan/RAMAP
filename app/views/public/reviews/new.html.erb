@@ -1,2 +1,39 @@
-<h1>Public::Reviews#new</h1>
-<p>Find me in app/views/public/reviews/new.html.erb</p>
+<h4>口コミ投稿</h4>
+
+<div>
+  <p>投稿店舗</p>
+  <p><%= @store.name %></p>
+</div>
+
+<%= form_with model: [@store, @review], url: store_reviews_path(@store.id) do |review| %>
+
+  <div class="field">
+    <%= review.label :visit_date %><br />
+    <%= review.date_field :visit_date %>
+  </div>
+
+  <div class="field">
+    <%= review.label :title %><br />
+    <%= review.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= review.label :content %><br />
+    <%= review.text_area :content %>
+  </div>
+
+  <div class="field">
+    <%= review.label :score %><br />
+    <%= review.number_field :score %>
+  </div>
+
+  <div class="field">
+    <%= review.label :review_image %><br />
+    <%= review.file_field :review_image, accept: "image/*" %>
+  </div>
+
+  <div class="actions">
+    <%= review.submit "投稿する" %>
+  </div>
+
+<% end %>
