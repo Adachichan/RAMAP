@@ -101,6 +101,8 @@ ActiveRecord::Schema.define(version: 2023_09_02_131129) do
   create_table "reviews", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "store_id", null: false
+    t.string "name", null: false
+    t.string "nickname", null: false
     t.date "visit_date", null: false
     t.string "title", default: "", null: false
     t.text "content", default: "", null: false

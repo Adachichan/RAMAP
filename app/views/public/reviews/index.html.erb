@@ -1,2 +1,17 @@
-<h1>Public::Reviews#index</h1>
-<p>Find me in app/views/public/reviews/index.html.erb</p>
+<h4><%= @store.name %>の口コミ一覧（全<%= @reviews.count %>件）</h4>
+
+<% @reviews.each do |review| %>
+  <div>
+    <div><%= "ニックネーム" %></div>
+    <div><%= review.nickname %></div>
+    <div><%= review.visit_date.strftime("%Y/%-m/%-d") %></div>
+    <div><%= review.nickname %></div>
+    <div><%= review.title %></div>
+    <div><%= review.content %></div>
+    <div><%= image_tag review.get_review_image("200x200!") %></div>
+  </div>
+<% end %>
+
+<div>
+  <%= link_to '店舗詳細に戻る', store_path(@store.id) %>
+</div>
