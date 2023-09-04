@@ -45,9 +45,9 @@ class Public::MymenusController < ApplicationController
   end
 
   def destroy_all
-    @mystore = Store.find(params[:mystore_id])
-    @mystore.menus.destroy_all
-    redirect_to mystore_mymenus_path(@mystore.id)
+    mystore = Store.find(params[:mystore_id])
+    mystore.menus.destroy_all
+    redirect_to mystore_mymenus_path(mystore.id)
   end
 
   private

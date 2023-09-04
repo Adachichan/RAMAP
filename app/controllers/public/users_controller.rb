@@ -1,7 +1,7 @@
 class Public::UsersController < ApplicationController
 
   before_action :authenticate_user!
-  before_action :set_current_user
+  before_action :set_current_user, only: [:show, :edit, :update, :withdraw]
 
   def show
   end

@@ -97,6 +97,11 @@
     <%= store.email_field :representative_email %>
   </div>
 
+  <div>
+    <%= store.radio_button :is_closed, false %><%= store.label :is_closed, "開店" %>
+		<%= store.radio_button :is_closed, true %><%= store.label :is_closed, "閉店" %>
+  </div>
+
   <div class="field">
     <%= store.label :note %><br />
     <%= store.text_area :note %>
