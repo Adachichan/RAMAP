@@ -27,4 +27,9 @@ class Review < ApplicationRecord
     end
   end
 
+  # 会員IDの存在判定
+  def favorited_by?(user)
+    favorites.exists?(user_id: user.id)
+  end
+
 end

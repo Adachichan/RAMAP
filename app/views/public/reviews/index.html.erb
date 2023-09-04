@@ -16,6 +16,26 @@
     <div><%= link_to review.title, store_review_path(@store.id, review.id) %></div>
     <div><%= review.content %></div>
     <div><%= image_tag review.get_review_image("200x200!") %></div>
+
+    <!-- ログインしていない場合はコメント投稿不可 -->
+    <% if user_signed_in? %>
+      <% if review.favorited_by?(current_user) %>
+        <p>
+          <%= link_to review_favorites_path(review.id), method: :delete do %>
+            ♡<%= review.favorites.count %> いいね
+          <% end %>
+        </p>
+      <% else %>
+        <p>
+          <%= link_to review_favorites_path(review.id), method: :post do %>
+            ♡<%= review.favorites.count %> いいね
+          <% end %>
+        </p>
+      <% end %>
+
+    <% else %>
+      ♡<%= review.favorites.count %> いいね
+    <% end %>
   </div>
 <% end %>
 
