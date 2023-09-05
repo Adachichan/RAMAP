@@ -1,2 +1,31 @@
-<h1>Public::Reviews#history</h1>
-<p>Find me in app/views/public/reviews/history.html.erb</p>
+<h4>口コミ投稿履歴</h4>
+
+<table class = "table">
+  <thead>
+    <tr>
+      <th>No</th>
+      <th>投稿日時</th>
+      <th>投稿店舗</th>
+      <th>タイトル</th>
+      <th>点数</th>
+      <th>投稿詳細</th>
+    </tr>
+  </thead>
+
+  <% @reviews.each do |review| %>
+    <tbody>
+      <tr>
+        <td><%= @number %></td>
+        <td><%= review.created_at.strftime("%Y/%-m/%-d %-H:%M:%S") %></td>
+        <td><%= review.store.name %></td>
+        <td><%= review.title %></td>
+        <td><%= review.score %>点</td>
+        <td>
+          <%= link_to '表示する', store_review_path(review.store_id, review.id) %>
+        </td>
+      </tr>
+    </tbody>
+    <% @number += 1 %>
+  <% end %>
+
+</table>

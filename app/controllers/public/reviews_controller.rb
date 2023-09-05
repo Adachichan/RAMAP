@@ -35,6 +35,8 @@ class Public::ReviewsController < ApplicationController
   end
 
   def history
+    @reviews = current_user.reviews
+    @number = 1
   end
 
   private
