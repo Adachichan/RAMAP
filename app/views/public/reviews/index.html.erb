@@ -19,22 +19,11 @@
 
     <!-- ログインしていない場合はコメント投稿不可 -->
     <% if user_signed_in? %>
-      <% if review.favorited_by?(current_user) %>
-        <p>
-          <%= link_to review_favorites_path(review.id), method: :delete do %>
-            ♡<%= review.favorites.count %> いいね
-          <% end %>
-        </p>
-      <% else %>
-        <p>
-          <%= link_to review_favorites_path(review.id), method: :post do %>
-            ♡<%= review.favorites.count %> いいね
-          <% end %>
-        </p>
-      <% end %>
-
+      <div id = "favorite_buttons_<%= review.id %>">
+        <%= render "favorite", review: review %>
+      </div>
     <% else %>
-      ♡<%= review.favorites.count %> いいね
+      <span>♡<%= review.favorites.count %> いいね<span>
     <% end %>
   </div>
 <% end %>

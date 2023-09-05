@@ -68,3 +68,5 @@ gem 'cocoon'
 gem 'geocoder'
 
 gem 'dotenv-rails'
+
+gem 'jquery-rails'
