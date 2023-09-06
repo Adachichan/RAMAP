@@ -26,7 +26,7 @@
       <tr>
         <td><%= @number %></td>
         <% unless @index_screen_flag == 1 %>
-          <td><%= link_to review.user.name, admin_reviews_path(user_id: review.user.id) %></td>
+          <td><%= link_to review.name, admin_reviews_path(user_id: review.user_id) %></td>
         <% end %>
         <% unless @index_screen_flag == 2 %>
           <td><%= link_to review.store.name, admin_reviews_path(store_id: review.store.id) %></td>

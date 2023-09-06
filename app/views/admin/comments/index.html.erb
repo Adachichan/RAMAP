@@ -1,2 +1,28 @@
-<h1>Admin::Comments#index</h1>
-<p>Find me in app/views/admin/comments/index.html.erb</p>
+
+<h4>[<%= @review.title %>]に対するコメント一覧</h4>
+
+<table class = "table">
+  <thead>
+    <tr>
+      <th>No</th>
+      <th>コメント日時</th>
+      <th>投稿者</th>
+      <th>コメント内容</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <% @comments.each do |comment| %>
+    <tbody>
+      <tr>
+        <td><%= @number %></td>
+        <td><%= comment.created_at.strftime("%Y/%-m/%-d %H:%M:%S") %></td>
+        <td><%= comment.poster %></td>
+        <td><%= comment.content %></td>
+        <td><%= link_to '削除する(不適切投稿)', admin_comment_path(comment.id), method: :delete %></td>
+      </tr>
+    </tbody>
+    <% @number += 1 %>
+  <% end %>
+
+</table>

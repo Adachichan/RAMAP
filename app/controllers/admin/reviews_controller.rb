@@ -1,5 +1,7 @@
 class Admin::ReviewsController < ApplicationController
 
+  before_action :identify_review, only: [:show, :destroy]
+
   def index
     # indexページの表示画面を判別
     if params[:user_id]
@@ -23,6 +25,19 @@ class Admin::ReviewsController < ApplicationController
   end
 
   def show
+  end
+
+  def destroy
+    if @review
+      @review.destroy
+    end
+    redirect_to admin_reviews_path
+  end
+
+  private
+
+  def identify_review
+    @review = Review.find(params[:id])
   end
 
 end

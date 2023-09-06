@@ -1,2 +1,33 @@
-<h1>Admin::Reviews#show</h1>
-<p>Find me in app/views/admin/reviews/show.html.erb</p>
+
+<h4>口コミ詳細</h4>
+
+<div>
+  <p>投稿日時</p>
+  <p><%= @review.created_at.strftime("%Y/%-m/%-d %H:%M:%S") %></p>
+</div>
+
+<div>
+  <p>投稿者</p>
+  <p><%= @review.name %></p>
+</div>
+
+<div>
+  <p>投稿店舗</p>
+  <p><%= @review.store.name %></p>
+</div>
+
+<div>
+  <p>タイトル</p>
+  <p><%= @review.title %></p>
+</div>
+
+<div>
+  <p>内容</p>
+  <p><%= @review.content %></p>
+</div>
+
+<div><%= image_tag @review.get_review_image("350x350!") %></div>
+
+<div><%= link_to '口コミ一覧に戻る', admin_reviews_path %></div>
+<div><%= link_to '削除する(不適切投稿)', admin_review_path(@review.id), method: :delete %></div>
+<div><%= link_to 'コメント一覧', admin_review_comments_path(@review.id) %></div>
