@@ -3,7 +3,7 @@ class Admin::HomesController < ApplicationController
   before_action :authenticate_admin!
 
   def top
-    # topページにおいて、データの送信先を判断
+    # topページの表示画面を判別
     if params[:user_id]
       @user = User.find(params[:user_id])
       all_store = @user.stores
