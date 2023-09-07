@@ -38,9 +38,7 @@ class Public::MymenusController < ApplicationController
   end
 
   def destroy
-    if @mymenu
-      @mymenu.destroy
-    end
+    @mymenu.destroy
     redirect_to mystore_mymenus_path(@mymenu.store_id)
   end
 

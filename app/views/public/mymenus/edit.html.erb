@@ -1,5 +1,10 @@
 <h4>メニュー編集</h4>
 
+<!-- error count -->
+<% if @mymenu.errors.any? %>
+  <%= @mymenu.errors.count %>件のエラーが発生しました
+<% end %>
+
 <%= form_with model: @mymenu, url: "/mystores/#{@mymenu.store_id}/mymenus/#{@mymenu.id}" do |mymenu| %>
 
   <div class="field">
@@ -10,11 +15,15 @@
   <div class="field">
     <%= mymenu.label :name %><br />
     <%= mymenu.text_field :name %>
+    <!-- name_error -->
+    <%= render 'layouts/error_messages', model: @mymenu, column: :name %>
   </div>
 
   <div class="field">
     <%= mymenu.label :price %><br />
     <%= mymenu.text_field :price %>
+    <!-- price_error -->
+    <%= render 'layouts/error_messages', model: @mymenu, column: :price %>
   </div>
 
   <div class="actions">
