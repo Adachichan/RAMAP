@@ -13,17 +13,17 @@ class Store < ApplicationRecord
 
   validates :name, presence: true
   validates :name_kana, presence: true
-  validates :postal_code, presence: true
+  validates :postal_code, presence: true, format: { with: /\A\d{7}\z/ } # 7桁の半角数字
   validates :prefecture, presence: true
   validates :address, presence: true
-  validates :telephone_number, presence: true
-  validates :lowest_price_range, presence: true
-  validates :highest_price_range, presence: true
+  validates :telephone_number, presence: true, format: { with: /\A\d{10,11}\z/ } # 半角数字ハイフンなしで10桁or11桁
+  validates :lowest_price_range, presence: true, numericality: {only_integer: true, greater_than_or_equal_to: 0} # 整数かつ ”0” 以上
+  validates :highest_price_range, presence: true, numericality: {only_integer: true, greater_than_or_equal_to: 0} # 整数かつ ”0” 以上
   validates :representative, presence: true
   validates :representative_kana, presence: true
   validates :representative_email, presence: true
   validates :staff, presence: true
-  validates :staff_telephone_number, presence: true
+  validates :staff_telephone_number, presence: true, format: { with: /\A\d{10,11}\z/ } # 半角数字ハイフンなしで10桁or11桁
   validates :staff_email, presence: true
 
   # full_addressが更新されたときにgeocoding

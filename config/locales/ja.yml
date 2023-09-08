@@ -56,10 +56,27 @@ ja:
         okinawa: "沖縄県"
   activerecord:
     attributes:
+      store:
+        name: 店舗名
+        name_kana: 店舗名（カナ）
+        postal_code: 郵便番号
+        prefecture: 都道府県
+        address: 住所
+        telephone_number: 電話番号
+        lowest_price_range: 最低価格
+        highest_price_range: 最高価格
+        representative: 代表者名
+        representative_kana: 代表者名（カナ）
+        representative_email: 代表者メールアドレス
+        staff: 担当者名
+        staff_telephone_number: 担当者電話番号
+        staff_email: 担当者メールアドレス
       menu:
         name: メニュー名
         price: 値段
     errors:
       models:
+        store:
+          blank: は入力必須です。
         menu:
           blank: は入力必須です。

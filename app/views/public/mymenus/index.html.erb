@@ -16,14 +16,14 @@
     <%= mymenu.label :name %><br />
     <%= mymenu.text_field :name %>
     <!-- name_error -->
-    <%= render 'layouts/error_messages', model: @mymenu, column: :name %>
+    <%= render 'layouts/error_message', model: @mymenu, column: :name %>
   </div>
 
   <div class="field">
     <%= mymenu.label :price %><br />
     <%= mymenu.text_field :price %>
     <!-- price_error -->
-    <%= render 'layouts/error_messages', model: @mymenu, column: :price %>
+    <%= render 'layouts/error_message', model: @mymenu, column: :price %>
   </div>
 
   <div class="actions">

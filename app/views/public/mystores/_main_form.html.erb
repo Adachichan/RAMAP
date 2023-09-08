@@ -1,51 +1,61 @@
-<%= form_with model: mystore, url: url do |mystore| %>
+<%= form_with model: mystore, url: url do |f_mystore| %>
 
   <div class="field">
-    <%= mystore.label :name %><br />
-    <%= mystore.text_field :name %>
+    <%= f_mystore.label :name %><br />
+    <%= f_mystore.text_field :name %>
+    <!-- name_error -->
+    <%= render 'layouts/error_message', model: mystore, column: :name %>
   </div>
 
   <div class="field">
-    <%= mystore.label :name_kana %><br />
-    <%= mystore.text_field :name_kana %>
+    <%= f_mystore.label :name_kana %><br />
+    <%= f_mystore.text_field :name_kana %>
+    <!-- name_kana_error -->
+    <%= render 'layouts/error_message', model: mystore, column: :name_kana %>
   </div>
 
   <div class="field">
-    <%= mystore.label :postal_code %><br />
-    <%= mystore.text_field :postal_code %>
+    <%= f_mystore.label :postal_code %><br />
+    <%= f_mystore.text_field :postal_code %>
+    <!-- postal_code_error -->
+    <%= render 'layouts/error_message', model: mystore, column: :postal_code %>
   </div>
 
   <div>
-    <%= mystore.label :prefecture %><br />
-    <%= mystore.select :prefecture, Store.prefectures.keys.map {|k| [I18n.t("enums.store.prefecture.#{k}"), k]}, options = { include_blank: false } %>
+    <%= f_mystore.label :prefecture %><br />
+    <%= f_mystore.select :prefecture, Store.prefectures.keys.map {|k| [I18n.t("enums.store.prefecture.#{k}"), k]}, options = { include_blank: false } %>
   </div>
 
   <div class="field">
-    <%= mystore.label :address %><br />
-    <%= mystore.text_field :address %>
+    <%= f_mystore.label :address %><br />
+    <%= f_mystore.text_field :address %>
+    <!-- address_error -->
+    <%= render 'layouts/error_message', model: mystore, column: :address %>
   </div>
 
   <div class="field">
-    <%= mystore.label :building_and_apartment %><br />
-    <%= mystore.text_field :building_and_apartment %>
+    <%= f_mystore.label :building_and_apartment %><br />
+    <%= f_mystore.text_field :building_and_apartment %>
   </div>
 
   <div class="field">
-    <%= mystore.label :telephone_number %><br />
-    <%= mystore.text_field :telephone_number %>
+    <%= f_mystore.label :telephone_number %><br />
+    <%= f_mystore.text_field :telephone_number %>
+    <!-- telephone_number_error -->
+    <%= render 'layouts/error_message', model: mystore, column: :telephone_number %>
   </div>
 
   <div class="field">
-    <%= mystore.label :fax_number %><br />
-    <%= mystore.text_field :fax_number %>
+    <%= f_mystore.label :fax_number %><br />
+    <%= f_mystore.text_field :fax_number %>
   </div>
 
   <%# cocoonを用いたformのテンプレート %>
-  <%= render 'cocoon_form', mystore: mystore %>
+  <%= render 'cocoon_form', mystore: f_mystore %>
 
   <div>
-    <%= mystore.label :day_ids %><br />
-    <%= mystore.collection_check_boxes(:day_ids, Day.all, :id, :name) do |tag| %>
+    <%= f_mystore.label :day_ids %><br />
+    <%= f_mystore.collection_check_boxes(:day_ids, Day.all, :id, :name) do |tag| %>
       <div class="form-check">
         <%= tag.label class: 'form-check-label' do %>
           <%= tag.check_box class: 'form-check-input' %>
@@ -56,67 +66,83 @@
   </div>
 
   <div class="field">
-    <%= mystore.label :store_image %><br />
-    <%= mystore.file_field :store_image, accept: "image/*" %>
+    <%= f_mystore.label :store_image %><br />
+    <%= f_mystore.file_field :store_image, accept: "image/*" %>
   </div>
 
   <div class="field">
-    <%= mystore.label :store_genre_id %><br />
-    <%= mystore.collection_select :store_genre_id, StoreGenre.all, :id, :name, prompt: "--選択してください--"  %>
+    <%= f_mystore.label :store_genre_id %><br />
+    <%= f_mystore.collection_select :store_genre_id, StoreGenre.all, :id, :name, prompt: "--選択してください--"  %>
   </div>
 
   <div class="field">
-    <%= mystore.label :lowest_price_range %><br />
-    <%= mystore.number_field :lowest_price_range %>
+    <%= f_mystore.label :lowest_price_range %><br />
+    <%= f_mystore.number_field :lowest_price_range %>
+    <!-- lowest_price_range_error -->
+    <%= render 'layouts/error_message', model: mystore, column: :lowest_price_range %>
   </div>
 
   <div class="field">
-    <%= mystore.label :highest_price_range %><br />
-    <%= mystore.number_field :highest_price_range %>
+    <%= f_mystore.label :highest_price_range %><br />
+    <%= f_mystore.number_field :highest_price_range %>
+    <!-- highest_price_range_error -->
+    <%= render 'layouts/error_message', model: mystore, column: :highest_price_range %>
   </div>
 
   <div class="field">
-    <%= mystore.label :closest_station %><br />
-    <%= mystore.text_field :closest_station %>
+    <%= f_mystore.label :closest_station %><br />
+    <%= f_mystore.text_field :closest_station %>
   </div>
 
   <div class="field">
-    <%= mystore.label :representative %><br />
-    <%= mystore.text_field :representative %>
+    <%= f_mystore.label :representative %><br />
+    <%= f_mystore.text_field :representative %>
+    <!-- representative_error -->
+    <%= render 'layouts/error_message', model: mystore, column: :representative %>
   </div>
 
   <div class="field">
-    <%= mystore.label :representative_kana %><br />
-    <%= mystore.text_field :representative_kana %>
+    <%= f_mystore.label :representative_kana %><br />
+    <%= f_mystore.text_field :representative_kana %>
+    <!-- representative_kana_error -->
+    <%= render 'layouts/error_message', model: mystore, column: :representative_kana %>
   </div>
 
   <div class="field">
-    <%= mystore.label :representative_email %><br />
-    <%= mystore.email_field :representative_email %>
+    <%= f_mystore.label :representative_email %><br />
+    <%= f_mystore.email_field :representative_email %>
+    <!-- representative_email_error -->
+    <%= render 'layouts/error_message', model: mystore, column: :representative_email %>
   </div>
 
   <div class="field">
-    <%= mystore.label :note %><br />
-    <%= mystore.text_area :note %>
+    <%= f_mystore.label :note %><br />
+    <%= f_mystore.text_area :note %>
   </div>
 
   <div class="field">
-    <%= mystore.label :staff %><br />
-    <%= mystore.text_field :staff %>
+    <%= f_mystore.label :staff %><br />
+    <%= f_mystore.text_field :staff %>
+    <!-- staff_error -->
+    <%= render 'layouts/error_message', model: mystore, column: :staff %>
   </div>
 
   <div class="field">
-    <%= mystore.label :staff_telephone_number %><br />
-    <%= mystore.text_field :staff_telephone_number %>
+    <%= f_mystore.label :staff_telephone_number %><br />
+    <%= f_mystore.text_field :staff_telephone_number %>
+    <!-- staff_telephone_number_error -->
+    <%= render 'layouts/error_message', model: mystore, column: :staff_telephone_number %>
   </div>
 
   <div class="field">
-    <%= mystore.label :staff_email %><br />
-    <%= mystore.email_field :staff_email %>
+    <%= f_mystore.label :staff_email %><br />
+    <%= f_mystore.email_field :staff_email %>
+    <!-- staff_email_error -->
+    <%= render 'layouts/error_message', model: mystore, column: :staff_email %>
   </div>
 
   <div class="actions">
-    <%= mystore.submit submit %>
+    <%= f_mystore.submit submit %>
   </div>
 
 <% end %>
