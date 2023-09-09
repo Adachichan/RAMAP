@@ -10,21 +10,29 @@
   <div class="field">
     <%= review.label :visit_date %><br />
     <%= review.date_field :visit_date %>
+    <!-- visit_date_error -->
+    <%= render 'layouts/error_message', model: @review, column: :visit_date %>
   </div>
 
   <div class="field">
     <%= review.label :title %><br />
     <%= review.text_field :title %>
+    <!-- title_error -->
+    <%= render 'layouts/error_message', model: @review, column: :title %>
   </div>
 
   <div class="field">
     <%= review.label :content %><br />
     <%= review.text_area :content %>
+    <!-- content_error -->
+    <%= render 'layouts/error_message', model: @review, column: :content %>
   </div>
 
   <div class="field">
     <%= review.label :score %><br />
     <%= review.number_field :score %>
+    <!-- score_error -->
+    <%= render 'layouts/error_message', model: @review, column: :score %>
   </div>
 
   <div class="field">

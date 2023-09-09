@@ -9,7 +9,7 @@ class Review < ApplicationRecord
   validates :visit_date, presence: true
   validates :title, presence: true
   validates :content, presence: true
-  validates :score, presence: true
+  validates :score, presence: true, numericality: {greater_than_or_equal_to: 0, less_than_or_equal_to: 100} # 0～100の範囲
 
   # 口コミ画像に関する実装
   # 画像の中身が空であるか判別

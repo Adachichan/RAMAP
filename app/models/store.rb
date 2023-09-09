@@ -21,10 +21,10 @@ class Store < ApplicationRecord
   validates :highest_price_range, presence: true, numericality: {only_integer: true, greater_than_or_equal_to: 0} # 整数かつ ”0” 以上
   validates :representative, presence: true
   validates :representative_kana, presence: true
-  validates :representative_email, presence: true
+  validates :representative_email, presence: true, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
   validates :staff, presence: true
   validates :staff_telephone_number, presence: true, format: { with: /\A\d{10,11}\z/ } # 半角数字ハイフンなしで10桁or11桁
-  validates :staff_email, presence: true
+  validates :staff_email, presence: true, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
 
   # full_addressが更新されたときにgeocoding
   geocoded_by :full_address

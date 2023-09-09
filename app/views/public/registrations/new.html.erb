@@ -1,47 +1,63 @@
 <h2>Sign up</h2>
 
 <%= form_with model: @user, url: user_registration_path do |f| %>
-  <%= render "public/shared/error_messages", resource: resource %>
+  <%#= render "public/shared/error_messages", resource: resource %>
 
   <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name %>
+    <!-- name_error -->
+    <%= render "public/shared/error_messages", resource: resource, column: :name %>
   </div>
 
   <div class="field">
     <%= f.label :name_kana %><br />
     <%= f.text_field :name_kana %>
+    <!-- name_kana_error -->
+    <%= render "public/shared/error_messages", resource: resource, column: :name_kana %>
   </div>
 
   <div class="field">
     <%= f.label :nickname %><br />
     <%= f.text_field :nickname %>
+    <!-- nickname_error -->
+    <%= render "public/shared/error_messages", resource: resource, column: :nickname %>
   </div>
 
   <div class="field">
     <%= f.label :postal_code %><br />
     <%= f.text_field :postal_code %>
+    <!-- postal_code_error -->
+    <%= render "public/shared/error_messages", resource: resource, column: :postal_code %>
   </div>
 
   <div class="field">
     <%= f.label :address %><br />
     <%= f.text_field :address %>
+    <!-- address_error -->
+    <%= render "public/shared/error_messages", resource: resource, column: :address %>
   </div>
 
   <div>
     <%= f.collection_radio_buttons :sex, User.sexes_i18n, :first, :last do |b| %>
       <%= b.label(class: "mr-2") { b.radio_button(class: "mr-2") + b.text } %>
     <% end %>
+    <!-- sex_error -->
+    <%= render "public/shared/error_messages", resource: resource, column: :sex %>
   </div>
 
   <div class="field">
     <%= f.label :telephone_number %><br />
     <%= f.text_field :telephone_number %>
+    <!-- telephone_number_error -->
+    <%= render "public/shared/error_messages", resource: resource, column: :telephone_number %>
   </div>
 
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <!-- email_error -->
+    <%= render "public/shared/error_messages", resource: resource, column: :email %>
   </div>
 
   <div class="field">
@@ -50,11 +66,14 @@
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
+    <!-- password_error -->
+    <%= render "public/shared/error_messages", resource: resource, column: :password %>
   </div>
 
   <div class="field">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <%= render "public/shared/error_messages", resource: resource, column: :password_confirmation %>
   </div>
 
   <div class="actions">

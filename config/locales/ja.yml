@@ -74,9 +74,18 @@ ja:
       menu:
         name: メニュー名
         price: 値段
+      review:
+        visit_date: 訪問日
+        title: タイトル
+        content: 内容
+        score: 口コミ評価
     errors:
       models:
+        user:
+          blank: は入力必須です。
         store:
           blank: は入力必須です。
         menu:
+          blank: は入力必須です。
+        review:
           blank: は入力必須です。
