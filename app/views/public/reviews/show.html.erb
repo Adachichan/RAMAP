@@ -49,6 +49,8 @@
 
       <%= f.label :content %>
       <%= f.text_area :content %>
+      <!-- content_error -->
+      <%= render 'layouts/error_message', model: @comment, column: :content %>
 
       <%= f.submit "送信する" %>
     <% end %>

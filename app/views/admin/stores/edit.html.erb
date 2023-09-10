@@ -5,16 +5,22 @@
   <div class="field">
     <%= store.label :name %><br />
     <%= store.text_field :name %>
+    <!-- name_error -->
+    <%= render 'layouts/error_message', model: @store, column: :name %>
   </div>
 
   <div class="field">
     <%= store.label :name_kana %><br />
     <%= store.text_field :name_kana %>
+    <!-- name_kana_error -->
+    <%= render 'layouts/error_message', model: @store, column: :name_kana %>
   </div>
 
   <div class="field">
     <%= store.label :postal_code %><br />
     <%= store.text_field :postal_code %>
+    <!-- postal_code_error -->
+    <%= render 'layouts/error_message', model: @store, column: :postal_code %>
   </div>
 
   <div>
@@ -25,6 +31,8 @@
   <div class="field">
     <%= store.label :address %><br />
     <%= store.text_field :address %>
+    <!-- address_error -->
+    <%= render 'layouts/error_message', model: @store, column: :address %>
   </div>
 
   <div class="field">
@@ -35,6 +43,8 @@
   <div class="field">
     <%= store.label :telephone_number %><br />
     <%= store.text_field :telephone_number %>
+    <!-- telephone_number_error -->
+    <%= render 'layouts/error_message', model: @store, column: :telephone_number %>
   </div>
 
   <div class="field">
@@ -70,11 +80,15 @@
   <div class="field">
     <%= store.label :lowest_price_range %><br />
     <%= store.number_field :lowest_price_range %>
+    <!-- lowest_price_range_error -->
+    <%= render 'layouts/error_message', model: @store, column: :lowest_price_range %>
   </div>
 
   <div class="field">
     <%= store.label :highest_price_range %><br />
     <%= store.number_field :highest_price_range %>
+    <!-- highest_price_range_error -->
+    <%= render 'layouts/error_message', model: @store, column: :highest_price_range %>
   </div>
 
   <div class="field">
@@ -85,16 +99,22 @@
   <div class="field">
     <%= store.label :representative %><br />
     <%= store.text_field :representative %>
+    <!-- representative_error -->
+    <%= render 'layouts/error_message', model: @store, column: :representative %>
   </div>
 
   <div class="field">
     <%= store.label :representative_kana %><br />
     <%= store.text_field :representative_kana %>
+    <!-- representative_kana_error -->
+    <%= render 'layouts/error_message', model: @store, column: :representative_kana %>
   </div>
 
   <div class="field">
     <%= store.label :representative_email %><br />
     <%= store.email_field :representative_email %>
+    <!-- representative_email_error -->
+    <%= render 'layouts/error_message', model: @store, column: :representative_email %>
   </div>
 
   <div>
@@ -110,16 +130,22 @@
   <div class="field">
     <%= store.label :staff %><br />
     <%= store.text_field :staff %>
+    <!-- staff_error -->
+    <%= render 'layouts/error_message', model: @store, column: :staff %>
   </div>
 
   <div class="field">
     <%= store.label :staff_telephone_number %><br />
     <%= store.text_field :staff_telephone_number %>
+    <!-- staff_telephone_number_error -->
+    <%= render 'layouts/error_message', model: @store, column: :staff_telephone_number %>
   </div>
 
   <div class="field">
     <%= store.label :staff_email %><br />
     <%= store.email_field :staff_email %>
+    <!-- staff_email_error -->
+    <%= render 'layouts/error_message', model: @store, column: :staff_email %>
   </div>
 
   <div class="actions">

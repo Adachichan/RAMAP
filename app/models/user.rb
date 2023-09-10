@@ -20,7 +20,7 @@ class User < ApplicationRecord
   validates :postal_code, presence: true, format: { with: /\A\d{7}\z/ } # 7桁の半角数字
   validates :sex, presence: true
   validates :address, presence: true
-  validates :telephone_number, presence: true, presence: true, format: { with: /\A\d{10,11}\z/ } # 半角数字ハイフンなしで10桁or11桁
+  validates :telephone_number, presence: true, format: { with: /\A\d{10,11}\z/ } # 半角数字ハイフンなしで10桁or11桁
 
   enum sex: { man: 0, woman: 1 }
 

@@ -79,6 +79,8 @@ ja:
         title: タイトル
         content: 内容
         score: 口コミ評価
+      store_genre:
+        name: ジャンル名
     errors:
       models:
         user:
@@ -88,4 +90,6 @@ ja:
         menu:
           blank: は入力必須です。
         review:
+          blank: は入力必須です。
+        store_genre:
           blank: は入力必須です。

@@ -41,8 +41,6 @@
     <%= f.collection_radio_buttons :sex, User.sexes_i18n, :first, :last do |b| %>
       <%= b.label(class: "mr-2") { b.radio_button(class: "mr-2") + b.text } %>
     <% end %>
-    <!-- sex_error -->
-    <%= render "public/shared/error_messages", resource: @user, column: :sex %>
   </div>
 
   <div class="field">

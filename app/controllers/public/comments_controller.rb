@@ -8,7 +8,7 @@ class Public::CommentsController < ApplicationController
 
     # コメントの保存可否
     if comment.save
-      redirect_back(fallback_location: store_review_path(review.store_id, review.id))
+      redirect_to store_review_path(review.store_id, review.id)
     else
       redirect_back(fallback_location: store_review_path(review.store_id, review.id))
     end

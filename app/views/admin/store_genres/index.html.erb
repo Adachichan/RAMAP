@@ -5,6 +5,8 @@
   <div class="field">
     <h5>ジャンル名</h5></br>
     <%= f.text_field :name %>
+    <!-- name_error -->
+    <%= render "public/shared/error_messages", resource: @store_genre, column: :name %>
   </div>
 
   <div class="actions">
