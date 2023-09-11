@@ -13,3 +13,57 @@
  *= require_tree .
  *= require_self
  */
+
+
+
+// user_login
+
+.user_login_form {
+  width: 640px;
+  margin: 0 auto;
+
+  h4{
+    margin-left: -50px;
+    @media screen and (max-width:740px) {
+      margin-left: 0px;
+    }
+  }
+
+  .alert{
+    padding: 12px 0 12px;
+  }
+
+  .field{
+    display: flex;
+    align-items: center;
+
+    @media screen and (max-width:576px) {
+      display: block;
+    }
+  }
+
+  .user_login_label{
+    width: 10em;
+    white-space: nowrap;
+  }
+
+  .user_login_input_field{
+    flex-grow: 1;
+  }
+
+  .user_login_button{
+    width: 120px;
+  }
+
+  h4,.user_login_label,.user_login_button{
+    font-weight: 700;
+  }
+
+}
+
+// error_message
+
+.field_with_errors input {
+  border: 2px solid red;
+  display: inline-block;
+}

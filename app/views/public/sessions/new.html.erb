@@ -1,24 +1,36 @@
-<h2>User Log in</h2>
-
 <%# deivseのフラッシュメッセージを表示 %>
 
 <%= form_with model: @user, url: user_session_path do |f| %>
   <%#= render "public/shared/error_messages", resource: resource %>
-  <p class="alert"><%= alert %></p>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <div class = "user_login_form px-4">
+
+    <h4>ログイン</h4>
+
+    <p class = "alert"><%= alert %></p>
+
+    <div class = "field mb-3">
+      <%= f.label :email, "メールアドレス：", class: "user_login_label" %>
+      <div class = "user_login_input_field">
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレスを入力してください", class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="field mb-5">
+      <%= f.label :password, "パスワード：", class: "user_login_label" %>
+      <div class = "user_login_input_field">
+        <%= f.password_field :password, autocomplete: "current-password", placeholder: "パスワードを入力してください", class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="actions mb-4">
+      <%= f.submit "ログイン", class: "btn btn-primary user_login_button" %>
+    </div>
+
+    <div>
+      ※会員登録がお済みでない方は、 <%= render "public/shared/links" %>　より会員登録を行ってください。
+    </div>
+
   </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
 <% end %>
-
-<%= render "public/shared/links" %>

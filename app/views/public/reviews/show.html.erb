@@ -61,7 +61,7 @@
 <!-- ログインしていない場合はコメント投稿不可 -->
 <% if user_signed_in? %>
   <div id = "favorite_buttons_<%= @review.id %>">
-    <%= render 'favorite', review: @review %>
+    <%= render 'public/reviews/favorite', review: @review %>
   </div>
 <% else %>
   ♡<%= @review.favorites.count %> いいね
