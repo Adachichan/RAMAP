@@ -1,71 +1,74 @@
 
-<%= form_with(scope: :search, url: search_path, method: :get, local: true) do |f| %>
+<div class = "user_top_form px-4">
 
-  <div>
-    <%= f.label :visit_time %>
-    <%= f.time_field :visit_time %>
-  </div>
+  <%= form_with(scope: :search, url: search_path, method: :get, local: true) do |f| %>
 
-  <div>
-    <%= f.label :store_name %>
-    <%= f.text_field :store_name %>
-    <%= f.select :search_method, options_for_select([["完全一致","perfect_match"], ["前方一致","forward_match"],  ["後方一致","backward_match"], ["部分一致","partial_match"]]) %>
-  </div>
+    <div class = "user_top_search_form mb-5">
 
-  <div>
-    <%= f.label :prefecture %>
-    <%= f.select :prefecture, Store.prefectures.keys.map {|k| [I18n.t("enums.store.prefecture.#{k}"), k]}, options = { include_blank: false } %>
-  </div>
-
-  <div>
-    <%= f.label :budget %>
-    <%= f.number_field :budget %>
-  </div>
-
-  <div>
-    <%= f.label :visit_day_id %>
-    <%= f.collection_select :visit_day_id, Day.all, :id, :name  %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "検索" %>
-  </div>
-
-<% end %>
-
-<h4>現在地周辺のラーメン店</h4>
-<div id = 'map'></div>
-
-<h5>新着店舗</h5>
-
-<div class = "container">
-  <div class = "row">
-    <% @new_stores.each do |new_store| %>
-      <div class = "col-3">
-        <div>店名：<%= new_store.name %></div>
-        <div>ジャンル：<%= new_store.store_genre.name %></div>
-        <div><%= image_tag new_store.get_store_image("200x200!") %></div>
-        <div>都道府県：<%= new_store.prefecture_i18n %></div>
-        <div>価格帯：<%= new_store.lowest_price_range %>円 ～ <%= new_store.highest_price_range %>円</div>
-        <div>定休日：
-          <% new_store.days.order("id").each do |day| %>
-            <%= day.name %>
-          <% end %>
-        </div>
+      <div class = "user_top_search_field_1">
+        <%= f.select :prefecture, Store.prefectures.keys.map {|k| [I18n.t("enums.store.prefecture.#{k}"), k]}, options = { include_blank: false }, placeholder: "都道府県", class: "form-control" %>
       </div>
-    <% end %>
+
+      <div class = "user_top_search_field_2">
+        <%= f.text_field :store_name, placeholder: "店舗名", class: "form-control" %>
+      </div>
+
+      <div class = "user_top_search_field_1">
+        <%= f.select :search_method, options_for_select([["完全一致","perfect_match"], ["前方一致","forward_match"],  ["後方一致","backward_match"], ["部分一致","partial_match"]]), {prompt: "検索方法"}, {class: "form-control"} %>
+      </div>
+
+      <div class = "user_top_search_field_1">
+        <%= f.time_field :visit_time, placeholder: "訪問時間", class: "form-control" %>
+      </div>
+
+      <div class = "user_top_search_field_1">
+        <%= f.collection_select :visit_day_id, Day.all, :id, :name, {prompt: "訪問曜日"}, {class: "form-control"} %>
+      </div>
+
+      <div class = "user_top_search_field_1">
+        <%= f.number_field :budget, placeholder: "予算", class: "form-control" %>
+      </div>
+
+      <div class = "actions">
+        <%= f.submit "検索", class: "btn btn-outline-secondary user_top_button" %>
+      </div>
+
+    </div>
+
+  <% end %>
+
+  <div class = "user_top_map mb-5">
+    <h5>現在地周辺のラーメン店</h5>
+    <div id = 'map'></div>
+  </div>
+
+  <div class = "user_top_new_store mb-4">
+
+    <h5>新着店舗</h5>
+
+    <div class = "row">
+      <% @new_stores.each do |new_store| %>
+        <div class = "col-6 col-sm-3 show_field">
+          <div class = "show_field_1"><i class = "fa-solid fa-store icon_size"></i><%= new_store.name %></div>
+          <div class = "show_field_2"><%= image_tag new_store.get_store_image("200x200!") %></div>
+          <div class = "show_field_2"><i class = "fa-solid fa-location-dot icon_size"></i><%= new_store.prefecture_i18n %></div>
+          <div class = "show_field_2"><i class = "fa-solid fa-coins icon_size"></i><%= new_store.lowest_price_range %> ～ <%= new_store.highest_price_range %>円</div>
+          <div class = "show_field_2"><i class="fa-solid fa-store-slash icon_size"></i>
+            <% day_counter = 1 %>
+            <% new_store.days.order("id").each do |day| %>
+              <%= day.name %>
+              <% if day_counter < new_store.days.count %>
+                ・
+                <% day_counter += 1 %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
 
-
-<!-- ↓ 地図表示用のコード ↓ -->
-
-<style>
-#map {
-  height: 600px;
-  width: 600px;
-}
-</style>
 
 <script>
 
