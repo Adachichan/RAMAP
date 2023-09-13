@@ -1,59 +1,59 @@
 
-<div class = "user_top_form px-4">
+<div class = "public_top px-4">
 
   <%= form_with(scope: :search, url: search_path, method: :get, local: true) do |f| %>
 
-    <div class = "user_top_search_form mb-5">
+    <div class = "public_top_search_form mb-5">
 
-      <div class = "user_top_search_field_1">
+      <div class = "public_top_search_select_field">
         <%= f.select :prefecture, Store.prefectures.keys.map {|k| [I18n.t("enums.store.prefecture.#{k}"), k]}, options = { include_blank: false }, placeholder: "都道府県", class: "form-control" %>
       </div>
 
-      <div class = "user_top_search_field_2">
+      <div class = "public_top_search_text_field">
         <%= f.text_field :store_name, placeholder: "店舗名", class: "form-control" %>
       </div>
 
-      <div class = "user_top_search_field_1">
+      <div class = "public_top_search_select_field">
         <%= f.select :search_method, options_for_select([["完全一致","perfect_match"], ["前方一致","forward_match"],  ["後方一致","backward_match"], ["部分一致","partial_match"]]), {prompt: "検索方法"}, {class: "form-control"} %>
       </div>
 
-      <div class = "user_top_search_field_1">
+      <div class = "public_top_search_time_field">
         <%= f.time_field :visit_time, placeholder: "訪問時間", class: "form-control" %>
       </div>
 
-      <div class = "user_top_search_field_1">
+      <div class = "public_top_search_select_field">
         <%= f.collection_select :visit_day_id, Day.all, :id, :name, {prompt: "訪問曜日"}, {class: "form-control"} %>
       </div>
 
-      <div class = "user_top_search_field_1">
+      <div class = "public_top_search_number_field">
         <%= f.number_field :budget, placeholder: "予算", class: "form-control" %>
       </div>
 
       <div class = "actions">
-        <%= f.submit "検索", class: "btn btn-outline-secondary user_top_button" %>
+        <%= f.submit "検索", class: "btn btn-outline-secondary public_top_search_button" %>
       </div>
 
     </div>
 
   <% end %>
 
-  <div class = "user_top_map mb-5">
+  <div class = "public_top_map mb-5">
     <h5>現在地周辺のラーメン店</h5>
     <div id = 'map'></div>
   </div>
 
-  <div class = "user_top_new_store mb-4">
+  <div class = "public_top_new_store mb-4">
 
     <h5>新着店舗</h5>
 
     <div class = "row">
       <% @new_stores.each do |new_store| %>
-        <div class = "col-6 col-sm-3 show_field">
-          <div class = "show_field_1"><i class = "fa-solid fa-store icon_size"></i><%= new_store.name %></div>
-          <div class = "show_field_2"><%= image_tag new_store.get_store_image("200x200!") %></div>
-          <div class = "show_field_2"><i class = "fa-solid fa-location-dot icon_size"></i><%= new_store.prefecture_i18n %></div>
-          <div class = "show_field_2"><i class = "fa-solid fa-coins icon_size"></i><%= new_store.lowest_price_range %> ～ <%= new_store.highest_price_range %>円</div>
-          <div class = "show_field_2"><i class="fa-solid fa-store-slash icon_size"></i>
+        <div class = "col-6 col-sm-3 public_top_new_store_show">
+          <div class = "public_top_new_store_name"><i class = "fa-solid fa-store icon_size"></i><%= new_store.name %></div>
+          <div class = "public_top_new_store_image"><%= image_tag new_store.get_store_image("200x200!") %></div>
+          <div class = "public_top_new_store_prefecture"><i class = "fa-solid fa-location-dot icon_size"></i><%= new_store.prefecture_i18n %></div>
+          <div class = "public_top_new_store_price_range"><i class = "fa-solid fa-coins icon_size"></i><%= new_store.lowest_price_range %> ～ <%= new_store.highest_price_range %>円</div>
+          <div class = "public_top_new_store_regular_holiday"><i class="fa-solid fa-store-slash icon_size"></i>
             <% day_counter = 1 %>
             <% new_store.days.order("id").each do |day| %>
               <%= day.name %>
