@@ -59,7 +59,7 @@
   }
 
   .public_top_new_store{
-    width: 1250px;
+    width: 1200px;
     @media screen and (max-width:576px) {
       width: 576px;
     }
@@ -97,6 +97,95 @@
   }
 }
 
+// public_search_view
+.public_search{
+  width: 1300px;
+  margin: 0 auto;
+
+  .public_search_form{
+    display: flex;
+    align-items: center;
+    @media screen and (max-width:576px) {
+      display: block;
+    }
+
+    .public_search_select_field,.public_search_time_field,.public_search_number_field{
+      width: 120px;
+      margin-right: 30px;
+      @media screen and (max-width:576px) {
+        margin-bottom: 20px;
+      }
+    }
+
+    .public_search_text_field{
+      width: 300px;
+    }
+
+    .public_search_button{
+      width: 120px;
+    }
+  }
+
+  .public_search_map{
+
+    margin-bottom: 48px;
+
+    h5{
+      font-weight: 700;
+    }
+
+    #map {
+      height: 500px;
+      width: 1200px;
+      @media screen and (max-width:576px) {
+        width: 500px;
+      }
+    }
+  }
+
+  .public_search_click_store{
+    width: 1200px;
+    padding: 15px;
+    border: 2px solid #CC9933;
+    border-radius: 10px;
+
+    @media screen and (max-width:576px) {
+      width: 500px;
+    }
+
+    h5{
+      font-weight: 700;
+      padding-left: 15px;
+      margin-bottom: 20px;
+    }
+
+    .row{
+      padding-left: 15px;
+
+      .public_search_click_store_image{
+        @media screen and (max-width:576px) {
+          margin-bottom: 20px;
+        }
+      }
+
+      .public_search_click_store_overview{
+
+        .public_search_click_store_name{
+          font-size: 18px;
+          font-weight: 700;
+          margin-bottom: 15px;
+        }
+
+        .public_search_click_store_prefecture,.public_search_click_store_closest_station,.public_search_click_store_review,.public_search_click_store_price_range,.public_search_click_store_opening_hour,.public_search_click_store_regular_holiday{
+          margin-bottom: 15px;
+          .icon_size{
+            width: 30px;
+          }
+        }
+      }
+    }
+  }
+}
 
 
 

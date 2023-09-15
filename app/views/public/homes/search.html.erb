@@ -1,86 +1,97 @@
 
-<%= form_with(scope: :search, url: search_path, method: :get, local: true) do |f| %>
+<div class = "public_search px-4">
 
-  <div>
-    <%= f.label :visit_time %>
-    <%= f.time_field :visit_time %>
-  </div>
+  <%= form_with(scope: :search, url: search_path, method: :get, local: true) do |f| %>
 
-  <div>
-    <%= f.label :store_name %>
-    <%= f.text_field :store_name %>
-    <%= f.select :search_method, options_for_select([["完全一致","perfect_match"], ["前方一致","forward_match"],  ["後方一致","backward_match"], ["部分一致","partial_match"]]) %>
-  </div>
+    <div class = "public_search_form mb-5">
 
-  <div>
-    <%= f.label :prefecture %>
-    <%= f.select :prefecture, Store.prefectures.keys.map {|k| [I18n.t("enums.store.prefecture.#{k}"), k]}, options = { include_blank: false } %>
-  </div>
+      <div class = "public_search_select_field">
+        <%= f.select :prefecture, Store.prefectures.keys.map {|k| [I18n.t("enums.store.prefecture.#{k}"), k]}, options = { include_blank: false }, placeholder: "都道府県", class: "form-control" %>
+      </div>
 
-  <div>
-    <%= f.label :budget %>
-    <%= f.number_field :budget %>
-  </div>
+      <div class = "public_search_text_field">
+        <%= f.text_field :store_name, placeholder: "店舗名", class: "form-control" %>
+      </div>
 
-  <div>
-    <%= f.label :visit_day_id %>
-    <%= f.collection_select :visit_day_id, Day.all, :id, :name  %>
-  </div>
+      <div class = "public_search_select_field">
+        <%= f.select :search_method, options_for_select([["完全一致","perfect_match"], ["前方一致","forward_match"],  ["後方一致","backward_match"], ["部分一致","partial_match"]]), {prompt: "検索方法"}, {class: "form-control"} %>
+      </div>
 
-  <div class="actions">
-    <%= f.submit "再検索" %>
-  </div>
+      <div class = "public_search_time_field">
+        <%= f.time_field :visit_time, placeholder: "訪問時間", class: "form-control" %>
+      </div>
 
-<% end %>
+      <div class = "public_search_select_field">
+        <%= f.collection_select :visit_day_id, Day.all, :id, :name, {prompt: "訪問曜日"}, {class: "form-control"} %>
+      </div>
 
-<h4>検索結果</h4>
+      <div class = "public_search_number_field">
+        <%= f.number_field :budget, placeholder: "予算", class: "form-control" %>
+      </div>
 
-<div id = 'map'></div>
+      <div class="actions">
+        <%= f.submit "再検索", class: "btn btn-outline-secondary public_search_button" %>
+      </div>
 
-<% @search_stores.each do |search_store| %>
-
-  <div class = "hidden_store" id = "store_<%= search_store.id %>" >
-    <div><%= image_tag search_store.get_store_image("200x200!") %></div>
-    <h4><%= search_store.name %></h4>
-    <div><%= search_store.store_genre.name %> / <%= search_store.closest_station %></div>
-    <div><%= search_store.lowest_price_range %>円 ～ <%= search_store.highest_price_range %>円</div>
-    <div>
-      <p>営業時間</p>
-      <%# cocoom箇所 %>
-      <%# 営業時間の存在確認 %>
-      <% if search_store.opening_hours.count == 0 %>
-        <%# 営業時間なしの場合の表示 %>
-        <p>
-          営業時間情報なし
-        </p>
-      <% else %>
-        <%# 営業時間がある場合の表示 %>
-        <ul>
-          <% search_store.opening_hours.each do |opening_hour| %>
-            <li>
-              <%= opening_hour.opening_time.strftime("%-H:%M") %> ～ <%= opening_hour.closing_time.strftime("%-H:%M") %>
-            </li>
-          <% end %>
-        </ul>
-      <% end %>
     </div>
 
-    <div>
-      <% search_store.days.order("id").each do |day| %>
-        <%= day.name %>
-      <% end %>
-    </div>
+  <% end %>
+
+  <div class = "public_search_map">
+    <h5>検索結果</h5>
+    <div id = 'map'>
   </div>
 
-<% end %>
+  <% @search_stores.each do |search_store| %>
+    <div class = "hidden_store" id = "store_<%= search_store.id %>" >
+      <div class = "public_search_click_store mt-5 mb-4">
+        <h5>店舗情報</h5>
+        <div class = "row">
+          <div class = "public_search_click_store_image col-sm-4"><%= image_tag search_store.get_store_image("330x260!") %></div>
+          <div class = "public_search_click_store_overview col-sm-8">
+            <div class = "public_search_click_store_name"><%= search_store.name %></div>
+            <div class = "public_search_click_store_prefecture"><%= search_store.prefecture_i18n %></div>
+            <div class = "public_search_click_store_closest_station"><%= search_store.store_genre.name %> / <%= search_store.closest_station %></div>
+            <div class = "public_search_click_store_review"><i class="fa-regular fa-star icon_size"></i><%= %> / <i class="fa-regular fa-comment icon_size"></i><%= search_store.reviews.count %>件</div>
+            <div class = "public_search_click_store_price_range"><i class = "fa-solid fa-coins icon_size"></i><%= search_store.lowest_price_range %> ～ <%= search_store.highest_price_range %>円</div>
+            <div class = "public_search_click_store_opening_hour"><i class="fa-regular fa-clock icon_size"></i>
+              <%# cocoom箇所 %>
+              <%# 営業時間の存在確認 %>
+              <% if search_store.opening_hours.count == 0 %>
+                <%# 営業時間なしの場合の表示 %>
+                営業時間情報なし
+              <% else %>
+                <%# 営業時間がある場合の表示 %>
+                <% search_store.opening_hours.each do |opening_hour| %>
+                  <% opening_hour_counter = 1 %>
+                  <%= opening_hour.opening_time.strftime("%-H:%M") %> ～ <%= opening_hour.closing_time.strftime("%-H:%M") %>
+                  <% if opening_hour_counter < search_store.opening_hours.count %>
+                    &emsp;
+                    <% opening_hour_counter += 1 %>
+                <% end %>
+                <% end %>
+              <% end %>
+            </div>
+
+            <div class = "public_search_click_store_regular_holiday"><i class="fa-solid fa-store-slash icon_size"></i>
+              <% day_counter = 1 %>
+              <% search_store.days.order("id").each do |day| %>
+                <%= day.name %>
+                <% if day_counter < search_store.days.count %>
+                  ・
+                  <% day_counter += 1 %>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
 
 
 <style>
-#map {
-  height: 600px;
-  width: 600px;
-}
-
 .hidden_store{
   display: none;
 }
