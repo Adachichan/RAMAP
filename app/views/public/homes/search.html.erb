@@ -1,4 +1,3 @@
-
 <div class = "public_search px-4">
 
   <%= form_with(scope: :search, url: search_path, method: :get, local: true) do |f| %>
@@ -52,10 +51,22 @@
             <div class = "public_search_click_store_name"><%= search_store.name %></div>
             <div class = "public_search_click_store_prefecture"><%= search_store.prefecture_i18n %></div>
             <div class = "public_search_click_store_closest_station"><%= search_store.store_genre.name %> / <%= search_store.closest_station %></div>
-            <div class = "public_search_click_store_review"><i class="fa-regular fa-star icon_size"></i><%= %> / <i class="fa-regular fa-comment icon_size"></i><%= search_store.reviews.count %>件</div>
+            <% if search_store.reviews.length > 0 %>
+              <div class = "public_search_click_store_review_score_bar">
+                <div>
+                  <i class = "fa-regular fa-star"></i>
+                  <dd>
+                    <span style="width: <%= search_store.reviews.map(&:score).sum.fdiv(search_store.reviews.map(&:score).length).round %>%">
+                      <%= search_store.reviews.map(&:score).sum.fdiv(search_store.reviews.map(&:score).length).round %>点
+                    </span>
+                  </dd>
+                </div>
+              </div>
+            <% end %>
+            <div class = "public_search_click_store_review"><i class="fa-regular fa-comment icon_size"></i><%= search_store.reviews.count %>件</div>
             <div class = "public_search_click_store_price_range"><i class = "fa-solid fa-coins icon_size"></i><%= search_store.lowest_price_range %> ～ <%= search_store.highest_price_range %>円</div>
             <div class = "public_search_click_store_opening_hour"><i class="fa-regular fa-clock icon_size"></i>
-              <%# cocoom箇所 %>
+              <%# cocoon箇所 %>
               <%# 営業時間の存在確認 %>
               <% if search_store.opening_hours.count == 0 %>
                 <%# 営業時間なしの場合の表示 %>

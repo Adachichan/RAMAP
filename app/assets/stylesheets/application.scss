@@ -146,7 +146,7 @@
   .public_search_click_store{
     width: 1200px;
     padding: 15px;
-    border: 2px solid #CC9933;
+    border: 3px solid #78FF94;
     border-radius: 10px;
 
     @media screen and (max-width:576px) {
@@ -182,10 +182,64 @@
             width: 30px;
           }
         }
+
+        .public_search_click_store_review_score_bar {
+          font-size: .9em;
+          width: 70%;
+          height: 25px;
+          margin-bottom: 15px;
+        }
+
+        .public_search_click_store_review_score_bar > div {
+          display: flex;
+          align-items: center;
+          margin-bottom: 7px;
+        }
+
+        .public_search_click_store_review_score_bar i {
+          width: 30px;
+        }
+
+        .public_search_click_store_review_score_bar dd {
+          width: 100%;
+          margin: 0;
+          border-radius: 3px;
+          background-color: #e6edf3;
+        }
+
+        .public_search_click_store_review_score_bar span {
+          display: inline-block;
+          padding-right: 15px;
+          border-radius: inherit;
+          background-color: #9cde0d;
+          color: #fff;
+          font-weight: 600;
+          line-height: 25px;
+          text-align: right;
+          white-space: nowrap;
+        }
       }
     }
   }
 }
+
+// public_store_show
+.public_store_show{
+  width: 1300px;
+  margin: 0 auto;
+
+  h5{
+    font-weight: 700;
+  }
+
+
+
+}
+
+
+
+
+
 
 
 
