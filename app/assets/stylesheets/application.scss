@@ -596,7 +596,7 @@
 
     .public_mypage_user_info_edit_button{
       width: 160px;
-      padding: 3px 0px 3px 0px;
+      padding: 5px 0px 5px 0px;
       font-weight: 700;
     }
   }
@@ -710,18 +710,49 @@
     font-weight: 700;
   }
 
-  .public_user_edit_button{
+  .public_user_edit_action{
     display: flex;
     justify-content: space-around;
 
     .public_user_update_button,.public_user_unsubscribe_button{
     width: 200px;
+    padding: 5px 0px 5px 0px;
     font-weight: 700;
     }
   }
 }
 
+// public_user_unsubscribe
+.public_user_unsubscribe{
+  width: 800px;
+  margin: 0 auto;
 
+  @media screen and (max-width:576px) {
+    width: 576px;
+  }
+
+  h5{
+    font-weight: 700;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+
+  p{
+    margin-bottom: 30px;
+    text-align: center;
+  }
+
+  .public_user_unsubscribe_action{
+    display: flex;
+    justify-content: space-around;
+
+    .public_user_not_unsubscribe_button,.public_user_unsubscribe_button{
+      width: 200px;
+      padding: 5px 0px 5px 0px;
+      font-weight: 700;
+    }
+  }
+}
 
 
 
