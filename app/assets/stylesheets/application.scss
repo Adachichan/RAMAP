@@ -374,6 +374,33 @@
   }
 }
 
+// public_menu_index
+.public_menu_index{
+  width: 1300px;
+  margin: 0 auto;
+
+  @media screen and (max-width:576px) {
+    width: 576px;
+  }
+
+  h5{
+    font-weight: 700;
+    margin-bottom: 30px;
+  }
+
+  .row{
+    margin: 0 15px;
+  }
+
+  .public_menu_detail{
+    margin-bottom: 30px;
+  }
+
+  .public_menu_image{
+    margin-bottom: 5px;
+  }
+}
+
 
 
 
