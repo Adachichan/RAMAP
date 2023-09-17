@@ -12,6 +12,10 @@
     <% end %>
   </div>
 
+  <div class = "public_menu_index_link">
+    <%= link_to '＜　店舗詳細に戻る', store_path(@store.id) %>
+  </div>
+
   <div>
     <%= paginate @menus %>
   </div>

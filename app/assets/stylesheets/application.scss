@@ -400,6 +400,15 @@
     margin-bottom: 5px;
   }
 
+  .public_menu_index_link{
+    text-align: left;
+    a{
+      margin: 15px 30px 25px 30px;
+      font-weight: 700;
+      text-decoration: underline;
+    }
+  }
+
   .pagination{
     margin: 15px;
     justify-content: center;
