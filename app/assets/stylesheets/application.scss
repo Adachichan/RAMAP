@@ -341,6 +341,11 @@
   }
 
   .public_store_show_detail{
+    width: 1250px;
+
+    @media screen and (max-width:576px) {
+      width: 510px;
+    }
 
     h6{
       font-size: 17px;
@@ -360,7 +365,11 @@
     }
 
     td{
-      flex-grow: 1;
+      witth: 1100px;
+
+      @media screen and (max-width:576px) {
+        width: 360px;
+      }
     }
   }
 }
