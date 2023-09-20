@@ -909,6 +909,108 @@
 
 }
 
+// public_mystore_index
+.public_mystore_index{
+  width: 1200px;
+  margin: 0 auto;
+
+  @media screen and (max-width:576px) {
+    width: 576px;
+  }
+
+  .public_mystore_index_1{
+    display: flex;
+    justify-content: space-between;
+
+    .public_mystore_index_title{
+      font-weight: 700;
+      margin-bottom: 30px;
+    }
+
+    .public_mystore_index_new_button{
+      font-size: 1.2rem;
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  .public_mystore_index_2{
+    width: 1100px;
+    margin: 0px 0px 30px 50px;
+
+    @media screen and (max-width:576px) {
+      width: 510px;
+      margin: 0px 0px 30px 0px;
+    }
+
+    thead{
+
+      .th1,.th2,.th3,.th4,.th5{
+        border: 1px solid #000;
+        padding: 6px 6px 6px 12px;
+        font-size: 14px;
+        font-weight: 500;
+        background-color: #FFFFEE;
+      }
+
+      .th1{
+        width: 50px;
+        text-align: center;
+
+        @media screen and (max-width:576px) {
+          width: 30px;
+          font-size: 12px;
+        }
+      }
+
+      .th2{
+        width: 400px;
+
+        @media screen and (max-width:576px) {
+          width: 180px;
+          font-size: 12px;
+        }
+      }
+
+      .th3{
+        width: 250px;
+        text-align: center;
+
+        @media screen and (max-width:576px) {
+          width: 120px;
+          font-size: 12px;
+        }
+      }
+
+      .th4,.th5{
+        width: 200px;
+        text-align: center;
+
+        @media screen and (max-width:576px) {
+          width: 90px;
+          font-size: 12px;
+        }
+      }
+    }
+
+
+
+
+  }
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
 // public_mystore_show
 .public_mystore_show{
   width: 1200px;
@@ -1011,6 +1113,7 @@
 
         .public_mystore_show_menu_button{
           width: 170px;
+          color: white;
         }
       }
     }

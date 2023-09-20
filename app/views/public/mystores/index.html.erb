@@ -1,17 +1,55 @@
-<h4>店舗情報（一覧）</h4>
+<div class = "public_mystore_index px-4">
 
-<%= link_to '店舗新規登録', new_mystore_path %>
+  <div class = "public_mystore_index_1 mb-1">
+    <h5 class = "public_mystore_index_title">店舗情報（一覧）</h5>
+
+    <div class = "public_mystore_index_new_button">
+      <%= button_to "＋", new_mystore_path, method: :get, class: "text-secondary font-weight-bold border border-muted bg-white", style: "border-radius: 50%" %>
+    </div>
+  </div>
+
+  <div class = "public_mystore_index_2">
+    <table class = "table">
+      <thead>
+        <tr>
+          <th class = "th1">No</th>
+          <th class = "th2">店舗名</th>
+          <th class = "th3">開店ステータス</th>
+          <th class = "th4">店舗詳細</th>
+          <th class = "th5">メニュー</th>
+        </tr>
+      </thead>
+
+
+
+    </div>
+
+
+
+
+  </div>
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
 
 <table class = "table">
-  <thead>
-    <tr>
-      <th>No</th>
-      <th>店舗名</th>
-      <th>開店ステータス</th>
-      <th>店舗詳細</th>
-      <th>メニュー</th>
-    </tr>
-  </thead>
+
 
   <% @mystores.each do |mystore| %>
     <tbody>
