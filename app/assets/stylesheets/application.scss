@@ -769,7 +769,7 @@
 
   h5{
     margin: 24px 0 36px -50px ;
-    @media screen and (max-width:900px) {
+    @media screen and (max-width:950px) {
       margin-left: 0px;
     }
   }
@@ -807,7 +807,7 @@
 
   .public_mystore_info{
 
-    .public_mystore_info_title,.public_mystore_staff_info{
+    .public_mystore_info_title,.public_mystore_staff_info_title{
       font-weight: 700;
       font-size: 20px;
     }
@@ -908,6 +908,120 @@
   }
 
 }
+
+// public_mystore_show
+.public_mystore_show{
+  width: 1200px;
+  margin: 0 auto;
+
+  @media screen and (max-width:576px) {
+    width: 576px;
+  }
+
+  .row{
+    margin-bottom: 40px;
+
+    @media screen and (max-width:576px) {
+      margin-bottom: 0px;
+    }
+
+    .public_mystore_show_store_name{
+
+      h5{
+        font-weight: 700;
+        margin: 24px 0 36px -50px ;
+        @media screen and (max-width:1300px) {
+          margin-left: 0px;
+        }
+      }
+
+      .public_mystore_show_store{
+        display: flex;
+
+        .public_mystore_show_store_title{
+          width: 11em;
+          white-space: nowrap;
+        }
+
+        .public_mystore_show_store_content{
+          flex-grow: 1;
+        }
+      }
+    }
+
+    .public_mystore_show_info{
+
+      .public_mystore_show_title,.public_mystore_staff_title{
+        font-weight: 700;
+        font-size: 20px;
+      }
+
+      .public_mystore_show_store_info,.public_mystore_show_store_staff_info{
+        display: flex;
+        margin-left: 20px;
+
+        .public_mystore_show_store_info_title,.public_mystore_show_store_staff_info_title{
+          width: 12em;
+          white-space: nowrap;
+        }
+
+        .public_mystore_show_store_info_content,.public_mystore_show_store_staff_info_content{
+          flex-grow: 1;
+        }
+      }
+
+      .public_mystore_show_store_staff_info:last-child{
+        margin-bottom: 24px;
+
+        @media screen and (max-width:576px) {
+          margin-bottom: 48px;
+        }
+      }
+    }
+
+    .col-sm-5{
+
+      .public_mystore_show_store_image{
+        margin-top: 50px;
+
+        @media screen and (max-width:576px) {
+          margin-top: 0px;
+        }
+
+        .public_mystore_show_store_image_title{
+          font-weight: 700;
+          font-size: 20px;
+        }
+
+        img{
+          @media screen and (max-width:576px) {
+            margin-left: 32px;
+          }
+        }
+
+      }
+
+      .public_mystore_show_button_group{
+        display: flex;
+        justify-content: space-around;
+
+        .public_mystore_show_edit_button,.public_mystore_show_closed_button{
+          width: 120px;
+        }
+
+        .public_mystore_show_menu_button{
+          width: 170px;
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+
 
 // error_message
 .field_with_errors input {
