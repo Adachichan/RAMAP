@@ -1005,7 +1005,7 @@
         display: flex;
         justify-content: space-around;
 
-        .public_mystore_show_edit_button,.public_mystore_show_closed_button{
+        .public_mystore_show_edit_button,.public_mystore_show_closing_button{
           width: 120px;
         }
 
@@ -1013,6 +1013,38 @@
           width: 170px;
         }
       }
+    }
+  }
+}
+
+// public_mystore_closing
+.public_mystore_closing{
+  width: 800px;
+  margin: 0 auto;
+
+  @media screen and (max-width:576px) {
+    width: 576px;
+  }
+
+  h5{
+    font-weight: 700;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+
+  p{
+    margin-bottom: 30px;
+    text-align: center;
+  }
+
+  .public_mystore_closing_action{
+    display: flex;
+    justify-content: space-around;
+
+    .public_mystore_not_closing_button,.public_mystore_closing_button{
+      width: 200px;
+      padding: 5px 0px 5px 0px;
+      font-weight: 700;
     }
   }
 }
