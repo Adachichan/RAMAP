@@ -22,9 +22,22 @@ class Public::MystoresController < ApplicationController
   end
 
   def index
-    @mystores = current_user.stores
-    # Noの初期値
-    @number = 1
+    @mystores = current_user.stores.page(params[:page]).per(10)
+    # ページごとのNo加算値の決定
+    # params[:page] → 現在表示しているページ(※1ページ目はnil)
+    # if params[:page]
+    # params[:page]の中が数値 → trueとして評価
+    # params[:page]の中がnil  → falseとして評価
+    # page = params[:page]&.to_i
+    # (params[:page].to_i - 1)
+    # true(2ページ目以降) → 先頭の数値が、page - 1 × 10 + 1 (+ 1は後で加算)
+    if params[:page]
+      @number = (params[:page].to_i - 1) * 10
+    else
+      @number = 0
+    end
+
+
   end
 
   def show

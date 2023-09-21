@@ -119,9 +119,9 @@
           <div class = "public_mystore_show_store_info_title">開店ステータス</div>
           <div class = "public_mystore_show_store_info_content">
             <% if @mystore.is_closed == true %>
-              閉店
+              <div style = "color: red">閉店</div>
             <% else %>
-              開店
+              <div style = "color: green">開店</div>
             <% end %>
           </div>
         </div>

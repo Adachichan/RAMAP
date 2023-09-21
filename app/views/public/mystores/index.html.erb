@@ -9,7 +9,7 @@
   </div>
 
   <div class = "public_mystore_index_2">
-    <table class = "table">
+    <table class = "table table-borderless">
       <thead>
         <tr>
           <th class = "th1">No</th>
@@ -20,54 +20,37 @@
         </tr>
       </thead>
 
+      <% @mystores.each_with_index do |mystore,i| %>
+        <tbody>
+          <tr>
+            <td class = "td1"><%= i + 1 + @number %></td>
+            <td class = "td2"><%= mystore.name %></td>
+            <td class = "td3">
+              <% if mystore.is_closed == true %>
+                <div style = "color: red">閉店</div>
+              <% else %>
+                <div style = "color: green">開店</div>
+              <% end %>
+            </td>
+            <td class = "td4">
+              <%= link_to mystore_path(mystore.id), class: "btn btn-primary public_mystore_index_show_button" do %>
+                表示する
+              <% end %>
+            </td>
+            <td class = "td5">
+              <%= link_to mystore_mymenus_path(mystore.id), class: "btn btn-warning public_mystore_index_menu_button" do %>
+                表示する
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+      <% end %>
+    </table>
 
-
+    <div>
+      <%= paginate @mystores %>
     </div>
 
-
-
-
   </div>
-
-
-
-
-
-
 </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-<table class = "table">
-
-
-  <% @mystores.each do |mystore| %>
-    <tbody>
-      <tr>
-        <td><%= @number %></td>
-        <td><%= mystore.name %></td>
-        <td>
-          <% if mystore.is_closed == true %>
-            <p>閉店</p>
-          <% else %>
-            <p>開店</p>
-          <% end %>
-        </td>
-        <td><%= link_to '表示する', mystore_path(mystore.id) %></td>
-        <td><%= link_to 'メニュー情報管理', mystore_mymenus_path(mystore.id) %></td>
-      </tr>
-    </tbody>
-    <% @number += 1 %>
-  <% end %>
-
-</table>
