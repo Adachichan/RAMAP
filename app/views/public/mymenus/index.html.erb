@@ -1,36 +1,90 @@
-<h4>メニュー登録/一覧</h4>
+<div class = "public_mymenu_new_and_index">
 
-<!-- error count -->
-<% if @mymenu.errors.any? %>
-  <%= @mymenu.errors.count %>件のエラーが発生しました
-<% end %>
+  <h5>メニュー登録/一覧</h5>
 
-<%= form_with model: [@mystore, @mymenu], url: mystore_mymenus_path(@mystore.id) do |mymenu| %>
+  <div class = "public_mymenu_new_form">
 
-  <div class="field">
-    <%= mymenu.label :menu_image %><br />
-    <%= mymenu.file_field :menu_image, accept: "image/*" %>
+    <%= form_with model: [@mystore, @mymenu], url: mystore_mymenus_path(@mystore.id) do |mymenu| %>
+
+      <div class = "mb-4">
+        <div class = "field">
+          <div class = "public_mymenu_new_label">
+            <%= mymenu.label :menu_image, "メニュー画像" %>
+          </div>
+          <div class = "public_mymenu_new_file_field">
+            <%= mymenu.file_field :menu_image, accept: "image/*" %>
+          </div>
+        </div>
+      </div>
+
+      <div class = "mb-4">
+        <div class = "field">
+          <div class = "public_mymenu_new_label">
+            <%= mymenu.label :name, "メニュー名：" %>
+            &emsp;&ensp;
+            <span class = "cautionary_note">必須</span>
+          </div>
+          <div class = "public_mymenu_new_text_field">
+            <%= mymenu.text_field :name, placeholder: "メニュー名を入力してください", class: "form-control" %>
+          </div>
+        </div>
+        <div class = "mt-2">
+          <!-- name_error -->
+          <%= render 'layouts/error_message', model: @mymenu, column: :name %>
+        </div>
+      </div>
+
+      <div class = "mb-4">
+        <div class = "field">
+          <div class = "public_mymenu_new_label">
+            <%= mymenu.label :price, "値段(税抜)：" %>
+            &emsp;&ensp;
+            <span class = "cautionary_note">必須</span>
+          </div>
+          <div class = "public_mymenu_new_text_field">
+            <%= mymenu.text_field :price, placeholder: "価格(税抜)を入力してください", class: "form-control" %>
+          </div>
+        </div>
+        <div class = "mt-2">
+          <!-- price_error -->
+          <%= render 'layouts/error_message', model: @mymenu, column: :price %>
+        </div>
+      </div>
+
+      <div class = "actions mb-5">
+        <%= mymenu.submit "新規登録", class: "btn btn-success public_mymenu_create_button" %>
+      </div>
+
+    <% end %>
+
   </div>
 
-  <div class="field">
-    <%= mymenu.label :name %><br />
-    <%= mymenu.text_field :name %>
-    <!-- name_error -->
-    <%= render 'layouts/error_message', model: @mymenu, column: :name %>
-  </div>
 
-  <div class="field">
-    <%= mymenu.label :price %><br />
-    <%= mymenu.text_field :price %>
-    <!-- price_error -->
-    <%= render 'layouts/error_message', model: @mymenu, column: :price %>
-  </div>
 
-  <div class="actions">
-    <%= mymenu.submit "新規登録" %>
-  </div>
+</div>
 
-<% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <%= link_to 'メニュー全削除', destroy_all_mymenus_path(@mystore.id), method: :delete %>

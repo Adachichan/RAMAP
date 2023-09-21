@@ -36,8 +36,6 @@ class Public::MystoresController < ApplicationController
     else
       @number = 0
     end
-
-
   end
 
   def show
