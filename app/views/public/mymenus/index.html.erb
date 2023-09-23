@@ -1,4 +1,4 @@
-<div class = "public_mymenu_new_and_index">
+<div class = "public_mymenu_new_and_index px-4">
 
   <h5>メニュー登録/一覧</h5>
 
@@ -59,61 +59,48 @@
 
   </div>
 
+  <div class = "public_mymenu_all_destroy mb-3">
+    <%= link_to destroy_all_mymenus_path(@mystore.id), method: :delete, class: "btn btn-danger public_mymenu_all_destroy_button" do %>
+      メニュー全削除
+    <% end %>
+  </div>
 
-
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<%= link_to 'メニュー全削除', destroy_all_mymenus_path(@mystore.id), method: :delete %>
-
-<table class = "table">
-  <thead>
-    <tr>
-      <th>No</th>
-      <th>商品画像</th>
-      <th>メニュー名</th>
-      <th>価格（税抜）</th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <% @mymenus.each do |mymenu| %>
-    <tbody>
+  <table class = "table table-borderless">
+    <thead>
       <tr>
-        <td><%= @number %></td>
-        <td><%= image_tag mymenu.get_menu_image("150x150!") %></td>
-        <td><%= mymenu.name %></td>
-        <td><%= mymenu.price %></td>
-        <td>
-          <%= link_to '編集する', edit_mystore_mymenu_path(@mystore.id, mymenu.id) %>
-          <%= link_to '削除する', mystore_mymenu_path(@mystore.id, mymenu.id), method: :delete %>
-        </td>
+        <th class = "th1">No</th>
+        <th class = "th2">商品画像</th>
+        <th class = "th3">メニュー名</th>
+        <th class = "th4">価格（税抜）</th>
+        <th class = "th5"></th>
       </tr>
-    </tbody>
-    <% @number += 1 %>
-  <% end %>
+    </thead>
 
-</table>
+    <% @mymenus.each_with_index do |mymenu,i| %>
+      <tbody>
+        <tr>
+          <td class = "td1"><%= i + 1 + @number %></td>
+          <td class = "td2"><%= image_tag mymenu.get_menu_image("200x200!") %></td>
+          <td class = "td3"><%= mymenu.name %></td>
+          <td class = "td4"><%= mymenu.price %>円</td>
+          <td class = "td5">
+            <div class = "public_mymenu_button_group">
+              <%= link_to edit_mystore_mymenu_path(@mystore.id, mymenu.id), class: "btn btn-success public_mymenu_all_destroy_button" do %>
+                編集する
+              <% end %>
+
+              <%= link_to mystore_mymenu_path(@mystore.id, mymenu.id), method: :delete, class: "btn btn-danger public_mymenu_all_destroy_button" do %>
+                削除する
+              <% end %>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    <% end %>
+  </table>
+  
+  <div>
+    <%= paginate @mymenus %>
+  </div>
+  
+</div>

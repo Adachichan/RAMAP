@@ -7,8 +7,20 @@ class Public::MymenusController < ApplicationController
     @mystore = Store.find(params[:mystore_id])
     @mymenu = Menu.new
     # 店舗ごとの全メニューを取得
-    @mymenus = @mystore.menus.all
-    @number = 1
+    @mymenus = @mystore.menus.page(params[:page]).per(10)
+    # ページごとのNo加算値の決定
+    # params[:page] → 現在表示しているページ(※1ページ目はnil)
+    # if params[:page]
+    # params[:page]の中が数値 → trueとして評価
+    # params[:page]の中がnil  → falseとして評価
+    # page = params[:page]&.to_i
+    # (params[:page].to_i - 1)
+    # true(2ページ目以降) → 先頭の数値が、page - 1 × 10 + 1 (+ 1は後で加算)
+    if params[:page]
+      @number = (params[:page].to_i - 1) * 10
+    else
+      @number = 0
+    end
   end
 
   def create
@@ -19,8 +31,12 @@ class Public::MymenusController < ApplicationController
       redirect_to mystore_mymenus_path(@mymenu.store_id)
     else
       @mystore = Store.find(params[:mystore_id])
-      @mymenus = @mystore.menus.all
-      @number = 1
+      @mymenus = @mystore.menus.page(params[:page]).per(10)
+      if params[:page]
+        @number = (params[:page].to_i - 1) * 10
+      else
+        @number = 0
+      end
       render :index
     end
   end

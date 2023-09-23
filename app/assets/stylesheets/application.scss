@@ -1249,12 +1249,11 @@
   h5{
     margin: 24px 0 36px -50px ;
     @media screen and (max-width:1300px) {
-      margin-left: 20px;
+      margin-left: 0;
     }
   }
 
   .public_mymenu_new_form{
-    margin-left: 20px;
 
     .field{
       display: flex;
@@ -1299,6 +1298,162 @@
     }
   }
 
+  .public_mymenu_all_destroy{
+    text-align: right;
+
+    .public_mymenu_all_destroy_button{
+      font-weight: 700;
+      width: 150px;
+
+      @media screen and (max-width:576px) {
+        font-weight: 500;
+        font-size: 11px;
+        width: 100px;
+        margin-right: 10px;
+      }
+    }
+  }
+
+  .table{
+
+    @media screen and (max-width:576px) {
+      width: 520px;
+    }
+
+    thead{
+
+      .th1,.th2,.th3,.th4,.th5{
+        border: 1px solid #000;
+        padding: 6px 6px 6px 12px;
+        font-size: 16px;
+        font-weight: 500;
+        background-color: #FFFFEE;
+      }
+
+      .th1{
+        width: 50px;
+        text-align: center;
+
+        @media screen and (max-width:576px) {
+          width: 30px;
+          font-size: 12px;
+        }
+      }
+
+      .th2{
+        width: 280px;
+
+        @media screen and (max-width:576px) {
+          width: 110px;
+          font-size: 12px;
+        }
+      }
+
+      .th3{
+        width: 280px;
+
+        @media screen and (max-width:576px) {
+          width: 100px;
+          font-size: 12px;
+        }
+      }
+
+      .th4{
+        width: 200px;
+
+        @media screen and (max-width:576px) {
+          width: 100px;
+          font-size: 12px;
+        }
+      }
+
+      .th5{
+
+        @media screen and (max-width:576px) {
+          font-size: 12px;
+        }
+      }
+    }
+
+
+    tbody{
+
+      .td1,.td2,.td3,.td4,.td5{
+        border: 1px solid #000;
+        padding: 10px 6px 10px 12px;
+        font-size: 16px;
+        font-weight: 500;
+        vertical-align: middle;
+      }
+
+      .td1{
+        width: 50px;
+        text-align: center;
+
+        @media screen and (max-width:576px) {
+          width: 30px;
+          font-size: 12px;
+        }
+      }
+
+      .td2{
+        width: 280px;
+        text-align: center;
+        padding: 9px;
+
+        img{
+
+          @media screen and (max-width:576px) {
+            width: 90px;
+            height: 90px;
+          }
+
+        }
+
+        @media screen and (max-width:576px) {
+          width: 110px;
+        }
+      }
+
+      .td3{
+        width: 280px;
+
+        @media screen and (max-width:576px) {
+          width: 100px;
+          font-size: 12px;
+        }
+      }
+
+      .td4{
+        width: 200px;
+
+        @media screen and (max-width:576px) {
+          width: 100px;
+          font-size: 12px;
+        }
+      }
+
+      .td5{
+
+        .public_mymenu_button_group{
+          display: flex;
+          justify-content: space-around;
+
+          .public_mymenu_all_destroy_button,.public_mymenu_all_destroy_button{
+            width: 120px;
+            font-weight: 700;
+
+            @media screen and (max-width:576px) {
+              width: 70px;
+              font-size: 11px;
+              font-weight: 500;
+            }
+          }
+        }
+      }
+    }
+  }
+
   .text-danger{
     align-items: center;
     display: block;
@@ -1309,8 +1464,27 @@
     }
   }
 
+  .pagination{
+    margin: 15px;
+    justify-content: center;
+  }
 
+  /*ページネーション自体のデザイン*/
+  .pagination>li>a {
+    border: none;     /*枠線をなくす*/
+    color: #696969;   /*文字の色を変える*/
+  }
 
+  /* 表示しているページ番号のデザイン */
+  .pagination>.active>a {
+    background: #93c9ff;     /*背景の色を変える*/
+    border-radius: 20px;     /*角を丸くする*/
+  }
+
+  /*ホバー時のデザイン*/
+  .pagination>li>a:hover {
+    border-radius: 20px;    /*角を丸くする*/
+  }
 }
 
 
