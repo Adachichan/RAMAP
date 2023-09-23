@@ -1563,6 +1563,74 @@
   }
 }
 
+// public_review_index
+.public_review_index{
+  width: 1200px;
+  margin: 0 auto;
+
+  @media screen and (max-width:576px) {
+    width: 576px;
+  }
+
+  .public_review_index_1{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+
+    @media screen and (max-width:576px) {
+      display: block;
+    }
+
+    .public_review_index_title{
+      font-weight: 700;
+
+      @media screen and (max-width:576px) {
+        margin-bottom: 20px;
+      }
+    }
+
+    .public_review_index_new_button{
+      width: 150px;
+
+      @media screen and (max-width:576px) {
+        margin-bottom: 20px;
+      }
+    }
+  }
+
+  .public_review_index_2{
+
+    .row{
+      margin-bottom: 40px;
+
+      .col-sm-9{
+
+        .public_review_index_content_group{
+          display: flex;
+
+          .public_review_index_review_title{
+            width: 15em;
+            white-space: nowrap;
+          }
+
+          .public_review_index_review_content{
+            flex-grow: 1;
+          }
+        }
+      }
+
+      .col-sm-3{
+
+        .public_review_index_store_image{
+          text-align: right;
+        }
+      }
+    }
+  }
+}
+
+
+
 // public_review_new
 .public_review_new{
   width: 850px;

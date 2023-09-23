@@ -1,33 +1,75 @@
-<h4><%= @store.name %>の口コミ一覧（全<%= @reviews.count %>件）</h4>
+<div class = "public_review_index px-4">
 
+  <div class = "public_review_index_1">
+    <h5 class = "public_review_index_title"><%= @store.name %>の口コミ一覧（全<%= @reviews.count %>件）</h5>
 
-<!-- ログインしていない場合は口コミ投稿不可 -->
-<% if user_signed_in? %>
-  <div><%= link_to '口コミ投稿', new_store_review_path(@store.id) %></div>
-<% end %>
-
-
-<% @reviews.each do |review| %>
-  <div>
-    <div><%= "ニックネーム" %></div>
-    <div><%= review.nickname %></div>
-    <div><%= review.visit_date.strftime("%Y/%-m/%-d") %></div>
-    <div><%= review.nickname %></div>
-    <div><%= link_to review.title, store_review_path(@store.id, review.id) %></div>
-    <div><%= review.content %></div>
-    <div><%= image_tag review.get_review_image("200x200!") %></div>
-
-    <!-- ログインしていない場合はコメント投稿不可 -->
+    <!-- ログインしていない場合は口コミ投稿不可 -->
     <% if user_signed_in? %>
-      <div id = "favorite_buttons_<%= review.id %>">
-        <%= render "favorite", review: review %>
+      <div>
+        <%= link_to new_store_review_path(@store.id), class: "btn btn-outline-dark public_review_index_new_button" do %>
+          口コミ投稿
+        <% end %>
       </div>
-    <% else %>
-      <span>♡<%= review.favorites.count %> いいね<span>
     <% end %>
   </div>
-<% end %>
 
-<div>
-  <%= link_to '店舗詳細に戻る', store_path(@store.id) %>
+  <div class = "public_review_index_2">
+
+    <% @reviews.each do |review| %>
+
+      <div class = "row">
+
+        <div class = "col-sm-9">
+
+          <div class = "public_review_index_content_group mb-3">
+            <div class = "public_review_index_review_title">投稿者（ニックネーム）</div>
+            <div class = "public_review_index_review_content"><%= review.nickname %></div>
+          </div>
+
+          <div class = "public_review_index_content_group mb-3">
+            <div class = "public_review_index_review_title">投稿日時</div>
+            <div class = "public_review_index_review_content"><%= review.created_at.strftime("%Y/%-m/%-d %-H:%M") %></div>
+          </div>
+
+          <div class = "public_review_index_content_group mb-3">
+            <div class = "public_review_index_review_title">訪問日時</div>
+            <div class = "public_review_index_review_content"><%= review.visit_date.strftime("%Y/%-m/%-d") %></div>
+          </div>
+
+          <div class = "public_review_index_content_group mb-3">
+            <div class = "public_review_index_review_title">タイトル</div>
+            <div class = "public_review_index_review_content"><%= link_to review.title, store_review_path(@store.id, review.id) %></div>
+          </div>
+
+          <div class = "public_review_index_content_group mb-3">
+            <div class = "public_review_index_review_title">内容</div>
+            <div class = "public_review_index_review_content"><%= review.content %></div>
+          </div>
+
+          <!-- ログインしていない場合はコメント投稿不可 -->
+          <% if user_signed_in? %>
+            <div id = "favorite_buttons_<%= review.id %>">
+              <%= render "favorite", review: review %>
+            </div>
+          <% else %>
+            <span><i class = "fa-solid fa-heart fa-beat fa-lg" style = "color: #ff0000; width: 30px"></i><%= review.favorites.count %> いいね<span>
+          <% end %>
+
+        </div>
+
+
+
+        <div class = "col-sm-3">
+          <div class = "public_review_index_store_image mb-5">
+            <div><%= image_tag review.get_review_image("200x200!") %></div>
+          </div>
+        </div>
+
+      </div>
+    <% end %>
+
+    <div>
+      <%= link_to '店舗詳細に戻る', store_path(@store.id) %>
+    </div>
+  </div>
 </div>
