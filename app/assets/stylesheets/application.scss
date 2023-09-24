@@ -1640,6 +1640,45 @@
               width: 60%;
             }
           }
+
+          .public_review_index_review_score_bar {
+            font-size: .9em;
+            width: 50%;
+            height: 25px;
+            margin-bottom: 15px;
+            @media screen and (max-width:575px) {
+              width: 250px;
+            }
+          }
+
+          .public_review_index_review_score_bar > div {
+            display: flex;
+            align-items: center;
+            margin-bottom: 7px;
+          }
+
+          .public_review_index_review_score_bar i {
+            width: 30px;
+          }
+
+          .public_review_index_review_score_bar dd {
+            width: 100%;
+            margin: 0;
+            border-radius: 3px;
+            background-color: #e6edf3;
+          }
+
+          .public_review_index_review_score_bar span {
+            display: inline-block;
+            padding-right: 15px;
+            border-radius: inherit;
+            background-color: #9cde0d;
+            color: #fff;
+            font-weight: 600;
+            line-height: 25px;
+            text-align: right;
+            white-space: nowrap;
+          }
         }
 
         .public_review_index_content_favorite_group{
@@ -1686,6 +1725,210 @@
     border-radius: 20px;    /*角を丸くする*/
   }
 }
+
+// public_review_show
+.public_review_show{
+  width: 1200px;
+  margin: 0 auto;
+
+  @media screen and (max-width:575px) {
+    width: 575px;
+  }
+
+  h5{
+    font-weight: 700;
+    padding-bottom: 15px;
+    border-bottom: #cccccc 1px solid;
+    margin-bottom: 24px;
+  }
+
+  .public_review_show_1{
+
+    .row{
+
+      .col-sm-9{
+
+        .public_review_show_content_group{
+          display: flex;
+
+          .public_review_show_review_title{
+            width: 15em;
+            white-space: nowrap;
+            width: 30%;
+
+            @media screen and (max-width:575px) {
+              width: 40%;
+            }
+          }
+
+          .public_review_show_review_content{
+            flex-grow: 1;
+            word-break: break-all;
+            width: 70%;
+
+            @media screen and (max-width:575px) {
+              width: 60%;
+            }
+          }
+
+          .public_review_show_review_score_bar {
+            font-size: .9em;
+            width: 50%;
+            height: 25px;
+            margin-bottom: 15px;
+            @media screen and (max-width:575px) {
+              width: 250px;
+            }
+          }
+
+          .public_review_show_review_score_bar > div {
+            display: flex;
+            align-items: center;
+            margin-bottom: 7px;
+          }
+
+          .public_review_show_review_score_bar i {
+            width: 30px;
+          }
+
+          .public_review_show_review_score_bar dd {
+            width: 100%;
+            margin: 0;
+            border-radius: 3px;
+            background-color: #e6edf3;
+          }
+
+          .public_review_show_review_score_bar span {
+            display: inline-block;
+            padding-right: 15px;
+            border-radius: inherit;
+            background-color: #9cde0d;
+            color: #fff;
+            font-weight: 600;
+            line-height: 25px;
+            text-align: right;
+            white-space: nowrap;
+          }
+        }
+
+        .public_review_show_content_favorite_group{
+
+          @media screen and (max-width:575px) {
+            margin-bottom: 24px;
+          }
+        }
+      }
+
+      .col-sm-3{
+
+        .public_review_show_store_image{
+          text-align: right;
+
+          @media screen and (max-width:575px) {
+            text-align: left;
+            margin-bottom: 6px;
+          }
+        }
+      }
+    }
+  }
+
+  .public_review_show_comment_new_form{
+
+    .field{
+      display: flex;
+      align-items: center;
+
+      @media screen and (max-width:575px) {
+        display: block;
+      }
+
+      .public_review_show_comment_new_label{
+        width: 10em;
+        white-space: nowrap;
+      }
+
+      .public_review_show_comment_new_text_area{
+        width: 950px;
+
+        @media screen and (max-width:575px) {
+          width: 520px;
+          margin-bottom: 18px;
+        }
+      }
+
+      .actions{
+        width: 200px;
+        margin-left: 70px;
+
+        @media screen and (max-width:575px) {
+          margin-left: 0px;
+        }
+
+        input{
+          width: 130px;
+        }
+      }
+    }
+  }
+
+  .public_review_show_2{
+
+    .public_review_show_comment_index_title{
+      font-size: 18px;
+      font-weight: 700;
+      padding-bottom: 15px;
+      border-bottom: #cccccc 1px solid;
+      margin-bottom: 12px;
+    }
+
+    .public_review_show_comment{
+      border-bottom: #cccccc 1px solid;
+      margin-bottom: 12px;
+
+      .public_review_show_comment_group{
+        display: flex;
+
+        .public_review_show_comment_title{
+          width: 15em;
+          white-space: nowrap;
+          width: 30%;
+        }
+
+        .public_review_show_comment_content{
+          flex-grow: 1;
+          word-break: break-all;
+          width: 70%;
+        }
+      }
+    }
+  }
+
+  .pagination{
+    margin: 15px;
+    justify-content: center;
+  }
+
+  /*ページネーション自体のデザイン*/
+  .pagination>li>a {
+    border: none;     /*枠線をなくす*/
+    color: #696969;   /*文字の色を変える*/
+  }
+
+  /* 表示しているページ番号のデザイン */
+  .pagination>.active>a {
+    background: #93c9ff;     /*背景の色を変える*/
+    border-radius: 20px;     /*角を丸くする*/
+  }
+
+  /*ホバー時のデザイン*/
+  .pagination>li>a:hover {
+    border-radius: 20px;    /*角を丸くする*/
+  }
+}
+
+
+
 
 
 

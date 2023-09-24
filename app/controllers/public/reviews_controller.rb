@@ -32,7 +32,7 @@ class Public::ReviewsController < ApplicationController
 
   def show
     @comment = Comment.new
-    @comments = @review.comments
+    @comments = @review.comments.page(params[:page]).per(10)
   end
 
   def history

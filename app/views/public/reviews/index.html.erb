@@ -27,13 +27,21 @@
           </div>
 
           <div class = "public_review_index_content_group mb-3">
-            <div class = "public_review_index_review_title">投稿日時</div>
-            <div class = "public_review_index_review_content"><%= review.created_at.strftime("%Y/%-m/%-d %-H:%M") %></div>
+            <div class = "public_review_index_review_title">訪問日</div>
+            <div class = "public_review_index_review_content"><%= review.visit_date.strftime("%Y/%-m/%-d") %></div>
           </div>
 
           <div class = "public_review_index_content_group mb-3">
-            <div class = "public_review_index_review_title">訪問日時</div>
-            <div class = "public_review_index_review_content"><%= review.visit_date.strftime("%Y/%-m/%-d") %></div>
+            <div class = "public_review_index_review_title">点数</div>
+            <div class = "public_review_index_review_score_bar">
+              <div>
+                <dd>
+                  <span style = "width: <%= review.score.to_i %>%">
+                    <%= review.score.to_i %>点
+                  </span>
+                </dd>
+              </div>
+            </div>
           </div>
 
           <div class = "public_review_index_content_group mb-3">
@@ -46,8 +54,13 @@
             <div class = "public_review_index_review_content"><%= review.content %></div>
           </div>
 
+          <div class = "public_review_index_content_group mb-3">
+            <div class = "public_review_index_review_title">投稿日時</div>
+            <div class = "public_review_index_review_content"><%= review.created_at.strftime("%Y/%-m/%-d %H:%M:%S") %></div>
+          </div>
+
           <div class = "public_review_index_content_favorite_group">
-            <!-- ログインしていない場合はコメント投稿不可 -->
+            <!-- ログインしていない場合はお気に入りクリック不可 -->
             <% if user_signed_in? %>
               <div id = "favorite_buttons_<%= review.id %>">
                 <%= render "favorite", review: review %>
