@@ -36,8 +36,13 @@ class Public::ReviewsController < ApplicationController
   end
 
   def history
-    @reviews = current_user.reviews
-    @number = 1
+    @reviews = current_user.reviews.page(params[:page]).per(10)
+
+    if params[:page]
+      @number = (params[:page].to_i - 1) * 10
+    else
+      @number = 0
+    end
   end
 
   private

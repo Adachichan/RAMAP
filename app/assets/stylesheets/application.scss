@@ -441,13 +441,6 @@
   }
 }
 
-
-
-
-
-
-
-
 // public_signup
 .public_signup_form {
   width: 800px;
@@ -765,10 +758,6 @@
   }
 }
 
-
-
-
-
 // public_mystore_new_and_edit
 .public_mystore_new_and_edit_form {
   width: 850px;
@@ -964,6 +953,7 @@
         font-size: 16px;
         font-weight: 500;
         background-color: #FFFFEE;
+        word-break: break-all;
       }
 
       .th1{
@@ -971,7 +961,7 @@
         text-align: center;
 
         @media screen and (max-width:575px) {
-          width: 30px;
+          width: 40px;
           font-size: 12px;
         }
       }
@@ -980,7 +970,7 @@
         width: 400px;
 
         @media screen and (max-width:575px) {
-          width: 180px;
+          width: 170px;
           font-size: 12px;
         }
       }
@@ -1014,6 +1004,7 @@
         font-size: 16px;
         font-weight: 500;
         vertical-align: middle;
+        word-break: break-all;
       }
 
       .td1{
@@ -1091,11 +1082,6 @@
     border-radius: 20px;    /*角を丸くする*/
   }
 }
-
-
-
-
-
 
 // public_mystore_show
 .public_mystore_show{
@@ -1927,11 +1913,6 @@
   }
 }
 
-
-
-
-
-
 // public_review_new
 .public_review_new{
   width: 850px;
@@ -2049,6 +2030,199 @@
   }
 }
 
+// public_review_history
+.public_review_history{
+  width: 1200px;
+  margin: 0 auto;
+
+  @media screen and (max-width:575px) {
+    width: 576px;
+  }
+
+  .public_review_history_title{
+    font-weight: 700;
+    margin-bottom: 24px;
+  }
+
+  .public_review_history{
+    width: 1150px;
+
+    @media screen and (max-width:575px) {
+      width: 510px;
+      margin: 0px 0px 30px 0px;
+    }
+
+    thead{
+
+      .th1,.th2,.th3,.th4,.th5,.th6{
+        border: 1px solid #000;
+        padding: 6px 6px 6px 12px;
+        font-size: 16px;
+        font-weight: 500;
+        background-color: #FFFFEE;
+        word-break: break-all;
+      }
+
+      .th1{
+        width: 50px;
+        text-align: center;
+
+        @media screen and (max-width:575px) {
+          width: 35px;
+          font-size: 10px;
+        }
+      }
+
+      .th2{
+        width: 200px;
+
+        @media screen and (max-width:575px) {
+          width: 120px;
+          font-size: 10px;
+        }
+      }
+
+      .th3{
+        width: 250px;
+
+        @media screen and (max-width:575px) {
+          width: 100px;
+          font-size: 10px;
+        }
+      }
+
+      .th4{
+        width: 380px;
+
+        @media screen and (max-width:575px) {
+          width: 140px;
+          font-size: 10px;
+        }
+      }
+
+      .th5{
+        width: 120px;
+
+        @media screen and (max-width:575px) {
+          width: 50px;
+          font-size: 10px;
+        }
+      }
+
+      .th6{
+        width: 150px;
+
+        @media screen and (max-width:575px) {
+          width: 65px;
+          font-size: 10px;
+        }
+      }
+    }
+
+    tbody{
+
+      .td1,.td2,.td3,.td4,.td5,.td6{
+        border: 1px solid #000;
+        padding: 10px 6px 10px 12px;
+        font-size: 16px;
+        font-weight: 500;
+        vertical-align: middle;
+        word-break: break-all;
+      }
+
+      .td1{
+        width: 50px;
+        text-align: center;
+
+        @media screen and (max-width:575px) {
+          width: 35px;
+          font-size: 10px;
+        }
+      }
+
+      .td2{
+        width: 200px;
+
+        @media screen and (max-width:575px) {
+          width: 120px;
+          font-size: 10px;
+        }
+      }
+
+      .td3{
+        width: 250px;
+
+        @media screen and (max-width:575px) {
+          width: 100px;
+          font-size: 10px;
+        }
+      }
+
+      .td4{
+        width: 380px;
+
+        @media screen and (max-width:575px) {
+          width: 140px;
+          font-size: 10px;
+        }
+      }
+
+      .td5{
+        width: 120px;
+
+        @media screen and (max-width:575px) {
+          width: 50px;
+          font-size: 10px;
+        }
+      }
+
+      .td6{
+        width: 150px;
+        text-align: center;
+        padding: 10px 9px 10px 9px;
+
+        @media screen and (max-width:575px) {
+          width: 65px;
+          font-size: 10px;
+        }
+
+        .public_review_history_review_show_button{
+          width: 100px;
+          color: white;
+          font-size: 14px;
+          padding: 5px 0px 5px 0px;
+
+          @media screen and (max-width:575px) {
+            width: 60px;
+            font-size: 10px;
+          }
+        }
+      }
+    }
+  }
+
+  .pagination{
+    margin: 15px;
+    justify-content: center;
+  }
+
+  /*ページネーション自体のデザイン*/
+  .pagination>li>a {
+    border: none;     /*枠線をなくす*/
+    color: #696969;   /*文字の色を変える*/
+  }
+
+  /* 表示しているページ番号のデザイン */
+  .pagination>.active>a {
+    background: #93c9ff;     /*背景の色を変える*/
+    border-radius: 20px;     /*角を丸くする*/
+  }
+
+  /*ホバー時のデザイン*/
+  .pagination>li>a:hover {
+    border-radius: 20px;    /*角を丸くする*/
+  }
+}
 
 
 
