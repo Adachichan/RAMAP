@@ -26,7 +26,8 @@ class Public::ReviewsController < ApplicationController
 
   def index
     @store = Store.find(params[:store_id])
-    @reviews = @store.reviews
+    @reviews_number = @store.reviews.count
+    @reviews = @store.reviews.page(params[:page]).per(10)
   end
 
   def show

@@ -1,7 +1,7 @@
 <div class = "public_review_index px-4">
 
   <div class = "public_review_index_1">
-    <h5 class = "public_review_index_title"><%= @store.name %>の口コミ一覧（全<%= @reviews.count %>件）</h5>
+    <h5 class = "public_review_index_title"><%= @store.name %>の口コミ一覧（全<%= @reviews_number %>件）</h5>
 
     <!-- ログインしていない場合は口コミ投稿不可 -->
     <% if user_signed_in? %>
@@ -46,21 +46,20 @@
             <div class = "public_review_index_review_content"><%= review.content %></div>
           </div>
 
-          <!-- ログインしていない場合はコメント投稿不可 -->
-          <% if user_signed_in? %>
-            <div id = "favorite_buttons_<%= review.id %>">
-              <%= render "favorite", review: review %>
-            </div>
-          <% else %>
-            <span><i class = "fa-solid fa-heart fa-beat fa-lg" style = "color: #ff0000; width: 30px"></i><%= review.favorites.count %> いいね<span>
-          <% end %>
-
+          <div class = "public_review_index_content_favorite_group">
+            <!-- ログインしていない場合はコメント投稿不可 -->
+            <% if user_signed_in? %>
+              <div id = "favorite_buttons_<%= review.id %>">
+                <%= render "favorite", review: review %>
+              </div>
+            <% else %>
+              <span><i class = "fa-solid fa-heart fa-beat fa-lg" style = "color: #ff0000; width: 30px"></i><%= review.favorites.count %> いいね<span>
+            <% end %>
+          </div>
         </div>
 
-
-
         <div class = "col-sm-3">
-          <div class = "public_review_index_store_image mb-5">
+          <div class = "public_review_index_store_image">
             <div><%= image_tag review.get_review_image("200x200!") %></div>
           </div>
         </div>
@@ -69,7 +68,12 @@
     <% end %>
 
     <div>
-      <%= link_to '店舗詳細に戻る', store_path(@store.id) %>
+      <%= link_to '＜　店舗詳細に戻る', store_path(@store.id) %>
     </div>
+
+    <div>
+      <%= paginate @reviews %>
+    </div>
+
   </div>
 </div>
