@@ -100,10 +100,6 @@
             <%= f_mystore.text_field :building_and_apartment, placeholder: "ビル・マンション名を入力してください", class: "form-control" %>
           </div>
         </div>
-        <div class = "mt-2">
-          <!-- building_and_apartment_error -->
-          <%= render 'layouts/error_message', model: mystore, column: :building_and_apartment %>
-        </div>
       </div>
 
       <div class = "mb-4">
@@ -131,10 +127,6 @@
           <div class = "public_mystore_new_and_edit_text_field">
             <%= f_mystore.text_field :fax_number, placeholder: "FAX番号を入力してください", class: "form-control" %>
           </div>
-        </div>
-        <div class = "mt-2">
-          <!-- fax_number_error -->
-          <%= render 'layouts/error_message', model: mystore, column: :fax_number %>
         </div>
       </div>
 
@@ -207,16 +199,10 @@
         <div class = "field">
           <div class = "public_mystore_new_and_edit_label">
             <%= f_mystore.label :closest_station, "最寄り駅：" %>
-            &emsp;&ensp;
-            <span class = "cautionary_note">必須</span>
           </div>
           <div class = "public_mystore_new_and_edit_text_field">
             <%= f_mystore.text_field :closest_station, placeholder: "最寄り駅を入力してください", class: "form-control" %>
           </div>
-        </div>
-        <div class = "mt-2">
-          <!-- closest_station_error -->
-          <%= render 'layouts/error_message', model: mystore, column: :closest_station %>
         </div>
       </div>
 
@@ -262,7 +248,7 @@
             <span class = "cautionary_note">必須</span>
           </div>
           <div class = "public_mystore_new_and_edit_email_field">
-            <%=f_mystore.email_field :representative_email, placeholder: "代表者メールアドレスを入力してください", class: "form-control" %>
+            <%= f_mystore.email_field :representative_email, placeholder: "代表者メールアドレスを入力してください", class: "form-control" %>
           </div>
         </div>
         <div class = "mt-2">
@@ -277,7 +263,7 @@
             <%= f_mystore.label :note, "備考：" %>
           </div>
           <div class = "public_mystore_new_and_edit_text_area_field">
-            <%=f_mystore.text_area :note, placeholder: "備考を入力してください", class: "form-control", style: "height: 100px" %>
+            <%= f_mystore.text_area :note, placeholder: "備考を入力してください", class: "form-control", style: "height: 100px" %>
           </div>
         </div>
       </div>
@@ -329,7 +315,7 @@
             <span class = "cautionary_note">必須</span>
           </div>
           <div class = "public_mystore_new_and_edit_email_field">
-            <%=f_mystore.email_field :staff_email, placeholder: "担当者メールアドレスを入力してください", class: "form-control" %>
+            <%= f_mystore.email_field :staff_email, placeholder: "担当者メールアドレスを入力してください", class: "form-control" %>
           </div>
         </div>
         <div class = "mt-2">
