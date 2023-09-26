@@ -2490,8 +2490,92 @@ header{
   }
 }
 
+// admin_store_show
+.admin_store_show{
+  width: 1200px;
+  margin: 0 auto;
 
+  .row{
+    margin-bottom: 40px;
 
+    .admin_store_show_store_name{
+
+      h5{
+        font-weight: 700;
+        margin: 24px 0 36px -50px ;
+        @media screen and (max-width:1300px) {
+          margin-left: 0px;
+        }
+      }
+
+      .admin_store_show_store{
+        display: flex;
+
+        .admin_store_show_store_title{
+          width: 11em;
+          white-space: nowrap;
+          width: 30%;
+        }
+
+        .admin_store_show_store_content{
+          flex-grow: 1;
+          word-break: break-all;
+          width: 70%;
+        }
+      }
+    }
+
+    .admin_store_show_info{
+
+      .admin_store_show_title,.admin_store_staff_title{
+        font-weight: 700;
+        font-size: 20px;
+      }
+
+      .admin_store_show_store_info,.admin_store_show_store_staff_info{
+        display: flex;
+        margin-left: 20px;
+
+        .admin_store_show_store_info_title,.admin_store_show_store_staff_info_title{
+          width: 12em;
+          white-space: nowrap;
+          width: 40%;
+        }
+
+        .admin_store_show_store_info_content,.admin_store_show_store_staff_info_content{
+          flex-grow: 1;
+          word-break: break-all;
+          width: 60%;
+        }
+      }
+
+      .admin_store_show_store_staff_info:last-child{
+        margin-bottom: 24px;
+      }
+    }
+
+    .col-5{
+
+      .admin_store_show_store_image{
+        margin-top: 50px;
+
+        .admin_store_show_store_image_title{
+          font-weight: 700;
+          font-size: 20px;
+        }
+      }
+
+      .admin_store_show_button_group{
+        display: flex;
+        justify-content: space-around;
+
+        .admin_store_show_edit_button{
+          width: 120px;
+        }
+      }
+    }
+  }
+}
 
 
 
