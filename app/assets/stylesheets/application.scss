@@ -2255,7 +2255,7 @@ header{
 
   h5{
     margin-left: -50px;
-    
+
     @media screen and (max-width:740px) {
       margin-left: 0px;
     }
@@ -2288,6 +2288,208 @@ header{
     font-weight: 700;
   }
 }
+
+// admin_top_view
+.admin_top_view_1{
+  width: 1200px;
+  margin: 0 auto;
+
+  .admin_top_title{
+    font-weight: 700;
+    margin-bottom: 18px;
+  }
+
+  .admin_top_index{
+    width: 1150px;
+
+    thead{
+
+      .th1,.th2,.th3,.th4,.th5{
+        border: 1px solid #000;
+        padding: 6px 6px 6px 12px;
+        font-size: 16px;
+        font-weight: 500;
+        background-color: #E6FFF9;
+        word-break: break-all;
+      }
+
+      .th1{
+        width: 100px;
+        text-align: center;
+      }
+
+      .th2{
+        width: 250px;
+      }
+
+      .th3{
+        width: 250px;
+      }
+
+      .th4{
+        width: 350px;
+      }
+
+      .th5{
+        width: 200px;
+        text-align: center;
+      }
+    }
+
+    tbody{
+
+      .td1,.td2,.td3,.td4,.td5{
+        border: 1px solid #000;
+        padding: 10px 6px 10px 12px;
+        font-size: 16px;
+        font-weight: 500;
+        vertical-align: middle;
+        word-break: break-all;
+      }
+
+      .td1{
+        width: 100px;
+        text-align: center;
+      }
+
+      .td2{
+        width: 250px;
+      }
+
+      .td3{
+        width: 250px;
+      }
+
+      .td4{
+        width: 350px;
+      }
+
+      .td5{
+        width: 200px;
+        text-align: center;
+      }
+    }
+  }
+
+  .pagination{
+    margin: 15px;
+    justify-content: center;
+  }
+
+  /*ページネーション自体のデザイン*/
+  .pagination>li>a {
+    border: none;     /*枠線をなくす*/
+    color: #696969;   /*文字の色を変える*/
+  }
+
+  /* 表示しているページ番号のデザイン */
+  .pagination>.active>a {
+    background: #93c9ff;     /*背景の色を変える*/
+    border-radius: 20px;     /*角を丸くする*/
+  }
+
+  /*ホバー時のデザイン*/
+  .pagination>li>a:hover {
+    border-radius: 20px;    /*角を丸くする*/
+  }
+}
+
+.admin_top_view_2{
+  width: 950px;
+  margin: 0 auto;
+
+  .admin_top_title{
+    font-weight: 700;
+    margin-bottom: 18px;
+  }
+
+  .admin_top_index{
+    width: 900px;
+
+    thead{
+
+      .th1,.th2,.th4,.th5{
+        border: 1px solid #000;
+        padding: 6px 6px 6px 12px;
+        font-size: 16px;
+        font-weight: 500;
+        background-color: #E6FFF9;
+        word-break: break-all;
+      }
+
+      .th1{
+        width: 100px;
+        text-align: center;
+      }
+
+      .th2{
+        width: 250px;
+      }
+
+      .th4{
+        width: 350px;
+      }
+
+      .th5{
+        width: 200px;
+        text-align: center;
+      }
+    }
+
+    tbody{
+
+      .td1,.td2,.td4,.td5{
+        border: 1px solid #000;
+        padding: 10px 6px 10px 12px;
+        font-size: 16px;
+        font-weight: 500;
+        vertical-align: middle;
+        word-break: break-all;
+      }
+
+      .td1{
+        width: 100px;
+        text-align: center;
+      }
+
+      .td2{
+        width: 250px;
+      }
+
+      .td4{
+        width: 350px;
+      }
+
+      .td5{
+        width: 200px;
+        text-align: center;
+      }
+    }
+  }
+
+  .pagination{
+    margin: 15px;
+    justify-content: center;
+  }
+
+  /*ページネーション自体のデザイン*/
+  .pagination>li>a {
+    border: none;     /*枠線をなくす*/
+    color: #696969;   /*文字の色を変える*/
+  }
+
+  /* 表示しているページ番号のデザイン */
+  .pagination>.active>a {
+    background: #93c9ff;     /*背景の色を変える*/
+    border-radius: 20px;     /*角を丸くする*/
+  }
+
+  /*ホバー時のデザイン*/
+  .pagination>li>a:hover {
+    border-radius: 20px;    /*角を丸くする*/
+  }
+}
+
 
 
 
