@@ -9,7 +9,7 @@
       <div class = "mb-4">
         <div class = "field">
           <div class = "public_mymenu_new_label">
-            <%= mymenu.label :menu_image, "メニュー画像" %>
+            <%= mymenu.label :menu_image, "メニュー画像", class: "mb-0" %>
           </div>
           <div class = "public_mymenu_new_file_field">
             <%= mymenu.file_field :menu_image, accept: "image/*" %>
@@ -20,7 +20,7 @@
       <div class = "mb-4">
         <div class = "field">
           <div class = "public_mymenu_new_label">
-            <%= mymenu.label :name, "メニュー名：" %>
+            <%= mymenu.label :name, "メニュー名：", class: "mb-0" %>
             &emsp;&ensp;
             <span class = "cautionary_note">必須</span>
           </div>
@@ -37,7 +37,7 @@
       <div class = "mb-4">
         <div class = "field">
           <div class = "public_mymenu_new_label">
-            <%= mymenu.label :price, "値段(税抜)：" %>
+            <%= mymenu.label :price, "値段(税抜)：", class: "mb-0" %>
             &emsp;&ensp;
             <span class = "cautionary_note">必須</span>
           </div>
@@ -84,12 +84,12 @@
           <td class = "td3"><%= mymenu.name %></td>
           <td class = "td4"><%= mymenu.price %>円</td>
           <td class = "td5">
-            <div class = "public_mymenu_button_group">
-              <%= link_to edit_mystore_mymenu_path(@mystore.id, mymenu.id), class: "btn btn-success public_mymenu_all_destroy_button" do %>
+            <div class = "public_mymenu_index_button_group">
+              <%= link_to edit_mystore_mymenu_path(@mystore.id, mymenu.id), class: "btn btn-success public_mymenu_index_edit_button" do %>
                 編集する
               <% end %>
 
-              <%= link_to mystore_mymenu_path(@mystore.id, mymenu.id), method: :delete, class: "btn btn-danger public_mymenu_all_destroy_button" do %>
+              <%= link_to mystore_mymenu_path(@mystore.id, mymenu.id), method: :delete, class: "btn btn-danger public_mymenu_index_destroy_button" do %>
                 削除する
               <% end %>
             </div>
@@ -98,9 +98,9 @@
       </tbody>
     <% end %>
   </table>
-  
+
   <div>
     <%= paginate @mymenus %>
   </div>
-  
+
 </div>

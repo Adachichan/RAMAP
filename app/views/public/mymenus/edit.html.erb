@@ -9,7 +9,7 @@
       <div class = "mb-4">
         <div class = "field">
           <div class = "public_mymenu_edit_label">
-            <%= mymenu.label :menu_image, "メニュー画像" %>
+            <%= mymenu.label :menu_image, "メニュー画像", class: "mb-0" %>
           </div>
           <div class = "public_mymenu_edit_file_field">
             <%= mymenu.file_field :menu_image, accept: "image/*" %>
@@ -20,7 +20,7 @@
       <div class = "mb-4">
         <div class = "field">
           <div class = "public_mymenu_edit_label">
-            <%= mymenu.label :name, "メニュー名：" %>
+            <%= mymenu.label :name, "メニュー名：", class: "mb-0" %>
             &emsp;&ensp;
             <span class = "cautionary_note">必須</span>
           </div>
@@ -37,7 +37,7 @@
       <div class = "mb-4">
         <div class = "field">
           <div class = "public_mymenu_edit_label">
-            <%= mymenu.label :price, "値段(税抜)：" %>
+            <%= mymenu.label :price, "値段(税抜)：", class: "mb-0" %>
             &emsp;&ensp;
             <span class = "cautionary_note">必須</span>
           </div>

@@ -3,7 +3,7 @@
   <div class = "mb-4">
     <div class = "field">
       <div class = "public_mystore_new_and_edit_label">
-        <%= f_mystore.label :name, "名前：" %>
+        <%= f_mystore.label :name, "名前：", class: "mb-0" %>
         &emsp;&ensp;
         <span class = "cautionary_note">必須</span>
       </div>
@@ -20,7 +20,7 @@
   <div class = "mb-4">
     <div class = "field">
       <div class = "public_mystore_new_and_edit_label">
-        <%= f_mystore.label :name_kana, "名前（カナ）：" %>
+        <%= f_mystore.label :name_kana, "名前（カナ）：", class: "mb-0" %>
         &emsp;&ensp;
         <span class = "cautionary_note">必須</span>
       </div>
@@ -43,7 +43,7 @@
       <div class = "mb-4">
         <div class = "field">
           <div class = "public_mystore_new_and_edit_label">
-            <%= f_mystore.label :postal_code, "郵便番号：" %>
+            <%= f_mystore.label :postal_code, "郵便番号：", class: "mb-0" %>
             &emsp;&ensp;
             <span class = "cautionary_note">必須</span>
           </div>
@@ -60,7 +60,7 @@
       <div class = "mb-4">
         <div class = "field">
           <div class = "public_mystore_new_and_edit_label">
-            <%= f_mystore.label :prefecture, "都道府県：" %>
+            <%= f_mystore.label :prefecture, "都道府県：", class: "mb-0" %>
             &emsp;&ensp;
             <span class = "cautionary_note">必須</span>
           </div>
@@ -77,7 +77,7 @@
       <div class = "mb-4">
         <div class = "field">
           <div class = "public_mystore_new_and_edit_label">
-            <%= f_mystore.label :address, "住所：" %>
+            <%= f_mystore.label :address, "住所：", class: "mb-0" %>
             &emsp;&ensp;
             <span class = "cautionary_note">必須</span>
           </div>
@@ -94,7 +94,7 @@
       <div class = "mb-4">
         <div class = "field">
           <div class = "public_mystore_new_and_edit_label">
-            <%= f_mystore.label :building_and_apartment, "ビル・マンション名：" %>
+            <%= f_mystore.label :building_and_apartment, "ビル・マンション名：", class: "mb-0" %>
           </div>
           <div class = "public_mystore_new_and_edit_text_field">
             <%= f_mystore.text_field :building_and_apartment, placeholder: "ビル・マンション名を入力してください", class: "form-control" %>
@@ -105,7 +105,7 @@
       <div class = "mb-4">
         <div class = "field">
           <div class = "public_mystore_new_and_edit_label">
-            <%= f_mystore.label :telephone_number, "電話番号：" %>
+            <%= f_mystore.label :telephone_number, "電話番号：", class: "mb-0" %>
             &emsp;&ensp;
             <span class = "cautionary_note">必須</span>
           </div>
@@ -122,7 +122,7 @@
       <div class = "mb-4">
         <div class = "field">
           <div class = "public_mystore_new_and_edit_label">
-            <%= f_mystore.label :fax_number, "FAX番号：" %>
+            <%= f_mystore.label :fax_number, "FAX番号：", class: "mb-0" %>
           </div>
           <div class = "public_mystore_new_and_edit_text_field">
             <%= f_mystore.text_field :fax_number, placeholder: "FAX番号を入力してください", class: "form-control" %>
@@ -140,7 +140,7 @@
       <div class = "mb-4">
         <div class = "field">
           <div class = "public_mystore_new_and_edit_label">
-            <%= f_mystore.label :day_ids, "定休日：" %>
+            <%= f_mystore.label :day_ids, "定休日：", class: "mb-0" %>
           </div>
           <div class = "public_mystore_new_and_edit_checkbox_field">
             <%= f_mystore.collection_check_boxes(:day_ids, Day.all, :id, :name) do |tag| %>
@@ -153,7 +153,7 @@
       <div class = "mb-4">
         <div class = "field">
           <div class = "public_mystore_new_and_edit_label">
-            <%= f_mystore.label :store_image, "店舗画像：" %>
+            <%= f_mystore.label :store_image, "店舗画像：", class: "mb-0" %>
           </div>
           <div class = "public_mystore_new_and_edit_file_field">
             <%= f_mystore.file_field :store_image, accept: "image/*" %>
@@ -164,7 +164,7 @@
       <div class = "mb-4">
         <div class = "field">
           <div class = "public_mystore_new_and_edit_label">
-            <%= f_mystore.label :store_genre_id, "ジャンル：" %>
+            <%= f_mystore.label :store_genre_id, "ジャンル：", class: "mb-0" %>
             &emsp;&ensp;
             <span class = "cautionary_note">必須</span>
           </div>
@@ -177,7 +177,7 @@
       <div class = "mb-4">
         <div class = "field">
           <div class = "public_mystore_new_and_edit_label">
-            <%= f_mystore.label :lowest_price_range, "価格帯：" %>
+            <%= f_mystore.label :lowest_price_range, "価格帯：", class: "mb-0" %>
             &emsp;&ensp;
             <span class = "cautionary_note">必須</span>
           </div>
@@ -198,7 +198,7 @@
       <div class = "mb-4">
         <div class = "field">
           <div class = "public_mystore_new_and_edit_label">
-            <%= f_mystore.label :closest_station, "最寄り駅：" %>
+            <%= f_mystore.label :closest_station, "最寄り駅：", class: "mb-0" %>
           </div>
           <div class = "public_mystore_new_and_edit_text_field">
             <%= f_mystore.text_field :closest_station, placeholder: "最寄り駅を入力してください", class: "form-control" %>
@@ -209,7 +209,7 @@
       <div class = "mb-4">
         <div class = "field">
           <div class = "public_mystore_new_and_edit_label">
-            <%= f_mystore.label :representative, "代表者名：" %>
+            <%= f_mystore.label :representative, "代表者名：", class: "mb-0" %>
             &emsp;&ensp;
             <span class = "cautionary_note">必須</span>
           </div>
@@ -226,7 +226,7 @@
       <div class = "mb-4">
         <div class = "field">
           <div class = "public_mystore_new_and_edit_label">
-            <%= f_mystore.label :representative_kana, "代表者名（カナ）：" %>
+            <%= f_mystore.label :representative_kana, "代表者名（カナ）：", class: "mb-0" %>
             &emsp;&ensp;
             <span class = "cautionary_note">必須</span>
           </div>
@@ -243,7 +243,7 @@
       <div class = "mb-4">
         <div class = "field">
           <div class = "public_mystore_new_and_edit_label">
-            <%= f_mystore.label :representative_email, "代表者メールアドレス：" %>
+            <%= f_mystore.label :representative_email, "代表者メールアドレス：", class: "mb-0" %>
             &emsp;&ensp;
             <span class = "cautionary_note">必須</span>
           </div>
@@ -260,7 +260,7 @@
       <div class = "mb-4">
         <div class = "field">
           <div class = "public_mystore_new_and_edit_label">
-            <%= f_mystore.label :note, "備考：" %>
+            <%= f_mystore.label :note, "備考：", class: "mb-0" %>
           </div>
           <div class = "public_mystore_new_and_edit_text_area_field">
             <%= f_mystore.text_area :note, placeholder: "備考を入力してください", class: "form-control", style: "height: 100px" %>
@@ -276,7 +276,7 @@
       <div class = "mb-4">
         <div class = "field">
           <div class = "public_mystore_new_and_edit_label">
-            <%= f_mystore.label :staff, "担当者名：" %>
+            <%= f_mystore.label :staff, "担当者名：", class: "mb-0" %>
             &emsp;&ensp;
             <span class = "cautionary_note">必須</span>
           </div>
@@ -293,7 +293,7 @@
       <div class = "mb-4">
         <div class = "field">
           <div class = "public_mystore_new_and_edit_label">
-            <%= f_mystore.label :staff_telephone_number, "担当者電話番号：" %>
+            <%= f_mystore.label :staff_telephone_number, "担当者電話番号：", class: "mb-0" %>
             &emsp;&ensp;
             <span class = "cautionary_note">必須</span>
           </div>
@@ -310,7 +310,7 @@
       <div class = "mb-4">
         <div class = "field">
           <div class = "public_mystore_new_and_edit_label">
-            <%= f_mystore.label :staff_email, "担当者メールアドレス：" %>
+            <%= f_mystore.label :staff_email, "担当者メールアドレス：", class: "mb-0" %>
             &emsp;&ensp;
             <span class = "cautionary_note">必須</span>
           </div>
