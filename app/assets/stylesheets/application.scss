@@ -2759,13 +2759,13 @@ header{
 
 // admin_store_genre_new_and_index
 .admin_store_genre_new_and_index{
-  width: 850px;
+  width: 600px;
   margin: 0 auto;
 
   h5{
     font-weight: 700;
     margin: 24px 0 36px -50px ;
-    @media screen and (max-width:950px) {
+    @media screen and (max-width:700px) {
       margin-left: 0;
     }
   }
@@ -2778,16 +2778,16 @@ header{
 
       .admin_store_genre_new_label{
         font-weight: 700;
-        width: 10em;
+        width: 8em;
         white-space: nowrap;
       }
 
       .admin_store_genre_new_text_field{
-        flex-grow: 0.3;
+        flex-grow: 1.0;
       }
 
       .actions{
-        margin-left: 72px;
+        margin-left: 36px;
 
         .admin_store_genre_create_button{
           font-weight: 700;
@@ -2798,7 +2798,6 @@ header{
   }
 
   .table{
-    width: 600px;
 
     thead{
 
@@ -2851,10 +2850,82 @@ header{
       }
     }
   }
+
+  .text-danger{
+    align-items: center;
+    display: block;
+    margin-left: 8em;
+  }
+
+  .pagination{
+    margin: 15px;
+    justify-content: center;
+  }
+
+  /*ページネーション自体のデザイン*/
+  .pagination>li>a {
+    border: none;     /*枠線をなくす*/
+    color: #696969;   /*文字の色を変える*/
+  }
+
+  /* 表示しているページ番号のデザイン */
+  .pagination>.active>a {
+    background: #93c9ff;     /*背景の色を変える*/
+    border-radius: 20px;     /*角を丸くする*/
+  }
+
+  /*ホバー時のデザイン*/
+  .pagination>li>a:hover {
+    border-radius: 20px;    /*角を丸くする*/
+  }
 }
 
+// admin_store_genre_edit
+.admin_store_genre_edit{
+  width: 600px;
+  margin: 0 auto;
 
+  h5{
+    font-weight: 700;
+    margin: 24px 0 36px -50px ;
+    @media screen and (max-width:760px) {
+      margin-left: 0;
+    }
+  }
 
+  .admin_store_genre_edit_form{
+
+    .field{
+      display: flex;
+      align-items: center;
+
+      .admin_store_genre_edit_label{
+        font-weight: 700;
+        width: 8em;
+        white-space: nowrap;
+      }
+
+      .admin_store_genre_edit_text_field{
+        flex-grow: 1.0;
+      }
+
+      .actions{
+        margin-left: 36px;
+
+        .admin_store_genre_update_button{
+          font-weight: 700;
+          width: 120px;
+        }
+      }
+    }
+  }
+
+  .text-danger{
+    align-items: center;
+    display: block;
+    margin-left: 8em;
+  }
+}
 
 
 

@@ -5,7 +5,7 @@ class Admin::StoreGenresController < ApplicationController
 
   def index
     @store_genre = StoreGenre.new
-    @store_genres = StoreGenre.all
+    @store_genres = StoreGenre.page(params[:page]).per(10)
   end
 
   def create
@@ -14,14 +14,14 @@ class Admin::StoreGenresController < ApplicationController
     if @store_genre.save
       redirect_to admin_store_genres_path
     else
-      @store_genres = StoreGenre.all
+      @store_genres = StoreGenre.page(params[:page]).per(10)
       render :index
     end
   end
 
   def edit
   end
-  
+
   def update
     # 店舗ジャンルの更新可否
     if @store_genre.update(store_genre_params)

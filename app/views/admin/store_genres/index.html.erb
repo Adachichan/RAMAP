@@ -17,7 +17,6 @@
           <div class = "actions">
             <%= f.submit "新規登録", class: "btn btn-success admin_store_genre_create_button" %>
           </div>
-
         </div>
         <div class = "mt-2">
           <!-- name_error -->
@@ -54,7 +53,8 @@
 
   </table>
 
+  <div>
+    <%= paginate @store_genres %>
+  </div>
+
 </div>
-
-
-
