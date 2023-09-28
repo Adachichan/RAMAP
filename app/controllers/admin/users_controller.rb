@@ -4,7 +4,7 @@ class Admin::UsersController < ApplicationController
   before_action :identify_user, only: [:show, :edit, :update]
 
   def index
-    @users = User.page(params[:page])
+    @users = User.page(params[:page]).per(10)
   end
 
   def show
