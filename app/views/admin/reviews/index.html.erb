@@ -1,43 +1,130 @@
 <% if @index_screen_flag == 0 %>
-  <h4>全ユーザーの口コミ投稿履歴</h4>
+  <div class = "admin_review_index_1 px-4">
+
+    <h5 class = "admin_review_index_title">全ユーザーの口コミ投稿履歴</h5>
+
+    <div class = "admin_review_index_table">
+      <table class = "table table-borderless mb-4">
+        <thead>
+          <tr>
+            <th class = "th1">口コミNo</th>
+            <th class = "th2">投稿日時</th>
+            <th class = "th3">投稿者</th>
+            <th class = "th4">投稿店舗</th>
+            <th class = "th5">投稿タイトル</th>
+          </tr>
+        </thead>
+
+        <% @reviews.each do |review| %>
+          <tbody>
+            <tr>
+              <td class = "td1"><%= review.id %></td>
+              <td class = "td2">
+                <%= link_to review.created_at.strftime("%Y/%-m/%-d %H:%M:%S"), admin_review_path(review.id) %>
+              </td>
+              <td class = "td3">
+                <%= link_to review.user.name, admin_reviews_path(user_id: review.user_id) %>
+              </td>
+              <td class = "td4">
+                <%= link_to review.store.name, admin_reviews_path(store_id: review.store_id) %>
+              </td>
+              <td class = "td5"><%= review.title %></td>
+            </tr>
+          </tbody>
+        <% end %>
+      </table>
+
+      <div>
+        <%= paginate @reviews %>
+      </div>
+
+    </div>
+  </div>
+
 <% elsif @index_screen_flag == 1 %>
-  <h4><%= @user.name %>さんの口コミ投稿履歴</h4>
+  <div class = "admin_review_index_2 px-4">
+
+    <h5 class = "admin_review_index_title"><%= @user.name %>さんの口コミ投稿履歴</h5>
+
+    <div class = "admin_review_index_table">
+      <table class = "table table-borderless mb-4">
+        <thead>
+          <tr>
+            <th class = "th1">口コミNo</th>
+            <th class = "th2">投稿日時</th>
+            <th class = "th4">投稿店舗</th>
+            <th class = "th5">投稿タイトル</th>
+          </tr>
+        </thead>
+
+        <% @reviews.each do |review| %>
+          <tbody>
+            <tr>
+              <td class = "td1"><%= review.id %></td>
+              <td class = "td2">
+                <%= link_to review.created_at.strftime("%Y/%-m/%-d %H:%M:%S"), admin_review_path(review.id) %>
+              </td>
+              <td class = "td4">
+                <%= link_to review.store.name, admin_reviews_path(store_id: review.store_id) %>
+              </td>
+              <td class = "td5"><%= review.title %></td>
+            </tr>
+          </tbody>
+        <% end %>
+      </table>
+
+      <div>
+        <%= link_to '＜　口コミ一覧に戻る', admin_reviews_path %>
+      </div>
+
+      <div>
+        <%= paginate @reviews %>
+      </div>
+
+    </div>
+  </div>
+
 <% else %>
-  <h4><%= @store.name %>の口コミ投稿履歴</h4>
+  <div class = "admin_review_index_3 px-4">
+
+    <h5 class = "admin_review_index_title"><%= @store.name %>の口コミ投稿履歴</h5>
+
+    <div class = "admin_review_index_table">
+      <table class = "table table-borderless mb-4">
+        <thead>
+          <tr>
+            <th class = "th1">口コミNo</th>
+            <th class = "th2">投稿日時</th>
+            <th class = "th3">投稿者</th>
+            <th class = "th5">投稿タイトル</th>
+          </tr>
+        </thead>
+
+        <% @reviews.each do |review| %>
+          <tbody>
+            <tr>
+              <td class = "td1"><%= review.id %></td>
+              <td class = "td2">
+                <%= link_to review.created_at.strftime("%Y/%-m/%-d %H:%M:%S"), admin_review_path(review.id) %>
+              </td>
+              <td class = "td3">
+                <%= link_to review.user.name, admin_reviews_path(user_id: review.user_id) %>
+              </td>
+              <td class = "td5"><%= review.title %></td>
+            </tr>
+          </tbody>
+        <% end %>
+      </table>
+
+      <div>
+        <%= link_to '＜　口コミ一覧に戻る', admin_reviews_path %>
+      </div>
+
+      <div>
+        <%= paginate @reviews %>
+      </div>
+
+    </div>
+  </div>
+
 <% end %>
-
-<table class = "table">
-  <thead>
-    <tr>
-      <th>No</th>
-      <% unless @index_screen_flag == 1 %>
-        <th>投稿者</th>
-      <% end %>
-      <% unless @index_screen_flag == 2 %>
-        <th>投稿店舗</th>
-      <% end %>
-      <th>投稿日時</th>
-      <th>投稿タイトル</th>
-    </tr>
-  </thead>
-
-  <% @reviews.each do |review| %>
-    <tbody>
-      <tr>
-        <td><%= @number %></td>
-        <% unless @index_screen_flag == 1 %>
-          <td><%= link_to review.name, admin_reviews_path(user_id: review.user_id) %></td>
-        <% end %>
-        <% unless @index_screen_flag == 2 %>
-          <td><%= link_to review.store.name, admin_reviews_path(store_id: review.store.id) %></td>
-        <% end %>
-        <td><%= link_to review.created_at.strftime("%Y/%-m/%-d %H:%M:%S"), admin_review_path(review.id) %></td>
-        <td><%= review.title %></td>
-      </tr>
-    </tbody>
-    <% @number += 1 %>
-  <% end %>
-
-  <%= paginate @reviews %>
-
-</table>

@@ -9,19 +9,21 @@ class Admin::ReviewsController < ApplicationController
       all_review = @user.reviews
       # index画面(admin)のflag
       @index_screen_flag = 1
+
     elsif params[:store_id]
       @store = Store.find(params[:store_id])
       all_review = @store.reviews
       # index画面(admin)のflag
       @index_screen_flag = 2
+
     else
       all_review = Review.all
       # index画面(admin)のflag
       @index_screen_flag = 0
     end
 
-    @reviews = all_review.page(params[:page])
-    @number = 1
+    @reviews = all_review.page(params[:page]).per(10)
+
   end
 
   def show
