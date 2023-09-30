@@ -1,28 +1,43 @@
+<div class = "admin_comment_index px-4">
 
-<h4>[<%= @review.title %>]に対するコメント一覧</h4>
+  <div class = "admin_comment_index_1">
+    <h5 class = "admin_comment_index_title">「<%= @review.title %>」に対するコメント一覧</h5>
 
-<table class = "table">
-  <thead>
-    <tr>
-      <th>No</th>
-      <th>コメント日時</th>
-      <th>投稿者</th>
-      <th>コメント内容</th>
-      <th></th>
-    </tr>
-  </thead>
+    <div class = "admin_comment_index_store_name">店舗名：<%= @review.store.name %></div>
+  </div>
 
-  <% @comments.each do |comment| %>
-    <tbody>
-      <tr>
-        <td><%= @number %></td>
-        <td><%= comment.created_at.strftime("%Y/%-m/%-d %H:%M:%S") %></td>
-        <td><%= comment.poster %></td>
-        <td><%= comment.content %></td>
-        <td><%= link_to '削除する(不適切投稿)', admin_comment_path(comment.id), method: :delete %></td>
-      </tr>
-    </tbody>
-    <% @number += 1 %>
-  <% end %>
+  <div class = "admin_comment_index_2">
+    <table class = "table table-borderless">
+      <thead>
+        <tr>
+          <th class = "th1">No</th>
+          <th class = "th2">コメント日時</th>
+          <th class = "th3">投稿者</th>
+          <th class = "th4">コメント内容</th>
+          <th class = "th5"></th>
+        </tr>
+      </thead>
 
-</table>
+      <% @comments.each_with_index do |comment,i| %>
+        <tbody>
+          <tr>
+            <td class = "td1"><%= i + 1 + @number %></td>
+            <td class = "td2"><%= comment.created_at.strftime("%Y/%-m/%-d %H:%M:%S") %></td>
+            <td class = "td3"><%= comment.poster %></td>
+            <td class = "td4"><%= comment.content %></td>
+            <td class = "td5">
+              <%= link_to admin_comment_path(comment.id), method: :delete, class: "btn btn-danger admin_comment_destroy_button", data: { confirm: '本当に削除しますか？' } do %>
+                削除する（不適切投稿）
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+      <% end %>
+    </table>
+
+    <div>
+      <%= paginate @comments %>
+    </div>
+
+  </div>
+</div>

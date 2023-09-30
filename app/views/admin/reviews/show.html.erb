@@ -36,7 +36,7 @@
 
       <div class = "admin_review_show_image">
         <div class = "admin_store_show_image_title mb-2">投稿画像</div>
-        <div><%= image_tag @review.get_review_image("250x250!") %></div>
+        <div><%= image_tag @review.get_review_image("300x300!") %></div>
       </div>
     </div>
   </div>
@@ -47,7 +47,7 @@
       口コミ一覧に戻る
     <% end %>
 
-    <%= link_to admin_review_path(@review.id), method: :delete, class: "btn btn-danger admin_review_show_destroy_button", data: { confirm: '本当に変更しますか？' } do %>
+    <%= link_to admin_review_path(@review.id), method: :delete, class: "btn btn-danger admin_review_show_destroy_button", data: { confirm: '本当に削除しますか？' } do %>
       削除する(不適切投稿)
     <% end %>
 

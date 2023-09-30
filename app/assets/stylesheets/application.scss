@@ -2284,8 +2284,7 @@ header{
 }
 
 
-
-
+// 以下は管理者画面のレイアウト記述
 // admin_login
 .admin_login_form {
   width: 640px;
@@ -3254,7 +3253,7 @@ header{
 }
 
 .admin_review_index_2{
-  width: 1000px;
+  width: 950px;
   margin: 0 auto;
 
   .admin_review_index_title{
@@ -3263,7 +3262,7 @@ header{
   }
 
   .admin_review_index_table{
-    width: 900px;
+    width: 850px;
 
     thead{
 
@@ -3277,7 +3276,7 @@ header{
       }
 
       .th1{
-        width: 100px;
+        width: 50px;
         text-align: center;
       }
 
@@ -3306,7 +3305,7 @@ header{
       }
 
       .td1{
-        width: 100px;
+        width: 50px;
         text-align: center;
       }
 
@@ -3348,7 +3347,7 @@ header{
 }
 
 .admin_review_index_3{
-  width: 1000px;
+  width: 950px;
   margin: 0 auto;
 
   .admin_review_index_title{
@@ -3357,7 +3356,7 @@ header{
   }
 
   .admin_review_index_table{
-    width: 900px;
+    width: 850px;
 
     thead{
 
@@ -3371,7 +3370,7 @@ header{
       }
 
       .th1{
-        width: 100px;
+        width: 50px;
         text-align: center;
       }
 
@@ -3400,7 +3399,7 @@ header{
       }
 
       .td1{
-        width: 100px;
+        width: 50px;
         text-align: center;
       }
 
@@ -3495,14 +3494,129 @@ header{
   }
 }
 
+// admin_comment_index
+.admin_comment_index{
+  width: 1150px;
+  margin: 0 auto;
 
+  .admin_comment_index_1{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
 
+    .admin_comment_index_title,{
+      font-weight: 700;
+    }
 
+    .admin_comment_index_store_name{
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+  }
 
+  .admin_comment_index_2{
+    width: 1150px;
+    margin-bottom: 30px;
 
+    thead{
 
+      .th1,.th2,.th3,.th4,.th5{
+        border: 1px solid #000;
+        padding: 6px 6px 6px 12px;
+        font-size: 16px;
+        font-weight: 500;
+        background-color: #FFFAFA;
+        word-break: break-all;
+      }
 
+      .th1{
+        width: 50px;
+        text-align: center;
+      }
 
+      .th2{
+        width: 200px;
+      }
+
+      .th3{
+        width: 250px;
+      }
+
+      .th4{
+        width: 350px;
+        border-right: none;
+      }
+
+      .th5{
+        border-left: none;
+        width: 200px;
+      }
+    }
+
+    tbody{
+
+      .td1,.td2,.td3,.td4,.td5{
+        border: 1px solid #000;
+        padding: 10px 6px 10px 12px;
+        font-size: 16px;
+        font-weight: 500;
+        vertical-align: middle;
+        word-break: break-all;
+      }
+
+      .td1{
+        width: 50px;
+        text-align: center;
+      }
+
+      .td2{
+        width: 200px;
+      }
+
+      .td3{
+        width: 250px;
+      }
+
+      .td4{
+        width: 350px;
+      }
+
+      .td5{
+        width: 200px;
+        text-align: center;
+
+        .admin_comment_destroy_button{
+          width: 180px;
+          color: white;
+          font-size: 14px;
+          padding: 5px 0px 5px 0px;
+        }
+      }
+    }
+  }
+
+  .pagination{
+    margin: 15px;
+    justify-content: center;
+  }
+
+  /*ページネーション自体のデザイン*/
+  .pagination>li>a {
+    border: none;     /*枠線をなくす*/
+    color: #696969;   /*文字の色を変える*/
+  }
+
+  /* 表示しているページ番号のデザイン */
+  .pagination>.active>a {
+    background: #93c9ff;     /*背景の色を変える*/
+    border-radius: 20px;     /*角を丸くする*/
+  }
+
+  /*ホバー時のデザイン*/
+  .pagination>li>a:hover {
+    border-radius: 20px;    /*角を丸くする*/
+  }
+}
 
 // error_message
 .field_with_errors input,.field_with_errors textarea {

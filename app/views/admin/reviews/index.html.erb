@@ -50,17 +50,17 @@
       <table class = "table table-borderless mb-4">
         <thead>
           <tr>
-            <th class = "th1">口コミNo</th>
+            <th class = "th1">No</th>
             <th class = "th2">投稿日時</th>
             <th class = "th4">投稿店舗</th>
             <th class = "th5">投稿タイトル</th>
           </tr>
         </thead>
 
-        <% @reviews.each do |review| %>
+        <% @reviews.each_with_index do |review,i| %>
           <tbody>
             <tr>
-              <td class = "td1"><%= review.id %></td>
+              <td class = "td1"><%= i + 1 + @number %></td>
               <td class = "td2">
                 <%= link_to review.created_at.strftime("%Y/%-m/%-d %H:%M:%S"), admin_review_path(review.id) %>
               </td>
@@ -93,17 +93,17 @@
       <table class = "table table-borderless mb-4">
         <thead>
           <tr>
-            <th class = "th1">口コミNo</th>
+            <th class = "th1">No</th>
             <th class = "th2">投稿日時</th>
             <th class = "th3">投稿者</th>
             <th class = "th5">投稿タイトル</th>
           </tr>
         </thead>
 
-        <% @reviews.each do |review| %>
+        <% @reviews.each_with_index do |review,i| %>
           <tbody>
             <tr>
-              <td class = "td1"><%= review.id %></td>
+              <td class = "td1"><%= i + 1 + @number %></td>
               <td class = "td2">
                 <%= link_to review.created_at.strftime("%Y/%-m/%-d %H:%M:%S"), admin_review_path(review.id) %>
               </td>
