@@ -1141,6 +1141,14 @@ header{
     width: 575px;
   }
 
+  h5{
+    font-weight: 700;
+    margin: 24px 0 36px -50px ;
+    @media screen and (max-width:1300px) {
+      margin-left: 0px;
+    }
+  }
+
   .row{
     margin-bottom: 40px;
 
@@ -1149,14 +1157,6 @@ header{
     }
 
     .public_mystore_show_store_name{
-
-      h5{
-        font-weight: 700;
-        margin: 24px 0 36px -50px ;
-        @media screen and (max-width:1300px) {
-          margin-left: 0px;
-        }
-      }
 
       .public_mystore_show_store{
         display: flex;
@@ -1211,7 +1211,6 @@ header{
     .col-sm-5{
 
       .public_mystore_show_store_image{
-        margin-top: 50px;
 
         @media screen and (max-width:575px) {
           margin-top: 0px;
@@ -1227,7 +1226,6 @@ header{
             margin-left: 32px;
           }
         }
-
       }
 
       .public_mystore_show_button_group{
@@ -2536,18 +2534,18 @@ header{
   width: 1200px;
   margin: 0 auto;
 
+  h5{
+    font-weight: 700;
+    margin: 24px 0 36px -50px ;
+    @media screen and (max-width:1300px) {
+      margin-left: 0px;
+    }
+  }
+
   .row{
     margin-bottom: 40px;
 
     .admin_store_show_store_name{
-
-      h5{
-        font-weight: 700;
-        margin: 24px 0 36px -50px ;
-        @media screen and (max-width:1300px) {
-          margin-left: 0px;
-        }
-      }
 
       .admin_store_show_store{
         display: flex;
@@ -2598,7 +2596,6 @@ header{
     .col-5{
 
       .admin_store_show_store_image{
-        margin-top: 50px;
 
         .admin_store_show_store_image_title{
           font-weight: 700;
@@ -3443,6 +3440,63 @@ header{
     border-radius: 20px;    /*角を丸くする*/
   }
 }
+
+// admin_review_show
+.admin_review_show{
+  width: 1200px;
+  margin: 0 auto;
+
+  h5{
+    font-weight: 700;
+    margin: 24px 0 36px -50px ;
+    @media screen and (max-width:1300px) {
+      margin-left: 0px;
+    }
+  }
+
+  .admin_review_show_review_contents{
+
+    .admin_review_show_item{
+      display: flex;
+
+      .admin_review_show_store_title{
+        width: 10em;
+        white-space: nowrap;
+        width: 25%;
+      }
+
+      .admin_review_show_store_content{
+        flex-grow: 1;
+        word-break: break-all;
+        width: 75%;
+      }
+    }
+  }
+
+  .col-4{
+
+    .admin_review_show_image{
+
+      .admin_store_show_image_title{
+        font-weight: 700;
+        font-size: 20px;
+      }
+    }
+
+  }
+
+  .admin_review_show_button_group{
+    display: flex;
+    justify-content: space-around;
+
+    .admin_review_show_return_button,.admin_review_show_destroy_button,.admin_review_show_comment_button{
+      width: 220px;
+    }
+  }
+}
+
+
+
 
 
 

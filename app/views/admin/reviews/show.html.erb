@@ -1,33 +1,59 @@
+<div class = "admin_review_show px-4">
 
-<h4>口コミ詳細</h4>
+  <h5>口コミ詳細</h5>
 
-<div>
-  <p>投稿日時</p>
-  <p><%= @review.created_at.strftime("%Y/%-m/%-d %H:%M:%S") %></p>
+  <div class = "row">
+
+    <div class = "admin_review_show_review_contents col-8">
+
+      <div class = "admin_review_show_item mb-4">
+        <div class = "admin_review_show_store_title">投稿日時</div>
+        <div class = "admin_review_show_store_content"><%= @review.created_at.strftime("%Y/%-m/%-d %H:%M:%S") %></div>
+      </div>
+
+      <div class = "admin_review_show_item mb-4">
+        <div class = "admin_review_show_store_title">投稿者</div>
+        <div class = "admin_review_show_store_content"><%= @review.name %></div>
+      </div>
+
+      <div class = "admin_review_show_item mb-4">
+        <div class = "admin_review_show_store_title">投稿店舗</div>
+        <div class = "admin_review_show_store_content"><%= @review.store.name %></div>
+      </div>
+
+      <div class = "admin_review_show_item mb-4">
+        <div class = "admin_review_show_store_title">タイトル</div>
+        <div class = "admin_review_show_store_content"><%= @review.title %></div>
+      </div>
+
+      <div class = "admin_review_show_item mb-4">
+        <div class = "admin_review_show_store_title">内容</div>
+        <div class = "admin_review_show_store_content"><%= @review.content %></div>
+      </div>
+    </div>
+
+    <div class = "col-4">
+
+      <div class = "admin_review_show_image">
+        <div class = "admin_store_show_image_title mb-2">投稿画像</div>
+        <div><%= image_tag @review.get_review_image("250x250!") %></div>
+      </div>
+    </div>
+  </div>
+
+  <div class = "admin_review_show_button_group mt-5 mb-4">
+
+    <%= link_to admin_reviews_path, class: "btn btn-success admin_review_show_return_button" do %>
+      口コミ一覧に戻る
+    <% end %>
+
+    <%= link_to admin_review_path(@review.id), method: :delete, class: "btn btn-danger admin_review_show_destroy_button", data: { confirm: '本当に変更しますか？' } do %>
+      削除する(不適切投稿)
+    <% end %>
+
+    <%= link_to admin_review_comments_path(@review.id), class: "btn admin_review_show_comment_button", style: "color: white; background-color: #FFAD90" do %>
+      コメント一覧
+    <% end %>
+
+  </div>
 </div>
-
-<div>
-  <p>投稿者</p>
-  <p><%= @review.name %></p>
-</div>
-
-<div>
-  <p>投稿店舗</p>
-  <p><%= @review.store.name %></p>
-</div>
-
-<div>
-  <p>タイトル</p>
-  <p><%= @review.title %></p>
-</div>
-
-<div>
-  <p>内容</p>
-  <p><%= @review.content %></p>
-</div>
-
-<div><%= image_tag @review.get_review_image("350x350!") %></div>
-
-<div><%= link_to '口コミ一覧に戻る', admin_reviews_path %></div>
-<div><%= link_to '削除する(不適切投稿)', admin_review_path(@review.id), method: :delete %></div>
-<div><%= link_to 'コメント一覧', admin_review_comments_path(@review.id) %></div>
