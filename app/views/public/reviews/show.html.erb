@@ -50,7 +50,7 @@
           <!-- ログインしていない場合はお気に入りクリック不可 -->
           <% if user_signed_in? %>
             <div id = "favorite_buttons_<%= @review.id %>">
-              <%= render "favorite", review: @review %>
+              <%= render "public/reviews/favorite", review: @review %>
             </div>
           <% else %>
             <span><i class = "fa-solid fa-heart fa-beat fa-lg" style = "color: #ff0000; width: 30px"></i><%= @review.favorites.count %> いいね<span>
