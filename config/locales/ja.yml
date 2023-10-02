@@ -81,6 +81,8 @@ ja:
         score: 口コミ評価
       store_genre:
         name: ジャンル名
+      comment:
+        content: コメント
     errors:
       models:
         user:

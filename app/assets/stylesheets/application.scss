@@ -1946,6 +1946,17 @@ header{
     }
   }
 
+  .text-danger{
+    align-items: center;
+    display: block;
+    margin-left: 9em;
+
+    @media screen and (max-width:575px) {
+      margin-left: 0;
+    }
+  }
+
+
   .pagination{
     margin: 15px;
     justify-content: center;

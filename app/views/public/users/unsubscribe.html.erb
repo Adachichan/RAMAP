@@ -17,7 +17,7 @@
     </div>
 
     <div class = "actions">
-      <%= link_to withdraw_path, method: :patch, class: "btn btn-danger public_user_unsubscribe_button" do %>
+      <%= link_to withdraw_path, method: :patch, class: "btn btn-danger public_user_unsubscribe_button", data: { confirm: '本当に退会しますか？' } do %>
         退会する
       <% end %>
     </div>
