@@ -36,6 +36,10 @@
     </table>
 
     <div>
+      <%= link_to '＜　口コミ詳細に戻る', admin_review_path(@review.id) %>
+    </div>
+
+    <div>
       <%= paginate @comments %>
     </div>
 
