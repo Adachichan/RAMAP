@@ -23,6 +23,11 @@
   </div>
 
   <div class = "admin_user_show_info mb-4">
+    <div class = "admin_store_show_info_title">性別</div>
+    <div class = "admin_store_show_info_content"><%= @user.sex_i18n %></div>
+  </div>
+
+  <div class = "admin_user_show_info mb-4">
     <div class = "admin_store_show_info_title">郵便番号</div>
     <div class = "admin_store_show_info_content">〒<%= @user.postal_code %></div>
   </div>
@@ -30,11 +35,6 @@
   <div class = "admin_user_show_info mb-4">
     <div class = "admin_store_show_info_title">住所</div>
     <div class = "admin_store_show_info_content"><%= @user.address %></div>
-  </div>
-
-  <div class = "admin_user_show_info mb-4">
-    <div class = "admin_store_show_info_title">性別</div>
-    <div class = "admin_store_show_info_content"><%= @user.sex_i18n %></div>
   </div>
 
   <div class = "admin_user_show_info mb-4">
