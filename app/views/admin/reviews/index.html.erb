@@ -12,6 +12,7 @@
             <th class = "th3">投稿者</th>
             <th class = "th4">投稿店舗</th>
             <th class = "th5">投稿タイトル</th>
+            <th class = "th6">点数</th>
           </tr>
         </thead>
 
@@ -29,6 +30,7 @@
                 <%= link_to review.store.name, admin_reviews_path(store_id: review.store_id) %>
               </td>
               <td class = "td5"><%= review.title %></td>
+              <td class = "td6"><%= review.score %>点</td>
             </tr>
           </tbody>
         <% end %>
@@ -54,6 +56,7 @@
             <th class = "th2">投稿日時</th>
             <th class = "th4">投稿店舗</th>
             <th class = "th5">投稿タイトル</th>
+            <th class = "th6">点数</th>
           </tr>
         </thead>
 
@@ -68,6 +71,7 @@
                 <%= link_to review.store.name, admin_reviews_path(store_id: review.store_id) %>
               </td>
               <td class = "td5"><%= review.title %></td>
+              <td class = "td6"><%= review.score %>点</td>
             </tr>
           </tbody>
         <% end %>
@@ -97,6 +101,7 @@
             <th class = "th2">投稿日時</th>
             <th class = "th3">投稿者</th>
             <th class = "th5">投稿タイトル</th>
+            <th class = "th6">点数</th>
           </tr>
         </thead>
 
@@ -111,6 +116,7 @@
                 <%= link_to review.user.name, admin_reviews_path(user_id: review.user_id) %>
               </td>
               <td class = "td5"><%= review.title %></td>
+              <td class = "td6"><%= review.score %>点</td>
             </tr>
           </tbody>
         <% end %>

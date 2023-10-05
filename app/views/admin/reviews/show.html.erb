@@ -30,6 +30,19 @@
         <div class = "admin_review_show_store_title">内容</div>
         <div class = "admin_review_show_store_content"><%= @review.content %></div>
       </div>
+
+      <div class = "admin_review_show_item mb-4">
+        <div class = "admin_review_show_store_title">点数</div>
+        <div class = "admin_review_show_store_score_bar">
+          <div>
+            <dd>
+              <span style = "width: <%= @review.score.to_i %>%">
+                <%= @review.score.to_i %>点
+              </span>
+            </dd>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class = "col-4">
