@@ -19,6 +19,16 @@
         </div>
 
         <div class = "public_review_show_content_group mb-3">
+          <div class = "public_review_show_review_title">タイトル</div>
+          <div class = "public_review_show_review_content"><%= @review.title %></div>
+        </div>
+
+        <div class = "public_review_show_content_group mb-3">
+          <div class = "public_review_show_review_title">内容</div>
+          <div class = "public_review_show_review_content"><%= @review.content %></div>
+        </div>
+
+        <div class = "public_review_show_content_group mb-1">
           <div class = "public_review_show_review_title">点数</div>
           <div class = "public_review_show_review_score_bar">
             <div>
@@ -29,16 +39,6 @@
               </dd>
             </div>
           </div>
-        </div>
-
-        <div class = "public_review_show_content_group mb-3">
-          <div class = "public_review_show_review_title">タイトル</div>
-          <div class = "public_review_show_review_content"><%= @review.title %></div>
-        </div>
-
-        <div class = "public_review_show_content_group mb-3">
-          <div class = "public_review_show_review_title">内容</div>
-          <div class = "public_review_show_review_content"><%= @review.content %></div>
         </div>
 
         <div class = "public_review_show_content_group mb-3">

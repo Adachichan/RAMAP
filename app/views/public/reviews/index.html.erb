@@ -32,6 +32,16 @@
           </div>
 
           <div class = "public_review_index_content_group mb-3">
+            <div class = "public_review_index_review_title">タイトル</div>
+            <div class = "public_review_index_review_content"><%= link_to review.title, store_review_path(@store.id, review.id) %></div>
+          </div>
+
+          <div class = "public_review_index_content_group mb-3">
+            <div class = "public_review_index_review_title">内容</div>
+            <div class = "public_review_index_review_content"><%= review.content %></div>
+          </div>
+
+          <div class = "public_review_index_content_group mb-1">
             <div class = "public_review_index_review_title">点数</div>
             <div class = "public_review_index_review_score_bar">
               <div>
@@ -42,16 +52,6 @@
                 </dd>
               </div>
             </div>
-          </div>
-
-          <div class = "public_review_index_content_group mb-3">
-            <div class = "public_review_index_review_title">タイトル</div>
-            <div class = "public_review_index_review_content"><%= link_to review.title, store_review_path(@store.id, review.id) %></div>
-          </div>
-
-          <div class = "public_review_index_content_group mb-3">
-            <div class = "public_review_index_review_title">内容</div>
-            <div class = "public_review_index_review_content"><%= review.content %></div>
           </div>
 
           <div class = "public_review_index_content_group mb-3">
