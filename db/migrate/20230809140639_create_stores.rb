@@ -17,7 +17,7 @@ class CreateStores < ActiveRecord::Migration[6.1]
       t.string :representative,         null: false, default: ""     ## 代表者名
       t.string :representative_kana,    null: false, default: ""     ## 代表者名（カナ）
       t.string :representative_email,   null: false, default: ""     ## 代表者メールアドレス
-      t.text :note,                                  default: ""     ## 備考
+      t.text :note                                                   ## 備考
       t.string :staff,                  null: false, default: ""     ## 担当者名
       t.string :staff_telephone_number, null: false, default: ""     ## 担当者の電話番号
       t.string :staff_email,            null: false, default: ""     ## 担当者メールアドレス

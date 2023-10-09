@@ -7,7 +7,7 @@ class CreateReviews < ActiveRecord::Migration[6.1]
       t.string :nickname,  null: false               ## ニックネーム
       t.date :visit_date,  null: false               ## 訪問日
       t.string :title,     null: false, default: ""  ## タイトル
-      t.text :content,     null: false, default: ""  ## 内容
+      t.text :content,     null: false               ## 内容
       t.integer :score,    null: false               ## 口コミ評価（点数）
       t.timestamps
     end
