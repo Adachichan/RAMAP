@@ -11,6 +11,8 @@ import "channels"
 require("jquery")
 require("@nathanvda/cocoon")
 
+import "../stylesheets/application.scss"
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
