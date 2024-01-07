@@ -31,6 +31,9 @@ gem 'bootsnap', '>= 1.4.4', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+
+  # 2023/10/11：コード移動(bundle install済)
+  gem 'pry-rails'
 end
 
 group :development do
@@ -60,8 +63,6 @@ gem 'devise'
 gem 'kaminari', '~> 1.2.1'
 
 gem 'enum_help'
-
-gem 'pry-rails'
 
 gem 'cocoon'
 
